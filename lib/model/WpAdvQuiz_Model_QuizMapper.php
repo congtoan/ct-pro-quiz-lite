@@ -368,6 +368,17 @@ class WpAdvQuiz_Model_QuizMapper extends WpAdvQuiz_Model_Mapper
     }
 
     /**
+     * Highest score one attempt can reach when only $limit questions are shown:
+     * the sum of the $limit highest question points.
+     */
+    public function sumTopQuestionPoints($id, $limit)
+    {
+        return $this->_wpdb->get_var($this->_wpdb->prepare(
+            "SELECT SUM(points) FROM (SELECT points FROM {$this->_tableQuestion} WHERE quiz_id = %d AND online = 1 ORDER BY points DESC LIMIT %d) AS top_points",
+            $id, $limit));
+    }
+
+    /**
      * @param $id
      * @return int
      */

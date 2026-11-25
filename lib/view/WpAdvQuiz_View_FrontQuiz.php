@@ -14,6 +14,52 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
     private $_buttonNames = array();
 
 
+    /**
+     * Inline CSS for a button from the "button style" settings (width, height, colour).
+     * Only values the admin actually set are printed. The original always printed
+     * "width:px !Important; height:px !Important; background-color:  !important", which
+     * is invalid when empty and, when set, cannot be overridden by the theme (upstream #75, #85).
+     * Every button also has its own class (wpAdvQuiz_button_<name>) for theme styling.
+     */
+    public function btnCss($key)
+    {
+        $css = array();
+        $w = trim((string)$this->{$key . '_btn_width'});
+        $h = trim((string)$this->{$key . '_btn_height'});
+        $c = trim((string)$this->{$key . '_btn_color'});
+
+        foreach (array('width' => $w, 'height' => $h) as $prop => $v) {
+            if ($v === '') {
+                continue;
+            }
+            if (is_numeric($v)) {
+                $v .= 'px';
+            }
+            if (preg_match('/^\d+(\.\d+)?(px|em|rem|%)$/', $v)) {
+                $css[] = $prop . ': ' . $v . ' !important';
+            }
+        }
+
+        if ($c !== '' && preg_match('/^(#[0-9a-fA-F]{3,8}|[a-zA-Z]+|(rgb|hsl)a?\([0-9.,%\s]+\))$/', $c)) {
+            $css[] = 'background-color: ' . $c . ' !important';
+        }
+
+        return esc_attr(implode('; ', $css));
+    }
+
+    /**
+     * Quiz title as shown to visitors. Filter 'wpAdvQuiz_quiz_name' lets multilingual
+     * plugins or custom code translate it (upstream #85). Custom form field labels use
+     * the 'wpAdvQuiz_form_field_name' filter (upstream #83).
+     *
+     * @param WpAdvQuiz_Model_Quiz $quiz
+     * @return string
+     */
+    public static function quizName($quiz)
+    {
+        return (string)apply_filters('wpAdvQuiz_quiz_name', $quiz->getName(), $quiz);
+    }
+
     private function loadButtonNames()
     {
         if (!empty($this->_buttonNames)) {
@@ -95,7 +141,7 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
             <?php
 
             if (!$this->quiz->isTitleHidden()) {
-                echo '<h2>' . esc_html($this->quiz->getName()) . '</h2>';
+                echo '<h2>' . esc_html(self::quizName($this->quiz)) . '</h2>';
             }
 
             $this->showTimeLimitBox();
@@ -197,7 +243,7 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
             <?php
 
             if (!$this->quiz->isTitleHidden()) {
-                echo '<h2>' . esc_html($this->quiz->getName()) . '</h2>';
+                echo '<h2>' . esc_html(self::quizName($this->quiz)) . '</h2>';
             }
 
             $this->showTimeLimitBox();
@@ -300,7 +346,7 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
                             <img alt="captcha" src="" class="wpAdvQuiz_captchaImg" style="vertical-align: middle;">
                         </div>
                     </div>
-                    <input class="wpAdvQuiz_button2" type="submit" value="<?php _e('Send', 'ct-pro-quiz-lite'); ?>"
+                    <input class="wpAdvQuiz_button2 wpAdvQuiz_button_wpAdvQuiz_toplistAdd" type="submit" value="<?php _e('Send', 'ct-pro-quiz-lite'); ?>"
                            name="wpAdvQuiz_toplistAdd">
                 </div>
             </div>
@@ -431,7 +477,7 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
                         <td>
                             <?php
                             echo '<label for="' . esc_html($id) . '">';
-                            echo esc_html($form->getFieldname());
+                            echo esc_html(apply_filters('wpAdvQuiz_form_field_name', $form->getFieldname(), $form, $this->quiz));
                             echo esc_attr($form->isRequired()) ? '<span class="wpAdvQuiz_required">*</span>' : '';
                             echo '</label>';
                             ?>
@@ -590,8 +636,8 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
             ?>
 
             <input type="button" name="endQuizSummary" value="<?php echo esc_attr($this->_buttonNames['finish_quiz']); ?>"
-                   class="wpAdvQuiz_button" 
-				    style="width:<?php echo esc_attr($this->finish_btn_width); ?>px !Important; height:<?php echo esc_attr($this->finish_btn_height); ?>px !Important; background-color: <?php echo esc_attr($this->finish_btn_color); ?> !important">
+                   class="wpAdvQuiz_button wpAdvQuiz_button_endQuizSummary" 
+				    style="<?php echo $this->btnCss('finish'); ?>">
         </div>
         <?php
     }
@@ -612,8 +658,8 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
             ?>
 
             <input type="button" name="endInfopage" value="<?php echo esc_attr($this->_buttonNames['finish_quiz']); ?>"
-                   class="wpAdvQuiz_button"
-				   style="width:<?php echo esc_attr($this->finish_btn_width); ?>px !Important; height:<?php echo esc_attr($this->finish_btn_height); ?>px !Important; background-color: <?php echo esc_attr($this->finish_btn_color); ?> !important">
+                   class="wpAdvQuiz_button wpAdvQuiz_button_endInfopage"
+				   style="<?php echo $this->btnCss('finish'); ?>">
         </div>
         <?php
     }
@@ -636,8 +682,8 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
             ?>
 
             <div>
-                <input class="wpAdvQuiz_button" type="button" value="<?php echo esc_attr($this->_buttonNames['start_quiz']); ?>"
-                       name="startQuiz" style="width:<?php echo esc_attr($this->start_btn_width); ?>px !Important; height:<?php echo esc_attr($this->start_btn_height); ?>px !Important; background-color: <?php echo esc_attr($this->start_btn_color); ?> !important">
+                <input class="wpAdvQuiz_button wpAdvQuiz_button_startQuiz" type="button" value="<?php echo esc_attr($this->_buttonNames['start_quiz']); ?>"
+                       name="startQuiz" style="<?php echo $this->btnCss('start'); ?>">
             </div>
         </div>
         <?php
@@ -681,14 +727,14 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
             <div>
                 <?php if ($this->quiz->getQuizModus() != WpAdvQuiz_Model_Quiz::QUIZ_MODUS_SINGLE) { ?>
                     <input type="button" name="review" value="<?php _e('Review question', 'ct-pro-quiz-lite'); ?>"
-                           class="wpAdvQuiz_button2" style="float: left; display: block;
-						   width:<?php echo esc_attr($this->review_btn_width); ?>px !Important; height:<?php echo esc_attr($this->review_btn_height); ?>px !Important; background-color: <?php echo esc_attr($this->review_btn_color); ?> !important">
+                           class="wpAdvQuiz_button2 wpAdvQuiz_button_review" style="float: left; display: block;
+						   <?php echo $this->btnCss('review'); ?>">
 						   
                     <?php if (!$this->quiz->isQuizSummaryHide()) { ?>
                         <input type="button" name="quizSummary"
-                               value="<?php echo esc_attr($this->_buttonNames['quiz_summary']); ?>" class="wpAdvQuiz_button2"
+                               value="<?php echo esc_attr($this->_buttonNames['quiz_summary']); ?>" class="wpAdvQuiz_button2 wpAdvQuiz_button_quizSummary"
                                style="float: right;
-							   	width:<?php echo esc_attr($this->summary_btn_width); ?>px !Important; height:<?php echo esc_attr($this->summary_btn_height); ?>px !Important; background-color: <?php echo esc_attr($this->summary_btn_color); ?> !important">
+							   	<?php echo $this->btnCss('summary'); ?>">
                     <?php } ?>
                     <div style="clear: both;"></div>
                 <?php } ?>
@@ -792,20 +838,19 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
             ?>
             <div style="margin: 10px 0px;">
                 <?php if (!$this->quiz->isBtnRestartQuizHidden()) { ?>
-                    <input class="wpAdvQuiz_button" type="button" name="restartQuiz"
+                    <input class="wpAdvQuiz_button wpAdvQuiz_button_restartQuiz" type="button" name="restartQuiz"
                            value="<?php echo esc_attr($this->_buttonNames['restart_quiz']); ?>" 
-						   style="width:<?php echo esc_attr($this->restart_btn_width); ?>px !Important; height:<?php echo esc_attr($this->restart_btn_height); ?>px !Important; background-color: <?php echo esc_attr($this->restart_btn_color); ?> !important"
-						   ">
+						   style="<?php echo $this->btnCss('restart'); ?>">
                 <?php }
                 if (!$this->quiz->isBtnViewQuestionHidden()) { ?>
-                    <input class="wpAdvQuiz_button" type="button" name="reShowQuestion"
+                    <input class="wpAdvQuiz_button wpAdvQuiz_button_reShowQuestion" type="button" name="reShowQuestion"
                            value="<?php _e('View questions', 'ct-pro-quiz-lite'); ?>" 
-						   style="width:<?php echo esc_attr($this->view_btn_width); ?>px !Important; height:<?php echo esc_attr($this->view_btn_height); ?>px !Important; background-color: <?php echo esc_attr($this->view_btn_color); ?> !important">
+						   style="<?php echo $this->btnCss('view'); ?>">
                 <?php } ?>
                 <?php if ($this->quiz->isToplistActivated() && $this->quiz->getToplistDataShowIn() == WpAdvQuiz_Model_Quiz::QUIZ_TOPLIST_SHOW_IN_BUTTON) { ?>
-                    <input class="wpAdvQuiz_button" type="button" name="showToplist"
+                    <input class="wpAdvQuiz_button wpAdvQuiz_button_showToplist" type="button" name="showToplist"
                            value="<?php _e('Show leaderboard', 'ct-pro-quiz-lite'); ?>"
-						   style="width:<?php echo esc_attr($this->leaderboard_btn_width); ?>px !Important; height:<?php echo esc_attr($this->leaderboard_btn_height); ?>px !Important; background-color: <?php echo esc_attr($this->leaderboard_btn_color); ?> !important">
+						   style="<?php echo $this->btnCss('leaderboard'); ?>">
                 <?php } ?>
             </div>
         </div>
@@ -1137,44 +1182,44 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
                         <?php if ($this->quiz->getQuizModus() == WpAdvQuiz_Model_Quiz::QUIZ_MODUS_CHECK && !$this->quiz->isSkipQuestionDisabled() && $this->quiz->isShowReviewQuestion()) { ?>
                             
 							<input type="button" name="skip" value="<?php _e('Skip question', 'ct-pro-quiz-lite'); ?>"
-                                   class="wpAdvQuiz_button wpAdvQuiz_QuestionButton"
+                                   class="wpAdvQuiz_button wpAdvQuiz_QuestionButton wpAdvQuiz_button_skip"
                                    style="float: left; margin-right: 10px !important;
-									width:<?php echo esc_attr($this->skip_btn_width); ?>px !Important; height:<?php echo esc_attr($this->skip_btn_height); ?>px !Important; background-color: <?php echo esc_attr($this->skip_btn_color); ?> !important">
+									<?php echo $this->btnCss('skip'); ?>">
                         <?php } ?>
 						
                         <input type="button" name="back" value="<?php _e('Back', 'ct-pro-quiz-lite'); ?>"
-                               class="wpAdvQuiz_button wpAdvQuiz_QuestionButton"
+                               class="wpAdvQuiz_button wpAdvQuiz_QuestionButton wpAdvQuiz_button_back"
                                style="float: left !important; margin-right: 10px !important; display: none;
-							   width:<?php echo esc_attr($this->back_btn_width); ?>px !Important; height:<?php echo esc_attr($this->back_btn_height); ?>px !Important; background-color: <?php echo esc_attr($this->back_btn_color); ?> !important">
+							   <?php echo $this->btnCss('back'); ?>">
                         <?php if ($question->isTipEnabled()) { ?>
                             <input type="button" name="tip" value="<?php _e('Hint', 'ct-pro-quiz-lite'); ?>"
-                                   class="wpAdvQuiz_button wpAdvQuiz_QuestionButton wpAdvQuiz_TipButton"
+                                   class="wpAdvQuiz_button wpAdvQuiz_QuestionButton wpAdvQuiz_TipButton wpAdvQuiz_button_tip"
                                    style="float: left !important; display: inline-block; margin-right: 10px !important;
-								   width:<?php echo esc_attr($this->hint_btn_width); ?>px !Important; height:<?php echo esc_attr($this->hint_btn_height); ?>px !Important; background-color: <?php echo esc_attr($this->hint_btn_color); ?> !important">
+								   <?php echo $this->btnCss('hint'); ?>">
                         <?php } ?>
 						<input type="button" name="next" value="<?php _e('Next', 'ct-pro-quiz-lite'); ?>"
-                               class="wpAdvQuiz_button wpAdvQuiz_QuestionButton" style="float: right; display: none;
-								width:<?php echo esc_attr($this->next_btn_width); ?>px !Important; height:<?php echo esc_attr($this->next_btn_height); ?>px !Important; background-color: <?php echo esc_attr($this->next_btn_color); ?> !important">
+                               class="wpAdvQuiz_button wpAdvQuiz_QuestionButton wpAdvQuiz_button_next" style="float: right; display: none;
+								<?php echo $this->btnCss('next'); ?>">
                         <input type="button" name="check" value="<?php _e('Check', 'ct-pro-quiz-lite'); ?>"
-                               class="wpAdvQuiz_button wpAdvQuiz_QuestionButton"
+                               class="wpAdvQuiz_button wpAdvQuiz_QuestionButton wpAdvQuiz_button_check"
                                style="float: right !important; margin-right: 10px !important; display: none;
-							   	width:<?php echo esc_attr($this->check_btn_width); ?>px !Important; height:<?php echo esc_attr($this->check_btn_height); ?>px !Important; background-color: <?php echo esc_attr($this->check_btn_color); ?> !important">
+							   	<?php echo $this->btnCss('check'); ?>">
 						
 						
 					
 						<?php if (!$this->quiz->isBtnClearQuizHidden()) { ?>
 						<input type="button" name="clear" value="<?php _e('Clear', 'ct-pro-quiz-lite');  ?>"
-                               class="wpAdvQuiz_button wpAdvQuiz_QuestionButton"
+                               class="wpAdvQuiz_button wpAdvQuiz_QuestionButton wpAdvQuiz_button_clear"
                                style="float: right !important; margin-right: 10px !important; display: block;
-							   	width:<?php echo esc_attr($this->clear_btn_width); ?>px !Important; height:<?php echo esc_attr($this->clear_btn_height); ?>px !Important; background-color: <?php echo esc_attr($this->clear_btn_color); ?> !important">
+							   	<?php echo $this->btnCss('clear'); ?>">
 						<?php } ?>
                      
 				
 						<?php  if ($this->quiz->isBtnViewPracticeShow()) { ?>
 						<input type="button" name="practice" value="<?php _e('Practice', 'ct-pro-quiz-lite');  ?>"
-                               class="wpAdvQuiz_button wpAdvQuiz_QuestionButton" 
+                               class="wpAdvQuiz_button wpAdvQuiz_QuestionButton wpAdvQuiz_button_practice" 
                                style="float: right !important; margin-right: 10px !important; display: block;
-							   	width:<?php echo esc_attr($this->practice_btn_width); ?>px !Important; height:<?php echo esc_attr($this->practice_btn_height); ?>px !Important; background-color: <?php echo esc_attr($this->practice_btn_color); ?> !important">
+							   	<?php echo $this->btnCss('practice'); ?>">
 						<?php } ?>
                         <div style="clear: both;"></div>
 
@@ -1190,21 +1235,21 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
                 <div>
                     <input type="button" name="wpAdvQuiz_pageLeft"
                            data-text="<?php echo esc_attr(__('Page %d', 'ct-pro-quiz-lite')); ?>"
-                           style="float: left; display: none;" class="wpAdvQuiz_button wpAdvQuiz_QuestionButton">
+                           style="float: left; display: none;" class="wpAdvQuiz_button wpAdvQuiz_QuestionButton wpAdvQuiz_button_wpAdvQuiz_pageLeft">
                     <input type="button" name="wpAdvQuiz_pageRight"
                            data-text="<?php echo esc_attr(__('Page %d', 'ct-pro-quiz-lite')); ?>"
-                           style="float: right; display: none;" class="wpAdvQuiz_button wpAdvQuiz_QuestionButton">
+                           style="float: right; display: none;" class="wpAdvQuiz_button wpAdvQuiz_QuestionButton wpAdvQuiz_button_wpAdvQuiz_pageRight">
 
                     <?php if ($this->quiz->isShowReviewQuestion() && !$this->quiz->isQuizSummaryHide()) { ?>
                         <input type="button" name="checkSingle"
                                value="<?php echo esc_attr($this->_buttonNames['quiz_summary']); ?>"
-                               class="wpAdvQuiz_button wpAdvQuiz_QuestionButton" style="float: right;
-							   	width:<?php echo esc_attr($this->summary_btn_width); ?>px !Important; height:<?php echo esc_attr($this->summary_btn_height); ?>px !Important; background-color: <?php echo esc_attr($this->summary_btn_color); ?> !important">
+                               class="wpAdvQuiz_button wpAdvQuiz_QuestionButton wpAdvQuiz_button_checkSingle" style="float: right;
+							   	<?php echo $this->btnCss('summary'); ?>">
                     <?php } else { ?>
                         <input type="button" name="checkSingle"
                                value="<?php echo esc_attr($this->_buttonNames['finish_quiz']); ?>"
-                               class="wpAdvQuiz_button wpAdvQuiz_QuestionButton" style="float: right;
-							   width:<?php echo esc_attr($this->finish_btn_width); ?>px !Important; height:<?php echo esc_attr($this->finish_btn_height); ?>px !Important; background-color: <?php echo esc_attr($this->finish_btn_color); ?> !important">
+                               class="wpAdvQuiz_button wpAdvQuiz_QuestionButton wpAdvQuiz_button_checkSingle" style="float: right;
+							   <?php echo $this->btnCss('finish'); ?>">
                     <?php } ?>
 
                     <div style="clear: both;"></div>

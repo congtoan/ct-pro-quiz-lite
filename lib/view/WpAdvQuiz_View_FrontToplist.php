@@ -14,7 +14,7 @@ class WpAdvQuiz_View_FrontToplist extends WpAdvQuiz_View_View
         <div style="margin-bottom: 30px; margin-top: 10px;" class="wpAdvQuiz_toplist"
              data-quiz_id="<?php echo esc_attr($this->quiz->getId()); ?>">
             <?php if (!$this->inQuiz) { ?>
-                <h2><?php _e('Leaderboard', 'ct-pro-quiz-lite'); ?>: <?php echo esc_html($this->quiz->getName()); ?></h2>
+                <h2><?php _e('Leaderboard', 'ct-pro-quiz-lite'); ?>: <?php echo esc_html(WpAdvQuiz_View_FrontQuiz::quizName($this->quiz)); ?></h2>
             <?php } ?>
             <table class="wpAdvQuiz_toplistTable">
                 <caption><?php printf(__('maximum of %s points', 'ct-pro-quiz-lite'), $this->points); ?></caption>

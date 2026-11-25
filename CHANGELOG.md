@@ -2,6 +2,25 @@
 
 All notable changes to CT Pro Quiz Lite. The base is Advanced Quiz 1.0.4 (first commit of this repository).
 
+## [1.0.1] - 2026-11-25
+
+Small fixes for issues reported on the original Advanced Quiz repository.
+
+### Fixed
+- **Apostrophes and symbols shown as HTML codes** (`&#8217;`, `&#039;`, `&#247;`...) whenever questions are loaded via AJAX ("show only X questions" mode). The AJAX handler passed its JSON through `filter_var(..., FILTER_FLAG_ENCODE_AMP)`, turning `&#8217;` into `&amp;#8217;`. The JSON is now sent untouched, with a `application/json` content type. Upstream [#24](https://github.com/markusbegerow/wp-adv-quiz/issues/24), [#43](https://github.com/markusbegerow/wp-adv-quiz/issues/43), [#74](https://github.com/markusbegerow/wp-adv-quiz/issues/74), [#84](https://github.com/markusbegerow/wp-adv-quiz/issues/84).
+- **Button styles could not be overridden** by the theme. Every button printed `width:px !Important; height:px !Important; background-color: !important`, even when nothing was configured (invalid CSS). Now only the values set in the plugin's button settings are printed. Upstream [#75](https://github.com/markusbegerow/wp-adv-quiz/issues/75), [#85](https://github.com/markusbegerow/wp-adv-quiz/issues/85).
+- **Leaderboard "maximum of X points"** summed every question of the quiz, even when only a random subset is shown. It now uses the best score one attempt can reach: the sum of the X highest question points. Upstream [#85](https://github.com/markusbegerow/wp-adv-quiz/issues/85).
+- Stray `"` after the "Restart quiz" button's style attribute.
+
+### Added
+- Per-button CSS classes `wpAdvQuiz_button_<name>`, for example `wpAdvQuiz_button_startQuiz`, `wpAdvQuiz_button_next` and `wpAdvQuiz_button_restartQuiz`, so themes can style each button.
+- Filters `wpAdvQuiz_quiz_name` (`$name, $quiz`) and `wpAdvQuiz_form_field_name` (`$name, $form, $quiz`), so multilingual plugins or custom code can translate the quiz title and custom field labels. Upstream [#83](https://github.com/markusbegerow/wp-adv-quiz/issues/83), [#85](https://github.com/markusbegerow/wp-adv-quiz/issues/85).
+
+### Already fixed in 1.0.0 (for reference)
+- Upstream [#49](https://github.com/markusbegerow/wp-adv-quiz/issues/49) (CSS and queries on every page)
+- Upstream [#86](https://github.com/markusbegerow/wp-adv-quiz/issues/86) (several quizzes on one page fail in `sortCategories`)
+- Upstream [#10](https://github.com/markusbegerow/wp-adv-quiz/issues/10), [#11](https://github.com/markusbegerow/wp-adv-quiz/issues/11), [#76](https://github.com/markusbegerow/wp-adv-quiz/issues/76) (translations not loading)
+
 ## [1.0.0] - 2026-11-25
 
 First release of CT Pro Quiz Lite, forked from Advanced Quiz 1.0.4 by Markus Begerow (itself derived from Wp-Pro-Quiz by Julius Fischer).

@@ -3,7 +3,7 @@ Contributors: congtoan
 Tags: quiz, test, elearning, exam, assessment
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -45,6 +45,12 @@ Full documentation and source: https://github.com/congtoan/ct-pro-quiz-lite
 3. Activate CT Pro Quiz Lite.
 
 == Changelog ==
+
+= 1.0.1 =
+* Fix apostrophes and symbols shown as HTML codes (&#8217;) when questions load via AJAX.
+* Button styles: no more empty "!important" inline styles; per-button CSS classes.
+* Leaderboard "maximum points" respects "show only X questions".
+* New filters wpAdvQuiz_quiz_name and wpAdvQuiz_form_field_name.
 
 = 1.0.0 =
 * First release, forked from Advanced Quiz 1.0.4. See CHANGELOG.md for details.

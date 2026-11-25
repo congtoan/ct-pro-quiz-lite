@@ -292,6 +292,33 @@ class WpAdvQuiz_Controller_Front
         return $content;
     }
 
+    /**
+     * Maximum points of one attempt, shown as "maximum of X points" above the leaderboard.
+     * The original always summed every question of the quiz, which is wrong when the quiz
+     * only shows a random subset ("show only X questions" / "X percent"), upstream #85.
+     *
+     * @param WpAdvQuiz_Model_Quiz $quiz
+     * @return int
+     */
+    public static function maxAttemptPoints($quiz)
+    {
+        $quizMapper = new WpAdvQuiz_Model_QuizMapper();
+        $quizId = $quiz->getId();
+
+        if ($quiz->isShowMaxQuestion() && $quiz->getShowMaxQuestionValue() > 0) {
+            $value = $quiz->getShowMaxQuestionValue();
+
+            if ($quiz->isShowMaxQuestionPercent()) {
+                $questionMapper = new WpAdvQuiz_Model_QuestionMapper();
+                $value = ceil($questionMapper->count($quizId) * $value / 100);
+            }
+
+            return (int)$quizMapper->sumTopQuestionPoints($quizId, (int)$value);
+        }
+
+        return (int)$quizMapper->sumQuestionPoints($quizId);
+    }
+
     private function handleShortCodeToplist($quizId, $inQuiz = false)
     {
         $quizMapper = new WpAdvQuiz_Model_QuizMapper();
@@ -306,7 +333,7 @@ class WpAdvQuiz_Controller_Front
         }
 
         $view->quiz = $quiz;
-        $view->points = $quizMapper->sumQuestionPoints($quizId);
+        $view->points = self::maxAttemptPoints($quiz);
         $view->inQuiz = $inQuiz;
         $view->show();
     }

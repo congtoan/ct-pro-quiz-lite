@@ -10,7 +10,7 @@
  * Plugin Name: CT Pro Quiz Lite
  * Plugin URI: https://github.com/congtoan/ct-pro-quiz-lite
  * Description: Lightweight quiz plugin, forked from Advanced Quiz 1.0.4. jQuery-free frontend, assets only on pages with a quiz, no headings that pollute tables of contents, fully translatable frontend.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Requires at least: 5.0
  * Requires PHP: 5.6
  * Author: Cong Toan (fork), Markus Begerow (Advanced Quiz), Julius Fischer (Wp-Pro-Quiz)
@@ -40,7 +40,7 @@ if (defined('WPADVQUIZ_VERSION') || class_exists('WpAdvQuiz_Controller_Front', f
     return;
 }
 
-define('CTPQL_VERSION', '1.0.0');
+define('CTPQL_VERSION', '1.0.1');
 
 // Internal version used for asset cache busting and the upgrade check (kept under the legacy
 // constant name because the inherited code uses it everywhere).

@@ -6,7 +6,7 @@ CT Pro Quiz Lite is a **fork of [Advanced Quiz](https://wordpress.org/plugins/ad
 
 - License: GPL v2 or later
 - Requires WordPress 5.0+, PHP 5.6+
-- Current version: 1.0.0 ([changelog](CHANGELOG.md))
+- Current version: 1.0.1 ([changelog](CHANGELOG.md))
 
 ## Why this fork exists
 
