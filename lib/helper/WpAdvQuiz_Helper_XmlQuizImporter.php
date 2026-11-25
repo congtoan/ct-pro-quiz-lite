@@ -19,7 +19,7 @@ class WpAdvQuiz_Helper_XmlQuizImporter implements WpAdvQuiz_Helper_QuizImporterI
         $i = 0;
 
         if ($xml === false) {
-            return new WP_Error(__('XML could not be loaded.', 'wp-adv-quiz'));
+            return new WP_Error(__('XML could not be loaded.', 'ct-pro-quiz-lite'));
         }
 
         if (isset($xml->data) && isset($xml->data->quiz)) {

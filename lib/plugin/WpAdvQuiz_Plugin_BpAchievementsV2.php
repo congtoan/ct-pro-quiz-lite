@@ -38,7 +38,7 @@ class WpAdvQuiz_Plugin_BpAchievementsV2
             array(
                 'category' => 'Wp-Adv-Quiz',
                 'name' => 'wp_adv_quiz_quiz_finished',
-                'description' => __('The user completed a quiz.', 'wp-adv-quiz')
+                'description' => __('The user completed a quiz.', 'ct-pro-quiz-lite')
             )
         );
 

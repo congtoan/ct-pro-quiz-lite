@@ -6,8 +6,8 @@ class WpAdvQuiz_Plugin_BpAchievementsV3 extends DPA_Extension
     public function __construct()
     {
         $this->actions = array(
-            'wp_adv_quiz_completed_quiz' => __('The user completed a quiz.', 'wp-adv-quiz'),
-            'wp_adv_quiz_completed_quiz_100_percent' => __('The user completed a quiz with 100 percent.', 'wp-adv-quiz')
+            'wp_adv_quiz_completed_quiz' => __('The user completed a quiz.', 'ct-pro-quiz-lite'),
+            'wp_adv_quiz_completed_quiz_100_percent' => __('The user completed a quiz with 100 percent.', 'ct-pro-quiz-lite')
         );
 
         $this->contributors = array(
@@ -18,10 +18,10 @@ class WpAdvQuiz_Plugin_BpAchievementsV3 extends DPA_Extension
             )
         );
 
-        $this->description = __('A powerful and beautiful quiz plugin for WordPress.', 'wp-adv-quiz');
+        $this->description = __('A powerful and beautiful quiz plugin for WordPress.', 'ct-pro-quiz-lite');
         $this->id = 'wp-adv-quiz';
         $this->image_url = WPADVQUIZ_URL . '/img/wp_adv_quiz.jpg';
-        $this->name = __('WP-Adv-Quiz', 'wp-adv-quiz');
+        $this->name = __('WP-Adv-Quiz', 'ct-pro-quiz-lite');
         //$this->rss_url         = '';
         $this->small_image_url = WPADVQUIZ_URL . '/img/wp_adv_quiz_small.jpg';
         $this->version = 5;

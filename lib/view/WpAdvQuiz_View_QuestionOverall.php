@@ -336,27 +336,27 @@ class WpAdvQuiz_View_QuestionOverall extends WpAdvQuiz_View_View {
 
 <div class="wrap wpAdvQuiz_questionOverall">
 	<h2>
-		<?php printf(__('Quiz: %s', 'wp-adv-quiz'), $this->quiz->getName()); ?>
+		<?php printf(__('Quiz: %s', 'ct-pro-quiz-lite'), $this->quiz->getName()); ?>
 
 		<?php if(current_user_can('wpAdvQuiz_edit_quiz')) { ?>
-			<a class="add-new-h2" href="?page=wpAdvQuiz&module=question&action=addEdit&quiz_id=<?php echo esc_attr($this->quiz->getId()); ?>"><?php _e('Add question', 'wp-adv-quiz'); ?></a>
+			<a class="add-new-h2" href="?page=wpAdvQuiz&module=question&action=addEdit&quiz_id=<?php echo esc_attr($this->quiz->getId()); ?>"><?php _e('Add question', 'ct-pro-quiz-lite'); ?></a>
 		<?php } ?>
         <?php if (current_user_can('wpAdvQuiz_import')) { ?>
-            <a class="add-new-h2 wpAdvQuiz_import" href="#"><?php echo __('Import', 'wp-adv-quiz'); ?></a>
+            <a class="add-new-h2 wpAdvQuiz_import" href="#"><?php echo __('Import', 'ct-pro-quiz-lite'); ?></a>
         <?php } ?>
 
 		<?php do_action('wpAdvQuiz_view_questionOverall_head_buttons', $this); ?>
 	</h2>
 
 	<p>
-		<a class="" href="admin.php?page=wpAdvQuiz"><?php _e('back to overview', 'wp-adv-quiz'); ?></a>
+		<a class="" href="admin.php?page=wpAdvQuiz"><?php _e('back to overview', 'ct-pro-quiz-lite'); ?></a>
 	</p>
 
 	<p>
 		<?php if(current_user_can('wpAdvQuiz_edit_quiz')) { ?>
-			<a class="button-secondary" href="admin.php?page=wpAdvQuiz&action=addEdit&quizId=<?php echo esc_attr($this->quiz->getId()); ?>"><?php _e('Edit quiz', 'wp-adv-quiz'); ?></a>
-			<a class="button-secondary" id="sortQuestionBtn" href="#"><?php _e('Sort Question', 'wp-adv-quiz'); ?></a>
-			<a class="button-secondary" href="#" id="wpAdvQuiz_questionCopyBtn"><?php _e('Copy questions from another Quiz', 'wp-adv-quiz'); ?></a>
+			<a class="button-secondary" href="admin.php?page=wpAdvQuiz&action=addEdit&quizId=<?php echo esc_attr($this->quiz->getId()); ?>"><?php _e('Edit quiz', 'ct-pro-quiz-lite'); ?></a>
+			<a class="button-secondary" id="sortQuestionBtn" href="#"><?php _e('Sort Question', 'ct-pro-quiz-lite'); ?></a>
+			<a class="button-secondary" href="#" id="wpAdvQuiz_questionCopyBtn"><?php _e('Copy questions from another Quiz', 'ct-pro-quiz-lite'); ?></a>
 		<?php } ?>
         <?php do_action('wpAdvQuiz_view_questionOverall_body_buttons', $this); ?>
 	</p>
@@ -397,12 +397,12 @@ class WpAdvQuiz_View_QuestionOverall extends WpAdvQuiz_View_View {
 		<div id="wpAdvQuiz_questionCopy_box" style="display: none;">
 			<div class="wpAdvQuiz_questionCopy">
 				<form action="admin.php?page=wpAdvQuiz&module=question&quiz_id=<?php echo esc_attr($this->quiz->getId()); ?>&action=copy_question" method="POST">
-					<h3 style="margin-top: 0;"><?php _e('Copy questions from another Quiz', 'wp-adv-quiz'); ?></h3>
-					<p><?php echo __('Here you can copy questions from another quiz into this quiz. (Multiple selection enabled)', 'wp-adv-quiz'); ?></p>
+					<h3 style="margin-top: 0;"><?php _e('Copy questions from another Quiz', 'ct-pro-quiz-lite'); ?></h3>
+					<p><?php echo __('Here you can copy questions from another quiz into this quiz. (Multiple selection enabled)', 'ct-pro-quiz-lite'); ?></p>
 
 					<div style="padding: 20px; display: none;" id="loadDataImg">
 						<img alt="load" src="data:image/gif;base64,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">
-						<?php echo __('Loading', 'wp-adv-quiz'); ?>
+						<?php echo __('Loading', 'ct-pro-quiz-lite'); ?>
 					</div>
 
 					<div style="padding: 10px;">
@@ -410,7 +410,7 @@ class WpAdvQuiz_View_QuestionOverall extends WpAdvQuiz_View_View {
 						</select>
 					</div>
 
-					<input class="button-primary" name="questionCopy" value="<?php echo __('Copy questions', 'wp-adv-quiz'); ?>" type="submit">
+					<input class="button-primary" name="questionCopy" value="<?php echo __('Copy questions', 'ct-pro-quiz-lite'); ?>" type="submit">
 				</form>
 			</div>
 		</div>
@@ -424,8 +424,8 @@ class WpAdvQuiz_View_QuestionOverall extends WpAdvQuiz_View_View {
 		<div id="wpAdvQuiz_setQuestionCategoryList_box" style="display: none;">
 			<div class="wpAdvQuiz_setQuestionCategoryList">
 				<form action="#" method="POST">
-					<h3 style="margin-top: 0;"><?php _e('Set Question Categories', 'wp-adv-quiz'); ?></h3>
-					<p><?php _e('Sets multiple question categories', 'wp-adv-quiz'); ?></p>
+					<h3 style="margin-top: 0;"><?php _e('Set Question Categories', 'ct-pro-quiz-lite'); ?></h3>
+					<p><?php _e('Sets multiple question categories', 'ct-pro-quiz-lite'); ?></p>
 					<div style="margin-bottom: 10px">
 					</div>
 					<ul></ul>
@@ -434,15 +434,15 @@ class WpAdvQuiz_View_QuestionOverall extends WpAdvQuiz_View_View {
 
 					<div style="margin-bottom: 10px;">
 						<p class="description">
-							<?php _e('You can assign classify category for a question.', 'wp-adv-quiz'); ?>
+							<?php _e('You can assign classify category for a question.', 'ct-pro-quiz-lite'); ?>
 						</p>
 						<p class="description">
-							<?php _e('You can manage categories in global settings.', 'wp-adv-quiz'); ?>
+							<?php _e('You can manage categories in global settings.', 'ct-pro-quiz-lite'); ?>
 						</p>
 						<div>
 							<select name="category">
-								<option value="-1">--- <?php _e('Create new category', 'wp-adv-quiz'); ?> ----</option>
-								<option value="0" selected="selected">--- <?php _e('No category', 'wp-adv-quiz'); ?> ---</option>
+								<option value="-1">--- <?php _e('Create new category', 'ct-pro-quiz-lite'); ?> ----</option>
+								<option value="0" selected="selected">--- <?php _e('No category', 'ct-pro-quiz-lite'); ?> ---</option>
 								<?php
 								foreach($this->categoryItems as $cat) {
 									echo '<option value="'.esc_attr($cat->getCategoryId()).'">'.esc_html($cat->getCategoryName()).'</option>';
@@ -451,16 +451,16 @@ class WpAdvQuiz_View_QuestionOverall extends WpAdvQuiz_View_View {
 							</select>
 						</div>
 						<div style="display: none;" id="categoryAddBox">
-							<h4><?php _e('Create new category', 'wp-adv-quiz'); ?></h4>
+							<h4><?php _e('Create new category', 'ct-pro-quiz-lite'); ?></h4>
 							<input type="text" name="categoryAdd" value="">
-							<input type="button" class="button-secondary" name="" id="categoryAddBtn" value="<?php _e('Create', 'wp-adv-quiz'); ?>">
+							<input type="button" class="button-secondary" name="" id="categoryAddBtn" value="<?php _e('Create', 'ct-pro-quiz-lite'); ?>">
 						</div>
 						<div id="categoryMsgBox" style="display:none; padding: 5px; border: 1px solid rgb(160, 160, 160); background-color: rgb(255, 255, 168); font-weight: bold; margin: 5px; ">
-							<?php _e('Category saved', 'wp-adv-quiz'); ?>
+							<?php _e('Category saved', 'ct-pro-quiz-lite'); ?>
 						</div>
 					</div>
 
-					<input class="button-primary" name="setCategoriesStart" id="setCategoriesStart" value="<?php _e('Save', 'wp-adv-quiz'); ?>" type="button">
+					<input class="button-primary" name="setCategoriesStart" id="setCategoriesStart" value="<?php _e('Save', 'ct-pro-quiz-lite'); ?>" type="button">
 					<img id="ajaxLoad" style="display: none;" alt="load" src="data:image/gif;base64,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">
 				</form>
 			</div>
@@ -474,7 +474,7 @@ class WpAdvQuiz_View_QuestionOverall extends WpAdvQuiz_View_View {
 
 		<div id="wpAdvQuiz_sortQuestion_box" style="display: none;">
 			<div id="wpAdvQuiz_sortQuestion">
-				<h4><?php _e('Sort questions', 'wp-adv-quiz'); ?></h4>
+				<h4><?php _e('Sort questions', 'ct-pro-quiz-lite'); ?></h4>
 				<p>
 					<a href="#" class="button-secondary saveQuestionSort"><?php _e( 'Save' ); ?></a>
 				</p>
@@ -497,10 +497,10 @@ class WpAdvQuiz_View_QuestionOverall extends WpAdvQuiz_View_View {
         <div id="wpAdvQuiz_questionExportList_box" style="display: none;">
             <div class="wpAdvQuiz_exportList">
                 <form action="<?php echo admin_url('admin.php?page=wpAdvQuiz&module=questionExport&action=export&noheader=true'); ?>" method="POST">
-                    <h3 style="margin-top: 0;"><?php _e('Export', 'wp-adv-quiz'); ?></h3>
+                    <h3 style="margin-top: 0;"><?php _e('Export', 'ct-pro-quiz-lite'); ?></h3>
 
                     <p><?php echo __('Choose the respective question, which you would like to export and press on "Start export"',
-                            'wp-adv-quiz'); ?></p>
+                            'ct-pro-quiz-lite'); ?></p>
 
                     <?php do_action('wpAdvQuiz_view_questionOverall_exportListBox', $this); ?>
 
@@ -518,7 +518,7 @@ class WpAdvQuiz_View_QuestionOverall extends WpAdvQuiz_View_View {
                         </select>
                     </div>
                     <input class="button-primary" name="exportStart" id="exportStart"
-                           value="<?php echo __('Start export', 'wp-adv-quiz'); ?>" type="submit">
+                           value="<?php echo __('Start export', 'ct-pro-quiz-lite'); ?>" type="submit">
                 </form>
             </div>
         </div>
@@ -534,10 +534,10 @@ class WpAdvQuiz_View_QuestionOverall extends WpAdvQuiz_View_View {
             <div class="wpAdvQuiz_importList">
                 <form action="<?php echo admin_url('admin.php?page=wpAdvQuiz&module=questionImport&action=preview&quizId='.$this->quiz->getId()); ?>" method="POST"
                       enctype="multipart/form-data">
-                    <h3 style="margin-top: 0;"><?php _e('Import', 'wp-adv-quiz'); ?></h3>
+                    <h3 style="margin-top: 0;"><?php _e('Import', 'ct-pro-quiz-lite'); ?></h3>
 
-                    <p><?php _e('Import only files from known and trusted sources.', 'wp-adv-quiz'); ?></p>
-                    <p><?php echo sprintf(__('Supported formats: %s', 'wp-adv-quiz'), implode(', ', $this->importFormats['extensions'])) ?></p>
+                    <p><?php _e('Import only files from known and trusted sources.', 'ct-pro-quiz-lite'); ?></p>
+                    <p><?php echo sprintf(__('Supported formats: %s', 'ct-pro-quiz-lite'), implode(', ', $this->importFormats['extensions'])) ?></p>
 
                     <?php do_action('wpAdvQuiz_view_questionOverall_importListBox', $this); ?>
 
@@ -546,10 +546,10 @@ class WpAdvQuiz_View_QuestionOverall extends WpAdvQuiz_View_View {
                         $uploadMB = $this->getMaxUploadSize();
                         ?>
                         <input type="file" name="import" accept="<?php echo implode(',', $this->importFormats['accept']) ?>"
-                               required="required"> <?php printf(__('Maximal %d MiB', 'wp-adv-quiz'), $uploadMB); ?>
+                               required="required"> <?php printf(__('Maximal %d MiB', 'ct-pro-quiz-lite'), $uploadMB); ?>
                     </div>
                     <input class="button-primary" name="importStart" id="importStart"
-                           value="<?php _e('Start import', 'wp-adv-quiz'); ?>" type="submit">
+                           value="<?php _e('Start import', 'ct-pro-quiz-lite'); ?>" type="submit">
                 </form>
             </div>
         </div>

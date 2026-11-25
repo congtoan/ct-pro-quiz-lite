@@ -6,21 +6,15 @@ class WpAdvQuiz_Controller_Preview extends WpAdvQuiz_Controller_Controller
     public function route()
     {
 
+        // Same JS file as the frontend (plain JavaScript, no jQuery)
         wp_enqueue_script(
             'wpAdvQuiz_front_javascript',
-            plugins_url('js/wpAdvQuiz_front' . (WPADVQUIZ_DEV ? '' : '.min') . '.js', WPADVQUIZ_FILE),
-            array('jquery', 'jquery-ui-sortable'),
-            WPADVQUIZ_VERSION
+            plugins_url('js/wpAdvQuiz_front.js', WPADVQUIZ_FILE),
+            array(),
+            WpAdvQuiz_Controller_Front::assetVersion('js/wpAdvQuiz_front.js')
         );
 
-        wp_localize_script('wpAdvQuiz_front_javascript', 'WpAdvQuizGlobal', array(
-            'ajaxurl' => admin_url('admin-ajax.php'),
-            'loadData' => __('Loading', 'wp-adv-quiz'),
-            'questionNotSolved' => __('You must answer this question.', 'wp-adv-quiz'),
-            'questionsNotSolved' => __('You must answer all questions before you can completed the quiz.',
-                'wp-adv-quiz'),
-            'fieldsNotFilled' => __('All fields have to be filled.', 'wp-adv-quiz')
-        ));
+        wp_localize_script('wpAdvQuiz_front_javascript', 'WpAdvQuizGlobal', WpAdvQuiz_Controller_Front::jsGlobals());
 
         wp_enqueue_style(
             'wpAdvQuiz_front_style',

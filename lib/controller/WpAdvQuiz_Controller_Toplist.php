@@ -62,11 +62,11 @@ class WpAdvQuiz_Controller_Toplist extends WpAdvQuiz_Controller_Controller
     private function handleAddInToplist(WpAdvQuiz_Model_Quiz $quiz)
     {
         if (!wp_verify_nonce($this->_post['token'], 'wpAdvQuiz_toplist')) {
-            return array('text' => __('An error has occurred.', 'wp-adv-quiz'), 'clear' => true);
+            return array('text' => __('An error has occurred.', 'ct-pro-quiz-lite'), 'clear' => true);
         }
 
         if (!isset($this->_post['points']) || !isset($this->_post['totalPoints'])) {
-            return array('text' => __('An error has occurred.', 'wp-adv-quiz'), 'clear' => true);
+            return array('text' => __('An error has occurred.', 'ct-pro-quiz-lite'), 'clear' => true);
         }
 
         $quizId = $quiz->getId();
@@ -83,17 +83,17 @@ class WpAdvQuiz_Controller_Toplist extends WpAdvQuiz_Controller_Controller
         $toplistMapper = new WpAdvQuiz_Model_ToplistMapper();
 
         if ($quiz == null || $quiz->getId() == 0 || !$quiz->isToplistActivated()) {
-            return array('text' => __('An error has occurred.', 'wp-adv-quiz'), 'clear' => true);
+            return array('text' => __('An error has occurred.', 'ct-pro-quiz-lite'), 'clear' => true);
         }
 
         if (!$this->preCheck($quiz->getToplistDataAddPermissions(), $userId)) {
-            return array('text' => __('An error has occurred.', 'wp-adv-quiz'), 'clear' => true);
+            return array('text' => __('An error has occurred.', 'ct-pro-quiz-lite'), 'clear' => true);
         }
 
         $numPoints = $quizMapper->sumQuestionPoints($quizId);
 
         if ($totalPoints > $numPoints || $points > $numPoints) {
-            return array('text' => __('An error has occurred.', 'wp-adv-quiz'), 'clear' => true);
+            return array('text' => __('An error has occurred.', 'ct-pro-quiz-lite'), 'clear' => true);
         }
 
         $clearTime = null;
@@ -104,7 +104,7 @@ class WpAdvQuiz_Controller_Toplist extends WpAdvQuiz_Controller_Controller
 
         if ($userId > 0) {
             if ($toplistMapper->countUser($quizId, $userId, $clearTime)) {
-                return array('text' => __('You can not enter again.', 'wp-adv-quiz'), 'clear' => true);
+                return array('text' => __('You can not enter again.', 'ct-pro-quiz-lite'), 'clear' => true);
             }
 
             $user = wp_get_current_user();
@@ -113,15 +113,15 @@ class WpAdvQuiz_Controller_Toplist extends WpAdvQuiz_Controller_Controller
 
         } else {
             if ($toplistMapper->countFree($quizId, $name, $email, $ip, $clearTime)) {
-                return array('text' => __('You can not enter again.', 'wp-adv-quiz'), 'clear' => true);
+                return array('text' => __('You can not enter again.', 'ct-pro-quiz-lite'), 'clear' => true);
             }
 
             if (empty($name) || empty($email) || filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
-                return array('text' => __('No name or e-mail entered.', 'wp-adv-quiz'), 'clear' => false);
+                return array('text' => __('No name or e-mail entered.', 'ct-pro-quiz-lite'), 'clear' => false);
             }
 
             if (strlen($name) > 15) {
-                return array('text' => __('Your name can not exceed 15 characters.', 'wp-adv-quiz'), 'clear' => false);
+                return array('text' => __('Your name can not exceed 15 characters.', 'ct-pro-quiz-lite'), 'clear' => false);
             }
 
             if ($quiz->isToplistDataCaptcha()) {
@@ -129,7 +129,7 @@ class WpAdvQuiz_Controller_Toplist extends WpAdvQuiz_Controller_Controller
 
                 if ($captcha->isSupported()) {
                     if (!$captcha->check($prefix, $captchaAnswer)) {
-                        return array('text' => __('You entered wrong captcha code.', 'wp-adv-quiz'), 'clear' => false);
+                        return array('text' => __('You entered wrong captcha code.', 'ct-pro-quiz-lite'), 'clear' => false);
                     }
                 }
             }
@@ -256,7 +256,7 @@ class WpAdvQuiz_Controller_Toplist extends WpAdvQuiz_Controller_Controller
         }
 
         if ($r === true) {
-            $r = array('text' => __('You signed up successfully.', 'wp-adv-quiz'), 'clear' => true);
+            $r = array('text' => __('You signed up successfully.', 'ct-pro-quiz-lite'), 'clear' => true);
         }
 
         return json_encode($r);

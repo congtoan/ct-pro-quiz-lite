@@ -53,7 +53,7 @@ class WpAdvQuiz_Model_GlobalSettingsMapper extends WpAdvQuiz_Model_Mapper
         if ($e === null) {
             $e['to'] = '';
             $e['from'] = '';
-            $e['subject'] = __('Wp-Adv-Quiz: One user completed a quiz', 'wp-adv-quiz');#
+            $e['subject'] = __('Wp-Adv-Quiz: One user completed a quiz', 'ct-pro-quiz-lite');#
             $e['html'] = false;
             $e['message'] = __('Wp-Adv-Quiz
 
@@ -62,7 +62,7 @@ The user "$username" has completed "$quizname" the quiz.
 Points: $points
 Result: $result
 
-', 'wp-adv-quiz');
+', 'ct-pro-quiz-lite');
 
         }
 
@@ -91,7 +91,7 @@ Result: $result
 
         if ($e === null) {
             $e['from'] = '';
-            $e['subject'] = __('Wp-Adv-Quiz: One user completed a quiz', 'wp-adv-quiz');
+            $e['subject'] = __('Wp-Adv-Quiz: One user completed a quiz', 'ct-pro-quiz-lite');
             $e['html'] = false;
             $e['message'] = __('Wp-Adv-Quiz
 
@@ -100,7 +100,7 @@ You have completed the quiz "$quizname".
 Points: $points
 Result: $result
 
-', 'wp-adv-quiz');
+', 'ct-pro-quiz-lite');
 
         }
 

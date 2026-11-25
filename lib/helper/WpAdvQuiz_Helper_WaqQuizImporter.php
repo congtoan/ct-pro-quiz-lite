@@ -34,20 +34,20 @@ class WpAdvQuiz_Helper_WaqQuizImporter implements WpAdvQuiz_Helper_QuizImporterI
     public function getImport()
     {
         if (!$this->validate()) {
-            return new WP_Error(__('File cannot be processed', 'wp-adv-quiz'));
+            return new WP_Error(__('File cannot be processed', 'ct-pro-quiz-lite'));
         }
 
         $data = substr($this->content, 13);
         $b = base64_decode($data);
 
         if ($b === null) {
-            return new WP_Error(__('File cannot be processed', 'wp-adv-quiz'));
+            return new WP_Error(__('File cannot be processed', 'ct-pro-quiz-lite'));
         }
 
         $check = $this->saveUnserialize($b, $o);
 
         if ($check === false || !is_array($o)) {
-            return new WP_Error(__('File cannot be processed', 'wp-adv-quiz'));
+            return new WP_Error(__('File cannot be processed', 'ct-pro-quiz-lite'));
         }
 
         return $o;

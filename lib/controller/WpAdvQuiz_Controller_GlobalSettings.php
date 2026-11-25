@@ -23,7 +23,7 @@ class WpAdvQuiz_Controller_GlobalSettings extends WpAdvQuiz_Controller_Controlle
 
         if (isset($this->_post['submit'])) {
             $mapper->save(new WpAdvQuiz_Model_GlobalSettings($this->_post));
-            WpAdvQuiz_View_View::admin_notices(__('Settings saved', 'wp-adv-quiz'), 'info');
+            WpAdvQuiz_View_View::admin_notices(__('Settings saved', 'ct-pro-quiz-lite'), 'info');
 
             $toplistDateFormat = $this->_post['toplist_date_format'];
 
@@ -363,7 +363,7 @@ class WpAdvQuiz_Controller_GlobalSettings extends WpAdvQuiz_Controller_Controlle
 			
         } else {
             if (isset($this->_post['databaseFix'])) {
-                WpAdvQuiz_View_View::admin_notices(__('Database repaired', 'wp-adv-quiz'), 'info');
+                WpAdvQuiz_View_View::admin_notices(__('Database repaired', 'ct-pro-quiz-lite'), 'info');
 
                 $DbUpgradeHelper = new WpAdvQuiz_Helper_DbUpgrade();
                 $DbUpgradeHelper->databaseDelta();

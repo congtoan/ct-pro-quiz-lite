@@ -21,15 +21,15 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
         }
 
         $names = array(
-            'start_quiz' => __('Start quiz', 'wp-adv-quiz'),
-            'restart_quiz' => __('Restart quiz', 'wp-adv-quiz'),
-            'quiz_summary' => __('Quiz-summary', 'wp-adv-quiz'),
-            'finish_quiz' => __('Finish quiz', 'wp-adv-quiz'),
-            'quiz_is_loading' => __('Quiz is loading...', 'wp-adv-quiz'),
+            'start_quiz' => __('Start quiz', 'ct-pro-quiz-lite'),
+            'restart_quiz' => __('Restart quiz', 'ct-pro-quiz-lite'),
+            'quiz_summary' => __('Quiz-summary', 'ct-pro-quiz-lite'),
+            'finish_quiz' => __('Finish quiz', 'ct-pro-quiz-lite'),
+            'quiz_is_loading' => __('Quiz is loading...', 'ct-pro-quiz-lite'),
             'lock_box_msg' => __('You have already completed the quiz before. Hence you can not start it again.',
-                'wp-adv-quiz'),
-            'only_registered_user_msg' => __('You must sign in or sign up to start the quiz.', 'wp-adv-quiz'),
-            'prerequisite_msg' => __('You have to finish following quiz, to start this quiz:', 'wp-adv-quiz')
+                'ct-pro-quiz-lite'),
+            'only_registered_user_msg' => __('You must sign in or sign up to start the quiz.', 'ct-pro-quiz-lite'),
+            'prerequisite_msg' => __('You have to finish following quiz, to start this quiz:', 'ct-pro-quiz-lite')
         );
 
         $this->_buttonNames = ((array)apply_filters('wpAdvQuiz_filter_frontButtonNames', $names, $this)) + $names;
@@ -224,8 +224,10 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
 
         ?>
         <script type="text/javascript">
-            jQuery(document).ready(function ($) {
-                $('#wpAdvQuiz_<?php echo $this->quiz->getId(); ?>').wpAdvQuizFront({
+            window.wpAdvQuizInitList = window.wpAdvQuizInitList || [];
+            window.wpAdvQuizInitList.push({
+                id: '#wpAdvQuiz_<?php echo (int)$this->quiz->getId(); ?>',
+                init: {
                     quizId: <?php echo esc_attr((int)$this->quiz->getId()); ?>,
                     mode: <?php echo esc_attr((int)$this->quiz->getQuizModus()); ?>,
                     timelimit: <?php echo esc_attr((int)$this->quiz->getTimeLimit()); ?>,
@@ -234,7 +236,7 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
                     qpp: <?php echo esc_attr($this->quiz->getQuestionsPerPage()); ?>,
                     formPos: <?php echo (int)$this->quiz->getFormShowPosition(); ?>,
                     lbn: <?php echo json_encode(($this->quiz->isShowReviewQuestion() && !$this->quiz->isQuizSummaryHide()) ? $this->_buttonNames['quiz_summary'] : $this->_buttonNames['finish_quiz']); ?>
-                });
+                }
             });
         </script>
         <?php
@@ -267,23 +269,23 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
         ?>
         <div class="wpAdvQuiz_addToplist" style="display: none;">
             <span style="font-weight: bold;"><?php _e('Your result has been entered into leaderboard',
-                    'wp-adv-quiz'); ?></span>
+                    'ct-pro-quiz-lite'); ?></span>
 
             <div style="margin-top: 6px;">
                 <div class="wpAdvQuiz_addToplistMessage" style="display: none;"><?php _e('Loading',
-                        'wp-adv-quiz'); ?></div>
+                        'ct-pro-quiz-lite'); ?></div>
                 <div class="wpAdvQuiz_addBox">
                     <div>
 						<span>
 							<label>
-                                <?php _e('Name', 'wp-adv-quiz'); ?>: <input type="text" placeholder="<?php _e('Name',
-                                    'wp-adv-quiz'); ?>" name="wpAdvQuiz_toplistName" maxlength="15" size="16"
+                                <?php _e('Name', 'ct-pro-quiz-lite'); ?>: <input type="text" placeholder="<?php _e('Name',
+                                    'ct-pro-quiz-lite'); ?>" name="wpAdvQuiz_toplistName" maxlength="15" size="16"
                                                                             style="width: 150px;">
                             </label>
 							<label>
-                                <?php _e('E-Mail', 'wp-adv-quiz'); ?>: <input type="email"
+                                <?php _e('E-Mail', 'ct-pro-quiz-lite'); ?>: <input type="email"
                                                                               placeholder="<?php _e('E-Mail',
-                                                                                  'wp-adv-quiz'); ?>"
+                                                                                  'ct-pro-quiz-lite'); ?>"
                                                                               name="wpAdvQuiz_toplistEmail" size="20"
                                                                               style="width: 150px;">
                             </label>
@@ -291,14 +293,14 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
 
                         <div style="margin-top: 5px;">
                             <label>
-                                <?php _e('Captcha', 'wp-adv-quiz'); ?>: <input type="text" name="wpAdvQuiz_captcha"
+                                <?php _e('Captcha', 'ct-pro-quiz-lite'); ?>: <input type="text" name="wpAdvQuiz_captcha"
                                                                                size="8" style="width: 50px;">
                             </label>
                             <input type="hidden" name="wpAdvQuiz_captchaPrefix" value="0">
                             <img alt="captcha" src="" class="wpAdvQuiz_captchaImg" style="vertical-align: middle;">
                         </div>
                     </div>
-                    <input class="wpAdvQuiz_button2" type="submit" value="<?php _e('Send', 'wp-adv-quiz'); ?>"
+                    <input class="wpAdvQuiz_button2" type="submit" value="<?php _e('Send', 'ct-pro-quiz-lite'); ?>"
                            name="wpAdvQuiz_toplistAdd">
                 </div>
             </div>
@@ -404,13 +406,13 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
 
     private function showFormBox()
     {
-        $info = '<div class="wpAdvQuiz_invalidate">' . __('You must fill out this field.', 'wp-adv-quiz') . '</div>';
+        $info = '<div class="wpAdvQuiz_invalidate">' . __('You must fill out this field.', 'ct-pro-quiz-lite') . '</div>';
 
         $validateText = array(
-            WpAdvQuiz_Model_Form::FORM_TYPE_NUMBER => __('You must specify a number.', 'wp-adv-quiz'),
-            WpAdvQuiz_Model_Form::FORM_TYPE_TEXT => __('You must specify a text.', 'wp-adv-quiz'),
-            WpAdvQuiz_Model_Form::FORM_TYPE_EMAIL => __('You must specify an email address.', 'wp-adv-quiz'),
-            WpAdvQuiz_Model_Form::FORM_TYPE_DATE => __('You must specify a date.', 'wp-adv-quiz')
+            WpAdvQuiz_Model_Form::FORM_TYPE_NUMBER => __('You must specify a number.', 'ct-pro-quiz-lite'),
+            WpAdvQuiz_Model_Form::FORM_TYPE_TEXT => __('You must specify a text.', 'ct-pro-quiz-lite'),
+            WpAdvQuiz_Model_Form::FORM_TYPE_EMAIL => __('You must specify an email address.', 'ct-pro-quiz-lite'),
+            WpAdvQuiz_Model_Form::FORM_TYPE_DATE => __('You must specify a date.', 'ct-pro-quiz-lite')
         );
         ?>
         <div class="wpAdvQuiz_forms">
@@ -490,12 +492,12 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
                                     echo '<div data-required="' . (int)$form->isRequired() . '" data-type="' . $form->getType() . '" class="wpAdvQuiz_formFields" data-form_id="' . $form->getFormId() . '">';
                                     echo '<label>';
                                     echo '<input name="' . esc_attr($name) . '" type="radio" value="1"> ',
-                                    __('Yes', 'wp-adv-quiz');
+                                    __('Yes', 'ct-pro-quiz-lite');
                                     echo '</label> ';
 
                                     echo '<label>';
                                     echo '<input name="' . esc_attr($name) . '" type="radio" value="0"> ',
-                                    __('No', 'wp-adv-quiz');
+                                    __('No', 'ct-pro-quiz-lite');
                                     echo '</label> ';
                                     echo '</div>';
                                     break;
@@ -505,7 +507,7 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
                                 echo '<div class="wpAdvQuiz_invalidate">' . $validateText[$form->getType()] . '</div>';
                             } else {
                                 echo '<div class="wpAdvQuiz_invalidate">' . __('You must fill out this field.',
-                                        'wp-adv-quiz') . '</div>';
+                                        'ct-pro-quiz-lite') . '</div>';
                             }
                             ?>
                         </td>
@@ -557,13 +559,13 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
     {
         ?>
         <div class="wpAdvQuiz_checkPage" style="display: none;">
-            <h4 class="wpAdvQuiz_header"><?php echo esc_html($this->_buttonNames['quiz_summary']); ?></h4>
+            <div class="wpAdvQuiz_header wpAdvQuiz_title"><?php echo esc_html($this->_buttonNames['quiz_summary']); ?></div>
 
             <p>
-                <?php printf(__('%s of %s questions completed', 'wp-adv-quiz'), '<span>0</span>', $questionCount); ?>
+                <?php printf(__('%s of %s questions completed', 'ct-pro-quiz-lite'), '<span class="wpAdvQuiz_solvedCount">0</span>', $questionCount); ?>
             </p>
 
-            <p><?php _e('Questions', 'wp-adv-quiz'); ?>:</p>
+            <p><?php _e('Questions', 'ct-pro-quiz-lite'); ?>:</p>
 
             <div style="margin-bottom: 20px;" class="wpAdvQuiz_box">
                 <ol>
@@ -580,7 +582,7 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
             ) {
 
                 ?>
-                <h4 class="wpAdvQuiz_header"><?php _e('Information', 'wp-adv-quiz'); ?></h4>
+                <div class="wpAdvQuiz_header wpAdvQuiz_title"><?php _e('Information', 'ct-pro-quiz-lite'); ?></div>
                 <?php
                 $this->showFormBox();
             }
@@ -598,7 +600,7 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
     {
         ?>
         <div class="wpAdvQuiz_infopage" style="display: none;">
-            <h4><?php _e('Information', 'wp-adv-quiz'); ?></h4>
+            <div class="wpAdvQuiz_header wpAdvQuiz_title"><?php _e('Information', 'ct-pro-quiz-lite'); ?></div>
 
             <?php
             if ($this->quiz->isFormActivated() && $this->quiz->getFormShowPosition() == WpAdvQuiz_Model_Quiz::QUIZ_FORM_POSITION_END
@@ -645,7 +647,7 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
     {
         ?>
         <div style="display: none;" class="wpAdvQuiz_time_limit">
-            <div class="time"><?php _e('Time limit', 'wp-adv-quiz'); ?>: <span>0</span></div>
+            <div class="time"><?php _e('Time limit', 'ct-pro-quiz-lite'); ?>: <span>0</span></div>
             <div class="wpAdvQuiz_progress"></div>
         </div>
         <?php
@@ -667,18 +669,18 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
                 <ol>
                     <li>
                         <span class="wpAdvQuiz_reviewColor" style="background-color: #6CA54C;"></span>
-                        <span class="wpAdvQuiz_reviewText"><?php _e('Answered', 'wp-adv-quiz'); ?></span>
+                        <span class="wpAdvQuiz_reviewText"><?php _e('Answered', 'ct-pro-quiz-lite'); ?></span>
                     </li>
                     <li>
                         <span class="wpAdvQuiz_reviewColor" style="background-color: #FFB800;"></span>
-                        <span class="wpAdvQuiz_reviewText"><?php _e('Review', 'wp-adv-quiz'); ?></span>
+                        <span class="wpAdvQuiz_reviewText"><?php _e('Review', 'ct-pro-quiz-lite'); ?></span>
                     </li>
                 </ol>
                 <div style="clear: both;"></div>
             </div>
             <div>
                 <?php if ($this->quiz->getQuizModus() != WpAdvQuiz_Model_Quiz::QUIZ_MODUS_SINGLE) { ?>
-                    <input type="button" name="review" value="<?php _e('Review question', 'wp-adv-quiz'); ?>"
+                    <input type="button" name="review" value="<?php _e('Review question', 'ct-pro-quiz-lite'); ?>"
                            class="wpAdvQuiz_button2" style="float: left; display: block;
 						   width:<?php echo esc_attr($this->review_btn_width); ?>px !Important; height:<?php echo esc_attr($this->review_btn_height); ?>px !Important; background-color: <?php echo esc_attr($this->review_btn_color); ?> !important">
 						   
@@ -699,24 +701,24 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
     {
         ?>
         <div style="display: none;" class="wpAdvQuiz_results">
-            <h4 class="wpAdvQuiz_header"><?php _e('Results', 'wp-adv-quiz'); ?></h4>
+            <div class="wpAdvQuiz_header wpAdvQuiz_title"><?php _e('Results', 'ct-pro-quiz-lite'); ?></div>
             <?php if (!$this->quiz->isHideResultCorrectQuestion()) { ?>
                 <p>
-                    <?php printf(__('%s of %s questions answered correctly', 'wp-adv-quiz'),
+                    <?php printf(__('%s of %s questions answered correctly', 'ct-pro-quiz-lite'),
                         '<span class="wpAdvQuiz_correct_answer">0</span>', '<span>' . $questionCount . '</span>'); ?>
                 </p>
             <?php }
             if (!$this->quiz->isHideResultQuizTime()) { ?>
                 <p class="wpAdvQuiz_quiz_time">
-                    <?php _e('Your time: <span></span>', 'wp-adv-quiz'); ?>
+                    <?php _e('Your time: <span></span>', 'ct-pro-quiz-lite'); ?>
                 </p>
             <?php } ?>
             <p class="wpAdvQuiz_time_limit_expired" style="display: none;">
-                <?php _e('Time has elapsed', 'wp-adv-quiz'); ?>
+                <?php _e('Time has elapsed', 'ct-pro-quiz-lite'); ?>
             </p>
             <?php if (!$this->quiz->isHideResultPoints()) { ?>
                 <p class="wpAdvQuiz_points">
-                    <?php printf(__('You have reached %s of %s points, (%s)', 'wp-adv-quiz'), '<span>0</span>',
+                    <?php printf(__('You have reached %s of %s points, (%s)', 'ct-pro-quiz-lite'), '<span>0</span>',
                         '<span>0</span>', '<span>0</span>'); ?>
                 </p>
             <?php } ?>
@@ -725,14 +727,14 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
                     <table>
                         <tbody>
                         <tr>
-                            <td class="wpAdvQuiz_resultName"><?php _e('Average score', 'wp-adv-quiz'); ?></td>
+                            <td class="wpAdvQuiz_resultName"><?php _e('Average score', 'ct-pro-quiz-lite'); ?></td>
                             <td class="wpAdvQuiz_resultValue">
                                 <div style="background-color: #6CA54C;">&nbsp;</div>
                                 <span>&nbsp;</span>
                             </td>
                         </tr>
                         <tr>
-                            <td class="wpAdvQuiz_resultName"><?php _e('Your score', 'wp-adv-quiz'); ?></td>
+                            <td class="wpAdvQuiz_resultName"><?php _e('Your score', 'ct-pro-quiz-lite'); ?></td>
                             <td class="wpAdvQuiz_resultValue">
                                 <div style="background-color: #F79646;">&nbsp;</div>
                                 <span>&nbsp;</span>
@@ -744,13 +746,13 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
             <?php } ?>
 		
             <div class="wpAdvQuiz_catOverview" <?php $this->isDisplayNone($this->quiz->isShowCategoryScore()); ?>>
-                <h4><?php _e('Categories', 'wp-adv-quiz'); ?></h4>
+                <div class="wpAdvQuiz_header wpAdvQuiz_title"><?php _e('Categories', 'ct-pro-quiz-lite'); ?></div>
 
                 <div style="margin-top: 10px;">
                     <ol>
                         <?php foreach ($this->category as $cat) {
                             if (!$cat->getCategoryId()) {
-                                $cat->setCategoryName(__('Not categorized', 'wp-adv-quiz'));
+                                $cat->setCategoryName(__('Not categorized', 'ct-pro-quiz-lite'));
                             }
                             ?>
                             <li data-category_id="<?php echo esc_attr($cat->getCategoryId()); ?>">
@@ -797,12 +799,12 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
                 <?php }
                 if (!$this->quiz->isBtnViewQuestionHidden()) { ?>
                     <input class="wpAdvQuiz_button" type="button" name="reShowQuestion"
-                           value="<?php _e('View questions', 'wp-adv-quiz'); ?>" 
+                           value="<?php _e('View questions', 'ct-pro-quiz-lite'); ?>" 
 						   style="width:<?php echo esc_attr($this->view_btn_width); ?>px !Important; height:<?php echo esc_attr($this->view_btn_height); ?>px !Important; background-color: <?php echo esc_attr($this->view_btn_color); ?> !important">
                 <?php } ?>
                 <?php if ($this->quiz->isToplistActivated() && $this->quiz->getToplistDataShowIn() == WpAdvQuiz_Model_Quiz::QUIZ_TOPLIST_SHOW_IN_BUTTON) { ?>
                     <input class="wpAdvQuiz_button" type="button" name="showToplist"
-                           value="<?php _e('Show leaderboard', 'wp-adv-quiz'); ?>"
+                           value="<?php _e('Show leaderboard', 'ct-pro-quiz-lite'); ?>"
 						   style="width:<?php echo esc_attr($this->leaderboard_btn_width); ?>px !Important; height:<?php echo esc_attr($this->leaderboard_btn_height); ?>px !Important; background-color: <?php echo esc_attr($this->leaderboard_btn_color); ?> !important">
                 <?php } ?>
             </div>
@@ -865,23 +867,23 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
                     <li class="wpAdvQuiz_listItem" style="display: none;">
                         <div
                             class="wpAdvQuiz_question_page" <?php $this->isDisplayNone($this->quiz->getQuizModus() != WpAdvQuiz_Model_Quiz::QUIZ_MODUS_SINGLE && !$this->quiz->isHideQuestionPositionOverview()); ?> >
-                            <?php printf(__('Question %s of %s', 'wp-adv-quiz'), '<span>' . $index . '</span>',
+                            <?php printf(__('Question %s of %s', 'ct-pro-quiz-lite'), '<span>' . $index . '</span>',
                                 '<span>' . $questionCount . '</span>'); ?>
                         </div>
-                        <h5 style="<?php echo esc_attr($this->quiz->isHideQuestionNumbering()) ? 'display: none;' : 'display: inline-block;' ?>"
-                            class="wpAdvQuiz_header">
-                            <span><?php echo esc_html($index); ?></span>. <?php _e('Question', 'wp-adv-quiz'); ?>
-                        </h5>
+                        <div style="<?php echo esc_attr($this->quiz->isHideQuestionNumbering()) ? 'display: none;' : 'display: inline-block;' ?>"
+                            class="wpAdvQuiz_header wpAdvQuiz_questionHeader">
+                            <?php _e('Question', 'ct-pro-quiz-lite'); ?> <span><?php echo esc_html($index); ?></span>
+                        </div>
 
                         <?php if ($this->quiz->isShowPoints()) { ?>
-                            <span style="font-weight: bold; float: right;"><?php printf(__('%d points', 'wp-adv-quiz'),
+                            <span style="font-weight: bold; float: right;"><?php printf(__('%d points', 'ct-pro-quiz-lite'),
                                     $question->getPoints()); ?></span>
                             <div style="clear: both;"></div>
                         <?php } ?>
 
                         <?php if ($question->getCategoryId() && $this->quiz->isShowCategory()) { ?>
                             <div style="font-weight: bold; padding-top: 5px;">
-                                <?php printf(__('Category: %s', 'wp-adv-quiz'),
+                                <?php printf(__('Category: %s', 'ct-pro-quiz-lite'),
                                     esc_html($question->getCategoryName())); ?>
                             </div>
                         <?php } ?>
@@ -892,7 +894,7 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
                             </div>
                             <?php if ($question->getAnswerType() === 'matrix_sort_answer') { ?>
                                 <div class="wpAdvQuiz_matrixSortString">
-                                    <h5 class="wpAdvQuiz_header"><?php _e('Sort elements', 'wp-adv-quiz'); ?></h5>
+                                    <div class="wpAdvQuiz_header wpAdvQuiz_subTitle"><?php _e('Sort elements', 'ct-pro-quiz-lite'); ?></div>
                                     <ul class="wpAdvQuiz_sortStringList">
                                         <?php
                                         $matrix = array();
@@ -1042,17 +1044,17 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
                                     <?php if ($question->isShowPointsInBox() && $question->isAnswerPointsActivated()) { ?>
                                         <div>
 									<span style="float: left;" class="wpAdvQuiz_respone_span">
-										<?php _e('Correct', 'wp-adv-quiz'); ?>
+										<?php _e('Correct', 'ct-pro-quiz-lite'); ?>
 									</span>
                                             <span
                                                 style="float: right;"><?php echo esc_html($question->getPoints()) . ' / ' . $question->getPoints(); ?> <?php _e('Points',
-                                                    'wp-adv-quiz'); ?></span>
+                                                    'ct-pro-quiz-lite'); ?></span>
 
                                             <div style="clear: both;"></div>
                                         </div>
                                     <?php } else { ?>
                                         <span class="wpAdvQuiz_respone_span">
-									<?php _e('Correct', 'wp-adv-quiz'); ?>
+									<?php _e('Correct', 'ct-pro-quiz-lite'); ?>
 								</span><br>
                                     <?php }
                                     $_correctMsg = trim(do_shortcode(apply_filters('comment_text',
@@ -1077,17 +1079,17 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
                                     <?php if ($question->isShowPointsInBox() && $question->isAnswerPointsActivated()) { ?>
                                         <div>
 									<span style="float: left;" class="wpAdvQuiz_respone_span">
-										<?php _e('Incorrect', 'wp-adv-quiz'); ?>
+										<?php _e('Incorrect', 'ct-pro-quiz-lite'); ?>
 									</span>
                                             <span style="float: right;"><span
                                                     class="wpAdvQuiz_responsePoints"></span> / <?php echo esc_html($question->getPoints()); ?> <?php _e('Points',
-                                                    'wp-adv-quiz'); ?></span>
+                                                    'ct-pro-quiz-lite'); ?></span>
 
                                             <div style="clear: both;"></div>
                                         </div>
                                     <?php } else { ?>
                                         <span class="wpAdvQuiz_respone_span">
-									<?php _e('Incorrect', 'wp-adv-quiz'); ?>
+									<?php _e('Incorrect', 'ct-pro-quiz-lite'); ?>
 								</span><br>
                                     <?php }
 
@@ -1118,8 +1120,7 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
                         <?php if ($question->isTipEnabled()) { ?>
                             <div class="wpAdvQuiz_tipp" style="display: none; position: relative;">
                                 <div>
-                                    <h5 style="margin: 0 0 10px;" class="wpAdvQuiz_header"><?php _e('Hint',
-                                            'wp-adv-quiz'); ?></h5>
+                                    <div style="margin: 0 0 10px;" class="wpAdvQuiz_header wpAdvQuiz_subTitle"><?php _e('Hint', 'ct-pro-quiz-lite'); ?></div>
                                     <?php echo 
 									
 									$tipMsg = $question->getTipMsg();
@@ -1135,26 +1136,26 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
 		
                         <?php if ($this->quiz->getQuizModus() == WpAdvQuiz_Model_Quiz::QUIZ_MODUS_CHECK && !$this->quiz->isSkipQuestionDisabled() && $this->quiz->isShowReviewQuestion()) { ?>
                             
-							<input type="button" name="skip" value="<?php _e('Skip question', 'wp-adv-quiz'); ?>"
+							<input type="button" name="skip" value="<?php _e('Skip question', 'ct-pro-quiz-lite'); ?>"
                                    class="wpAdvQuiz_button wpAdvQuiz_QuestionButton"
                                    style="float: left; margin-right: 10px !important;
 									width:<?php echo esc_attr($this->skip_btn_width); ?>px !Important; height:<?php echo esc_attr($this->skip_btn_height); ?>px !Important; background-color: <?php echo esc_attr($this->skip_btn_color); ?> !important">
                         <?php } ?>
 						
-                        <input type="button" name="back" value="<?php _e('Back', 'wp-adv-quiz'); ?>"
+                        <input type="button" name="back" value="<?php _e('Back', 'ct-pro-quiz-lite'); ?>"
                                class="wpAdvQuiz_button wpAdvQuiz_QuestionButton"
                                style="float: left !important; margin-right: 10px !important; display: none;
 							   width:<?php echo esc_attr($this->back_btn_width); ?>px !Important; height:<?php echo esc_attr($this->back_btn_height); ?>px !Important; background-color: <?php echo esc_attr($this->back_btn_color); ?> !important">
                         <?php if ($question->isTipEnabled()) { ?>
-                            <input type="button" name="tip" value="<?php _e('Hint', 'wp-adv-quiz'); ?>"
+                            <input type="button" name="tip" value="<?php _e('Hint', 'ct-pro-quiz-lite'); ?>"
                                    class="wpAdvQuiz_button wpAdvQuiz_QuestionButton wpAdvQuiz_TipButton"
                                    style="float: left !important; display: inline-block; margin-right: 10px !important;
 								   width:<?php echo esc_attr($this->hint_btn_width); ?>px !Important; height:<?php echo esc_attr($this->hint_btn_height); ?>px !Important; background-color: <?php echo esc_attr($this->hint_btn_color); ?> !important">
                         <?php } ?>
-						<input type="button" name="next" value="<?php _e('Next', 'wp-adv-quiz'); ?>"
+						<input type="button" name="next" value="<?php _e('Next', 'ct-pro-quiz-lite'); ?>"
                                class="wpAdvQuiz_button wpAdvQuiz_QuestionButton" style="float: right; display: none;
 								width:<?php echo esc_attr($this->next_btn_width); ?>px !Important; height:<?php echo esc_attr($this->next_btn_height); ?>px !Important; background-color: <?php echo esc_attr($this->next_btn_color); ?> !important">
-                        <input type="button" name="check" value="<?php _e('Check', 'wp-adv-quiz'); ?>"
+                        <input type="button" name="check" value="<?php _e('Check', 'ct-pro-quiz-lite'); ?>"
                                class="wpAdvQuiz_button wpAdvQuiz_QuestionButton"
                                style="float: right !important; margin-right: 10px !important; display: none;
 							   	width:<?php echo esc_attr($this->check_btn_width); ?>px !Important; height:<?php echo esc_attr($this->check_btn_height); ?>px !Important; background-color: <?php echo esc_attr($this->check_btn_color); ?> !important">
@@ -1162,7 +1163,7 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
 						
 					
 						<?php if (!$this->quiz->isBtnClearQuizHidden()) { ?>
-						<input type="button" name="clear" value="<?php _e('Clear', 'wp-adv-quiz');  ?>"
+						<input type="button" name="clear" value="<?php _e('Clear', 'ct-pro-quiz-lite');  ?>"
                                class="wpAdvQuiz_button wpAdvQuiz_QuestionButton"
                                style="float: right !important; margin-right: 10px !important; display: block;
 							   	width:<?php echo esc_attr($this->clear_btn_width); ?>px !Important; height:<?php echo esc_attr($this->clear_btn_height); ?>px !Important; background-color: <?php echo esc_attr($this->clear_btn_color); ?> !important">
@@ -1170,7 +1171,7 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
                      
 				
 						<?php  if ($this->quiz->isBtnViewPracticeShow()) { ?>
-						<input type="button" name="practice" value="<?php _e('Practice', 'wp-adv-quiz');  ?>"
+						<input type="button" name="practice" value="<?php _e('Practice', 'ct-pro-quiz-lite');  ?>"
                                class="wpAdvQuiz_button wpAdvQuiz_QuestionButton" 
                                style="float: right !important; margin-right: 10px !important; display: block;
 							   	width:<?php echo esc_attr($this->practice_btn_width); ?>px !Important; height:<?php echo esc_attr($this->practice_btn_height); ?>px !Important; background-color: <?php echo esc_attr($this->practice_btn_color); ?> !important">
@@ -1188,10 +1189,10 @@ class WpAdvQuiz_View_FrontQuiz extends WpAdvQuiz_View_View
             <?php if ($this->quiz->getQuizModus() == WpAdvQuiz_Model_Quiz::QUIZ_MODUS_SINGLE) { ?>
                 <div>
                     <input type="button" name="wpAdvQuiz_pageLeft"
-                           data-text="<?php echo esc_attr(__('Page %d', 'wp-adv-quiz')); ?>"
+                           data-text="<?php echo esc_attr(__('Page %d', 'ct-pro-quiz-lite')); ?>"
                            style="float: left; display: none;" class="wpAdvQuiz_button wpAdvQuiz_QuestionButton">
                     <input type="button" name="wpAdvQuiz_pageRight"
-                           data-text="<?php echo esc_attr(__('Page %d', 'wp-adv-quiz')); ?>"
+                           data-text="<?php echo esc_attr(__('Page %d', 'ct-pro-quiz-lite')); ?>"
                            style="float: right; display: none;" class="wpAdvQuiz_button wpAdvQuiz_QuestionButton">
 
                     <?php if ($this->quiz->isShowReviewQuestion() && !$this->quiz->isQuizSummaryHide()) { ?>

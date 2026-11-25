@@ -26,7 +26,7 @@ class WpAdvQuiz_Controller_QuestionImport extends WpAdvQuiz_Controller_Controlle
         $quizId = $this->getQuizId();
 
         if (!$this->validateQuizId($quizId)) {
-            WpAdvQuiz_View_View::admin_notices(__('Quiz not found', 'wp-adv-quiz'), 'error');
+            WpAdvQuiz_View_View::admin_notices(__('Quiz not found', 'ct-pro-quiz-lite'), 'error');
 
             return;
         }
@@ -109,7 +109,7 @@ class WpAdvQuiz_Controller_QuestionImport extends WpAdvQuiz_Controller_Controlle
         $quizId = $this->getQuizId();
 
         if (!$this->validateQuizId($quizId)) {
-            WpAdvQuiz_View_View::admin_notices(__('Quiz not found', 'wp-adv-quiz'), 'error');
+            WpAdvQuiz_View_View::admin_notices(__('Quiz not found', 'ct-pro-quiz-lite'), 'error');
 
             return;
         }
@@ -125,7 +125,7 @@ class WpAdvQuiz_Controller_QuestionImport extends WpAdvQuiz_Controller_Controlle
 		
 
         if(empty($name) || empty($type) || empty($data)) {
-            WpAdvQuiz_View_View::admin_notices(__('Quiz Import failed', 'wp-adv-quiz'), 'error');
+            WpAdvQuiz_View_View::admin_notices(__('Quiz Import failed', 'ct-pro-quiz-lite'), 'error');
 
             return;
         }

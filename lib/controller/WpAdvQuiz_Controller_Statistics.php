@@ -261,10 +261,10 @@ class WpAdvQuiz_Controller_Statistics extends WpAdvQuiz_Controller_Controller
             /* @var $model WpAdvQuiz_Model_StatisticHistory */
 
             if (!$model->getUserId()) {
-                $model->setUserName(__('Anonymous', 'wp-adv-quiz'));
+                $model->setUserName(__('Anonymous', 'ct-pro-quiz-lite'));
             } else {
                 if ($model->getUserName() == '') {
-                    $model->setUserName(__('Deleted user', 'wp-adv-quiz'));
+                    $model->setUserName(__('Deleted user', 'ct-pro-quiz-lite'));
                 }
             }
 
@@ -341,7 +341,7 @@ class WpAdvQuiz_Controller_Statistics extends WpAdvQuiz_Controller_Controller
                     'questions' => array(),
                     'categoryId' => $statistic->getCategoryId(),
                     'categoryName' => $statistic->getCategoryId() ? $statistic->getCategoryName() : __('No category',
-                        'wp-adv-quiz')
+                        'ct-pro-quiz-lite')
                 );
             }
 
@@ -370,7 +370,7 @@ class WpAdvQuiz_Controller_Statistics extends WpAdvQuiz_Controller_Controller
         $view->avg = $avg;
         $view->statisticModel = $statisticRefMapper->fetchByRefId($refIdUserId, $quizId, $avg);
 
-        $view->userName = __('Anonymous', 'wp-adv-quiz');
+        $view->userName = __('Anonymous', 'ct-pro-quiz-lite');
 
         if ($view->statisticModel->getUserId()) {
             $userInfo = get_userdata($view->statisticModel->getUserId());
@@ -378,7 +378,7 @@ class WpAdvQuiz_Controller_Statistics extends WpAdvQuiz_Controller_Controller
             if ($userInfo !== false) {
                 $view->userName = $userInfo->user_login . ' (' . $userInfo->display_name . ')';
             } else {
-                $view->userName = __('Deleted user', 'wp-adv-quiz');
+                $view->userName = __('Deleted user', 'ct-pro-quiz-lite');
             }
         }
 

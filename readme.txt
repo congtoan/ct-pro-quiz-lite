@@ -1,73 +1,50 @@
-=== Wp-Adv-Quiz ===
-Contributors: Markus Begerow
-Donate link: https://www.paypal.com/donate?hosted_button_id=7EL8K7ELFWHSY
-Tags: quiz, test, elearning, score, survey, answer, question, learning, assessment
-Requires at least: 4.6
-Tested up to: 6.4
-Stable tag: 1.0.4
+=== CT Pro Quiz Lite ===
+Contributors: congtoan
+Tags: quiz, test, elearning, exam, assessment
+Requires at least: 5.0
+Tested up to: 6.7
+Stable tag: 1.0.0
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A powerful and beautiful quiz plugin for WordPress.
+Lightweight quiz plugin, forked from Advanced Quiz 1.0.4: no jQuery on the frontend, assets only on pages with a quiz, translatable.
 
 == Description ==
 
-A powerful and beautiful quiz plugin for WordPress.
-Donate link: <a href="https://www.paypal.com/donate?hosted_button_id=7EL8K7ELFWHSY">Buy Me a Coffee?</a>
+CT Pro Quiz Lite is a maintained fork of Advanced Quiz 1.0.4 by Markus Begerow (https://wordpress.org/plugins/advanced-quiz/), which itself continues Wp-Pro-Quiz by Julius Fischer.
 
-= Features =
-General
-<ul>
-<li>WordPress 6.3 support</li>
-<li>PHP 8.2 support</li>
-<li>Import / Export function</li>
-<li>HTML Support</li>
-<li>Multimedia Support (Videos & Audio files)</li>
-<li>Support for "User Role Editor" etc.</li>
-<li>Fully compatible with cache plugins (e.g. WP-Super-Cache, W3 Total Cache, Autoptimize and Cachify)</li>
-<li>Shortcodes for Gutenberg Editor compatible</li>
-</ul>
-Different Choices
-<ul>
-<li>Single Choice</li>
-<li>Multiple Choice</li>
-<li>"Sorting" Choice</li>
-<li>"Free" Choice</li>
-<li>"Matrix Sorting" Choice</li>
-</ul>
-Options
-<ul>
-<li>Category support</li>
-<li>Random Questions & Answers scenarios</li>
-<li>Set Timelimit</li>
-<li>Preview-function & hints</li>
-<li>Leaderboard</li>
-<li>Statistics</li>
-<li>Quiz-summary at the end</li>
-</ul>
-Visuals
-<ul>
-<li>Nice standard design</li>
-<li>Correct / incorrect response message for all questions</li>
-</ul>
-Live demos
-<ul>
-<li>Website about computer science: <a target="_blank" href="https://www.informatik-verstehen.de/uebungen/informatik-uebungsaufgaben-loesungen/">Informatik Übungen</a></li>
-<li>Website about german law: <a target="_blank" href="https://www.rechtswissenschaft-verstehen.de/uebungen/rechtswissenschaft-uebungsaufgaben-loesungen/">Rechtswissenschaft Übungen</a></li>
-<li>Website about german tax: <a target="_blank" href="https://www.steuererklaerung-verstehen.de/uebungen/steuererklaerung-uebungsaufgaben-loesungen/">Steuererklärung Übungen</a></li>
-</ul>
+Advanced Quiz is no longer updated by its author. This fork addresses the following problems:
 
-= Feedback or Support =
-I dedicated to providing the most robust and well supported quiz plugin in the near future, so if you have an issue or any feedback on how to improve the plugin then please let me know.
+* jQuery and the quiz CSS are no longer loaded on every page.
+* The frontend no longer needs jQuery / jQuery UI.
+* No hidden headings that end up in tables of contents.
+* The frontend can be translated.
+* Several frontend bugs are fixed.
 
-If you like the plugin then please consider leaving a review, as it really helps to support the plugin. If you have an issue then please allow me to help you fix it before leaving a review. Just let me know what the problem is and I'll get back to you right away.
+Existing quizzes, statistics and leaderboards keep working: tables, options and shortcodes are the same.
 
-All issues are collected on <a target="_blank" href="https://github.com/markusbegerow/Wp-Adv-Quiz/issues">Github issue tracker</a>
+= Highlights =
+
+* Plain JavaScript frontend (no jQuery, no jQuery UI, no touch-punch); drag & drop with Pointer Events (mouse and touch).
+* CSS/JS only on posts that contain `[WpAdvQuiz]`, `[WpAdvQuiz_toplist]` or the quiz block.
+* Section titles are bold divs instead of h4/h5, so table-of-contents plugins ignore them.
+* Own text domain `ct-pro-quiz-lite`, full POT file, Vietnamese and German translations.
+* Bug fixes: Practice no longer inflates scores, Clear only clears its own question, review scrollbar drag works, recovery from network errors.
+
+= Question types =
+
+Single choice, multiple choice, sorting, free text, matrix sorting, cloze, assessment.
+
+Full documentation and source: https://github.com/congtoan/ct-pro-quiz-lite
 
 == Installation ==
 
-1. Upload the wp-adv-quiz folder to the /wp-content/plugins/ directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
+1. Upload the `ct-pro-quiz-lite` folder to `/wp-content/plugins/`.
+2. If Advanced Quiz is installed, **deactivate** it (do not delete it from the Plugins screen: its uninstaller drops the shared quiz tables).
+3. Activate CT Pro Quiz Lite.
 
+== Changelog ==
 
+= 1.0.0 =
+* First release, forked from Advanced Quiz 1.0.4. See CHANGELOG.md for details.

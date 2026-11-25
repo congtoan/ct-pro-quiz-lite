@@ -34,7 +34,7 @@ class WpAdvQuiz_View_StatisticsAjax extends WpAdvQuiz_View_View
         <table class="wp-list-table widefat">
             <thead>
             <tr>
-                <th scope="col"><?php _e('Username', 'wp-adv-quiz'); ?></th>
+                <th scope="col"><?php _e('Username', 'ct-pro-quiz-lite'); ?></th>
 
                 <?php foreach ($this->forms as $form) {
                     /* @var $form WpAdvQuiz_Model_Form */
@@ -43,12 +43,12 @@ class WpAdvQuiz_View_StatisticsAjax extends WpAdvQuiz_View_View
                     }
                 } ?>
 
-                <th scope="col" style="width: 200px;"><?php _e('Date', 'wp-adv-quiz'); ?></th>
-                <th scope="col" style="width: 100px;"><?php _e('Correct', 'wp-adv-quiz'); ?></th>
-                <th scope="col" style="width: 100px;"><?php _e('Incorrect', 'wp-adv-quiz'); ?></th>
-                <th scope="col" style="width: 100px;"><?php _e('Solved', 'wp-adv-quiz'); ?></th>
-                <th scope="col" style="width: 100px;"><?php _e('Points', 'wp-adv-quiz'); ?></th>
-                <th scope="col" style="width: 60px;"><?php _e('Results', 'wp-adv-quiz'); ?></th>
+                <th scope="col" style="width: 200px;"><?php _e('Date', 'ct-pro-quiz-lite'); ?></th>
+                <th scope="col" style="width: 100px;"><?php _e('Correct', 'ct-pro-quiz-lite'); ?></th>
+                <th scope="col" style="width: 100px;"><?php _e('Incorrect', 'ct-pro-quiz-lite'); ?></th>
+                <th scope="col" style="width: 100px;"><?php _e('Solved', 'ct-pro-quiz-lite'); ?></th>
+                <th scope="col" style="width: 100px;"><?php _e('Points', 'ct-pro-quiz-lite'); ?></th>
+                <th scope="col" style="width: 60px;"><?php _e('Results', 'ct-pro-quiz-lite'); ?></th>
             </tr>
             </thead>
             <tbody id="wpAdvQuiz_statistics_form_data">
@@ -56,7 +56,7 @@ class WpAdvQuiz_View_StatisticsAjax extends WpAdvQuiz_View_View
                 <tr>
                     <td colspan="6"
                         style="text-align: center; font-weight: bold; padding: 10px;"><?php _e('No data available',
-                            'wp-adv-quiz'); ?></td>
+                            'ct-pro-quiz-lite'); ?></td>
                 </tr>
             <?php } else { ?>
                 <?php foreach ($this->historyModel as $model) {
@@ -69,10 +69,10 @@ class WpAdvQuiz_View_StatisticsAjax extends WpAdvQuiz_View_View
                             <div class="row-actions">
 							<span>
 								<a style="color: red;" class="wpAdvQuiz_delete" href="#"><?php _e('Delete',
-                                        'wp-adv-quiz'); ?></a>
+                                        'ct-pro-quiz-lite'); ?></a>
 							</span> |
                                 <span>
-                                    <a class="wpAdvQuiz_export" href="#" data-baseurl="admin.php?page=wpAdvQuiz&module=statistic_export&action=user_export&quiz_id=<?php echo esc_attr($model->getQuizId()); ?>&user_id=0&ref_id=<?php echo esc_attr($model->getStatisticRefId()); ?>&avg=0&noheader=true"><?php _e('Export', 'wp-adv-quiz'); ?></a>
+                                    <a class="wpAdvQuiz_export" href="#" data-baseurl="admin.php?page=wpAdvQuiz&module=statistic_export&action=user_export&quiz_id=<?php echo esc_attr($model->getQuizId()); ?>&user_id=0&ref_id=<?php echo esc_attr($model->getStatisticRefId()); ?>&avg=0&noheader=true"><?php _e('Export', 'ct-pro-quiz-lite'); ?></a>
                                 </span>
                             </div>
 
@@ -83,7 +83,7 @@ class WpAdvQuiz_View_StatisticsAjax extends WpAdvQuiz_View_View
                         <th><?php echo esc_html($model->getFormatTime()); ?></th>
                         <th style="color: green;"><?php echo esc_html($model->getFormatCorrect()); ?></th>
                         <th style="color: red;"><?php echo esc_html($model->getFormatIncorrect()); ?></th>
-                        <th><?php echo esc_attr($model->getSolvedCount()) < 0 ? '---' : sprintf(__('%d of %d', 'wp-adv-quiz'),
+                        <th><?php echo esc_attr($model->getSolvedCount()) < 0 ? '---' : sprintf(__('%d of %d', 'ct-pro-quiz-lite'),
                                 $model->getSolvedCount(),
                                 $model->getCorrectCount() + $model->getIncorrectCount()); ?></th>
                         <th><?php echo esc_html($model->getPoints()); ?></th>
@@ -182,7 +182,7 @@ class WpAdvQuiz_View_StatisticsAjax extends WpAdvQuiz_View_View
                 border-bottom: 1px solid #000;
             }
         </style>
-        <h2><?php printf(__('User statistics: %s', 'wp-adv-quiz'), esc_html($this->userName)); ?></h2>
+        <h2><?php printf(__('User statistics: %s', 'ct-pro-quiz-lite'), esc_html($this->userName)); ?></h2>
         <?php if ($this->avg) { ?>
         <h2>
             <?php echo date_i18n(get_option('wpAdvQuiz_statisticTimeFormat', 'Y/m/d g:i A'),
@@ -202,16 +202,16 @@ class WpAdvQuiz_View_StatisticsAjax extends WpAdvQuiz_View_View
             <thead>
             <tr>
                 <th scope="col" style="width: 50px;"></th>
-                <th scope="col"><?php _e('Question', 'wp-adv-quiz'); ?></th>
-                <th scope="col" style="width: 100px;"><?php _e('Points', 'wp-adv-quiz'); ?></th>
-                <th scope="col" style="width: 100px;"><?php _e('Correct', 'wp-adv-quiz'); ?></th>
-                <th scope="col" style="width: 100px;"><?php _e('Incorrect', 'wp-adv-quiz'); ?></th>
-                <th scope="col" style="width: 100px;"><?php _e('Hints used', 'wp-adv-quiz'); ?></th>
-                <th scope="col" style="width: 100px;"><?php _e('Solved', 'wp-adv-quiz'); ?></th>
-                <th scope="col" style="width: 100px;"><?php _e('Time', 'wp-adv-quiz'); ?> <span
+                <th scope="col"><?php _e('Question', 'ct-pro-quiz-lite'); ?></th>
+                <th scope="col" style="width: 100px;"><?php _e('Points', 'ct-pro-quiz-lite'); ?></th>
+                <th scope="col" style="width: 100px;"><?php _e('Correct', 'ct-pro-quiz-lite'); ?></th>
+                <th scope="col" style="width: 100px;"><?php _e('Incorrect', 'ct-pro-quiz-lite'); ?></th>
+                <th scope="col" style="width: 100px;"><?php _e('Hints used', 'ct-pro-quiz-lite'); ?></th>
+                <th scope="col" style="width: 100px;"><?php _e('Solved', 'ct-pro-quiz-lite'); ?></th>
+                <th scope="col" style="width: 100px;"><?php _e('Time', 'ct-pro-quiz-lite'); ?> <span
                         style="font-size: x-small;">(hh:mm:ss)</span></th>
-                <th scope="col" style="width: 100px;"><?php _e('Points scored', 'wp-adv-quiz'); ?></th>
-                <th scope="col" style="width: 60px;"><?php _e('Results', 'wp-adv-quiz'); ?></th>
+                <th scope="col" style="width: 100px;"><?php _e('Points scored', 'ct-pro-quiz-lite'); ?></th>
+                <th scope="col" style="width: 60px;"><?php _e('Results', 'ct-pro-quiz-lite'); ?></th>
             </tr>
             </thead>
             <tbody>
@@ -223,7 +223,7 @@ class WpAdvQuiz_View_StatisticsAjax extends WpAdvQuiz_View_View
                 ?>
                 <tr class="categoryTr">
                     <th colspan="9">
-                        <span><?php _e('Category', 'wp-adv-quiz'); ?>:</span>
+                        <span><?php _e('Category', 'ct-pro-quiz-lite'); ?>:</span>
                         <span style="font-weight: bold;"><?php echo esc_html($cat['categoryName']); ?></span>
                     </th>
                 </tr>
@@ -255,7 +255,7 @@ class WpAdvQuiz_View_StatisticsAjax extends WpAdvQuiz_View_View
                                     2) . '%)'; ?></th>
                         <th><?php echo esc_html($q['hintCount']); ?></th>
                         <th><?php echo esc_attr($q['solvedCount']) < 0 ? '---' : ($q['solvedCount'] ? __('yes',
-                                'wp-adv-quiz') : __('no', 'wp-adv-quiz')); ?></th>
+                                'ct-pro-quiz-lite') : __('no', 'ct-pro-quiz-lite')); ?></th>
                         <th><?php echo esc_html(WpAdvQuiz_Helper_Until::convertToTimeString($q['time'])); ?></th>
                         <th><?php echo esc_html($q['points']); ?></th>
                         <th></th>
@@ -278,7 +278,7 @@ class WpAdvQuiz_View_StatisticsAjax extends WpAdvQuiz_View_View
                 ?>
                 <tr class="categoryTr" id="wpAdvQuiz_ctr_222">
                     <th colspan="2">
-                        <span><?php _e('Sub-Total: ', 'wp-adv-quiz'); ?></span>
+                        <span><?php _e('Sub-Total: ', 'ct-pro-quiz-lite'); ?></span>
                     </th>
                     <th><?php echo esc_html($cGPoints); ?></th>
                     <th style="color: green;"><?php echo esc_attr($cCorrect) . ' (' . round(100 * $cCorrect / $sum,
@@ -286,7 +286,7 @@ class WpAdvQuiz_View_StatisticsAjax extends WpAdvQuiz_View_View
                     <th style="color: red;"><?php echo esc_attr($cIncorrect) . ' (' . round(100 * $cIncorrect / $sum,
                                 2) . '%)'; ?></th>
                     <th><?php echo esc_html($cHintCount); ?></th>
-                    <th><?php echo esc_attr($cSolvedCount) < 0 ? '---' : sprintf(__('%d of %d', 'wp-adv-quiz'), $cSolvedCount,
+                    <th><?php echo esc_attr($cSolvedCount) < 0 ? '---' : sprintf(__('%d of %d', 'ct-pro-quiz-lite'), $cSolvedCount,
                             $sum); ?></th>
                     <th><?php echo esc_html(WpAdvQuiz_Helper_Until::convertToTimeString($cTime)); ?></th>
                     <th><?php echo esc_html($cPoints); ?></th>
@@ -315,13 +315,13 @@ class WpAdvQuiz_View_StatisticsAjax extends WpAdvQuiz_View_View
             <tfoot>
             <tr id="wpAdvQuiz_tr_0">
                 <th></th>
-                <th><?php _e('Total', 'wp-adv-quiz'); ?></th>
+                <th><?php _e('Total', 'ct-pro-quiz-lite'); ?></th>
                 <th><?php echo esc_html($gGPoints); ?></th>
                 <th style="color: green;"><?php echo esc_attr($gCorrect) . ' (' . round(100 * $gCorrect / $sum, 2) . '%)'; ?></th>
                 <th style="color: red;"><?php echo esc_attr($gIncorrect) . ' (' . round(100 * $gIncorrect / $sum,
                             2) . '%)'; ?></th>
                 <th><?php echo esc_html($gHintCount); ?></th>
-                <th><?php echo esc_attr($gSolvedCount) < 0 ? '---' : sprintf(__('%d of %d', 'wp-adv-quiz'), $gSolvedCount,
+                <th><?php echo esc_attr($gSolvedCount) < 0 ? '---' : sprintf(__('%d of %d', 'ct-pro-quiz-lite'), $gSolvedCount,
                         $sum); ?></th>
                 <th><?php echo esc_html(WpAdvQuiz_Helper_Until::convertToTimeString($gTime)); ?></th>
                 <th><?php echo esc_html($gPoints); ?></th>
@@ -332,13 +332,13 @@ class WpAdvQuiz_View_StatisticsAjax extends WpAdvQuiz_View_View
 
         <div style="margin-top: 10px;">
             <div style="float: left;">
-                <a class="button-secondary wpAdvQuiz_update" href="#"><?php _e('Refresh', 'wp-adv-quiz'); ?></a>
-                <a class="button-secondary wpAdvQuiz_export" href="#" data-baseurl="admin.php?page=wpAdvQuiz&module=statistic_export&action=user_export&quiz_id=<?php echo esc_attr($this->quizId); ?>&user_id=<?php echo esc_attr($this->userId); ?>&ref_id=<?php echo esc_attr($this->refId); ?>&avg=<?php echo esc_attr($this->avg); ?>&noheader=true"><?php _e('Export', 'wp-adv-quiz'); ?></a>
+                <a class="button-secondary wpAdvQuiz_update" href="#"><?php _e('Refresh', 'ct-pro-quiz-lite'); ?></a>
+                <a class="button-secondary wpAdvQuiz_export" href="#" data-baseurl="admin.php?page=wpAdvQuiz&module=statistic_export&action=user_export&quiz_id=<?php echo esc_attr($this->quizId); ?>&user_id=<?php echo esc_attr($this->userId); ?>&ref_id=<?php echo esc_attr($this->refId); ?>&avg=<?php echo esc_attr($this->avg); ?>&noheader=true"><?php _e('Export', 'ct-pro-quiz-lite'); ?></a>
             </div>
             <div style="float: right;">
                 <?php if (current_user_can('wpAdvQuiz_reset_statistics')) { ?>
                     <a class="button-secondary" href="#" id="wpAdvQuiz_resetUserStatistic"><?php _e('Reset statistics',
-                            'wp-adv-quiz'); ?></a>
+                            'ct-pro-quiz-lite'); ?></a>
                 <?php } ?>
             </div>
             <div style="clear: both;"></div>
@@ -410,7 +410,7 @@ class WpAdvQuiz_View_StatisticsAjax extends WpAdvQuiz_View_View
                                        value="<?php echo esc_attr($sAnswerData[0]); ?>">
                             </label>
                             <br>
-                            <?php _e('Correct', 'wp-adv-quiz'); ?>:
+                            <?php _e('Correct', 'ct-pro-quiz-lite'); ?>:
                             <?php echo implode(', ', $t); ?>
                         </li>
                     <?php } else {
@@ -618,7 +618,7 @@ class WpAdvQuiz_View_StatisticsAjax extends WpAdvQuiz_View_View
         <div id="wpAdvQuiz_form_box">
             <div id="poststuff">
                 <div class="postbox">
-                    <h3 class="hndle"><?php _e('Custom fields', 'wp-adv-quiz'); ?></h3>
+                    <h3 class="hndle"><?php _e('Custom fields', 'ct-pro-quiz-lite'); ?></h3>
 
                     <div class="inside">
                         <table>
@@ -646,8 +646,8 @@ class WpAdvQuiz_View_StatisticsAjax extends WpAdvQuiz_View_View
                                                 echo esc_html($str);
                                                 break;
                                             case WpAdvQuiz_Model_Form::FORM_TYPE_CHECKBOX:
-                                                echo esc_attr($str) == '1' ? __('ticked', 'wp-adv-quiz') : __('not ticked',
-                                                    'wp-adv-quiz');
+                                                echo esc_attr($str) == '1' ? __('ticked', 'ct-pro-quiz-lite') : __('not ticked',
+                                                    'ct-pro-quiz-lite');
                                                 break;
                                             case WpAdvQuiz_Model_Form::FORM_TYPE_YES_NO:
                                                 echo esc_attr($str) == 1 ? __('Yes') : __('No');
@@ -688,14 +688,14 @@ class WpAdvQuiz_View_StatisticsAjax extends WpAdvQuiz_View_View
         <table class="wp-list-table widefat">
             <thead>
             <tr>
-                <th scope="col"><?php _e('User', 'wp-adv-quiz'); ?></th>
-                <th scope="col" style="width: 100px;"><?php _e('Points', 'wp-adv-quiz'); ?></th>
-                <th scope="col" style="width: 100px;"><?php _e('Correct', 'wp-adv-quiz'); ?></th>
-                <th scope="col" style="width: 100px;"><?php _e('Incorrect', 'wp-adv-quiz'); ?></th>
-                <th scope="col" style="width: 100px;"><?php _e('Hints used', 'wp-adv-quiz'); ?></th>
-                <th scope="col" style="width: 100px;"><?php _e('Time', 'wp-adv-quiz'); ?> <span
+                <th scope="col"><?php _e('User', 'ct-pro-quiz-lite'); ?></th>
+                <th scope="col" style="width: 100px;"><?php _e('Points', 'ct-pro-quiz-lite'); ?></th>
+                <th scope="col" style="width: 100px;"><?php _e('Correct', 'ct-pro-quiz-lite'); ?></th>
+                <th scope="col" style="width: 100px;"><?php _e('Incorrect', 'ct-pro-quiz-lite'); ?></th>
+                <th scope="col" style="width: 100px;"><?php _e('Hints used', 'ct-pro-quiz-lite'); ?></th>
+                <th scope="col" style="width: 100px;"><?php _e('Time', 'ct-pro-quiz-lite'); ?> <span
                         style="font-size: x-small;">(hh:mm:ss)</span></th>
-                <th scope="col" style="width: 60px;"><?php _e('Results', 'wp-adv-quiz'); ?></th>
+                <th scope="col" style="width: 60px;"><?php _e('Results', 'ct-pro-quiz-lite'); ?></th>
             </tr>
             </thead>
             <tbody>
@@ -703,7 +703,7 @@ class WpAdvQuiz_View_StatisticsAjax extends WpAdvQuiz_View_View
                 <tr>
                     <td colspan="7"
                         style="text-align: center; font-weight: bold; padding: 10px;"><?php _e('No data available',
-                            'wp-adv-quiz'); ?></td>
+                            'ct-pro-quiz-lite'); ?></td>
                 </tr>
             <?php } else { ?>
 
@@ -712,7 +712,7 @@ class WpAdvQuiz_View_StatisticsAjax extends WpAdvQuiz_View_View
                     $sum = $model->getCorrectCount() + $model->getIncorrectCount();
 
                     if (!$model->getUserId()) {
-                        $model->setUserName(__('Anonymous', 'wp-adv-quiz'));
+                        $model->setUserName(__('Anonymous', 'ct-pro-quiz-lite'));
                     }
 
                     if ($sum) {
@@ -742,11 +742,11 @@ class WpAdvQuiz_View_StatisticsAjax extends WpAdvQuiz_View_View
                             <div <?php echo esc_attr($sum) ? 'class="row-actions"' : 'style="visibility: hidden;"'; ?>>
 							<span>
 								<a style="color: red;" class="wpAdvQuiz_delete" href="#"><?php _e('Delete',
-                                        'wp-adv-quiz'); ?></a>
+                                        'ct-pro-quiz-lite'); ?></a>
 							</span>
                                 |
                                 <span>
-                                    <a class="wpAdvQuiz_export" href="#" data-baseurl="admin.php?page=wpAdvQuiz&module=statistic_export&action=user_export&quiz_id=<?php echo esc_attr($this->quizId); ?>&user_id=<?php echo esc_attr($model->getUserId()); ?>&ref_id=0&avg=1&noheader=true"><?php _e('Export', 'wp-adv-quiz'); ?></a>
+                                    <a class="wpAdvQuiz_export" href="#" data-baseurl="admin.php?page=wpAdvQuiz&module=statistic_export&action=user_export&quiz_id=<?php echo esc_attr($this->quizId); ?>&user_id=<?php echo esc_attr($model->getUserId()); ?>&ref_id=0&avg=1&noheader=true"><?php _e('Export', 'ct-pro-quiz-lite'); ?></a>
                                 </span>
                             </div>
 

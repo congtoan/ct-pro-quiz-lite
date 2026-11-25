@@ -30,7 +30,7 @@
     }
 
     wp.blocks.registerBlockType('wp-adv-quiz/quiz', {
-        title: 'Wp-Adv-Quiz',
+        title: 'CT Pro Quiz Lite',
         icon: 'universal-access-alt',
         category: 'common',
         example: {},

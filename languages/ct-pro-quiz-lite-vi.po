@@ -1,0 +1,312 @@
+# Vietnamese translation of the CT Pro Quiz Lite frontend (what quiz takers see).
+# Admin screens are not translated in this file.
+# Edit this file (Poedit or any text editor), then compile:
+#     python tools/po2mo.py languages/ct-pro-quiz-lite-vi.po
+# To override on a site without touching the plugin, put the .mo at
+# wp-content/languages/plugins/ct-pro-quiz-lite-vi.mo
+msgid ""
+msgstr ""
+"Project-Id-Version: CT Pro Quiz Lite 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-25 00:00+0700\n"
+"PO-Revision-Date: 2026-11-25 00:00+0700\n"
+"Last-Translator: \n"
+"Language-Team: Vietnamese\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Domain: ct-pro-quiz-lite\n"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:24
+msgid "Start quiz"
+msgstr "Bắt đầu làm bài"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:25
+msgid "Restart quiz"
+msgstr "Làm lại"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:26
+msgid "Quiz-summary"
+msgstr "Tổng quan bài làm"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:27
+msgid "Finish quiz"
+msgstr "Nộp bài"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:28
+msgid "Quiz is loading..."
+msgstr "Đang tải bài trắc nghiệm..."
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:29
+msgid "You have already completed the quiz before. Hence you can not start it again."
+msgstr "Bạn đã hoàn thành bài trắc nghiệm này trước đó nên không thể làm lại."
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:31
+msgid "You must sign in or sign up to start the quiz."
+msgstr "Bạn cần đăng nhập hoặc đăng ký để bắt đầu làm bài."
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:32
+msgid "You have to finish following quiz, to start this quiz:"
+msgstr "Bạn cần hoàn thành bài trắc nghiệm sau trước khi làm bài này:"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:271
+msgid "Your result has been entered into leaderboard"
+msgstr "Ghi kết quả của bạn vào bảng xếp hạng"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:275 lib/controller/WpAdvQuiz_Controller_Front.php:34
+msgid "Loading"
+msgstr "Đang tải"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:281 lib/view/WpAdvQuiz_View_FrontQuiz.php:281 lib/view/WpAdvQuiz_View_FrontToplist.php:24
+msgid "Name"
+msgstr "Tên"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:286 lib/view/WpAdvQuiz_View_FrontQuiz.php:287
+msgid "E-Mail"
+msgstr "Email"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:296
+msgid "Captcha"
+msgstr "Mã xác nhận"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:303
+msgid "Send"
+msgstr "Gửi"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:409 lib/view/WpAdvQuiz_View_FrontQuiz.php:509
+msgid "You must fill out this field."
+msgstr "Vui lòng điền trường này."
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:412
+msgid "You must specify a number."
+msgstr "Vui lòng nhập một số."
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:413
+msgid "You must specify a text."
+msgstr "Vui lòng nhập nội dung."
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:414
+msgid "You must specify an email address."
+msgstr "Vui lòng nhập địa chỉ email."
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:415
+msgid "You must specify a date."
+msgstr "Vui lòng chọn ngày."
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:495
+msgid "Yes"
+msgstr "Có"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:500
+msgid "No"
+msgstr "Không"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:565
+#, php-format
+msgid "%s of %s questions completed"
+msgstr "Đã làm %s/%s câu hỏi"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:568
+msgid "Questions"
+msgstr "Danh sách câu hỏi"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:585 lib/view/WpAdvQuiz_View_FrontQuiz.php:603
+msgid "Information"
+msgstr "Thông tin"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:650
+msgid "Time limit"
+msgstr "Thời gian còn lại"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:672
+msgid "Answered"
+msgstr "Đã trả lời"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:676
+msgid "Review"
+msgstr "Cần xem lại"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:683
+msgid "Review question"
+msgstr "Đánh dấu xem lại"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:704
+msgid "Results"
+msgstr "Kết quả"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:707
+#, php-format
+msgid "%s of %s questions answered correctly"
+msgstr "Trả lời đúng %s/%s câu hỏi"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:713
+msgid "Your time: <span></span>"
+msgstr "Thời gian làm bài: <span></span>"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:717
+msgid "Time has elapsed"
+msgstr "Đã hết thời gian"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:721
+#, php-format
+msgid "You have reached %s of %s points, (%s)"
+msgstr "Bạn đạt %s/%s điểm (%s)"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:730
+msgid "Average score"
+msgstr "Điểm trung bình"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:737
+msgid "Your score"
+msgstr "Điểm của bạn"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:749 lib/controller/WpAdvQuiz_Controller_Quiz.php:746
+msgid "Categories"
+msgstr "Danh mục"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:755 lib/controller/WpAdvQuiz_Controller_Quiz.php:740
+msgid "Not categorized"
+msgstr "Chưa phân loại"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:802
+msgid "View questions"
+msgstr "Xem lại câu hỏi"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:807
+msgid "Show leaderboard"
+msgstr "Xem bảng xếp hạng"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:870
+#, php-format
+msgid "Question %s of %s"
+msgstr "Câu %s/%s"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:875
+msgid "Question"
+msgstr "Câu"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:879
+#, php-format
+msgid "%d points"
+msgstr "%d điểm"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:886
+#, php-format
+msgid "Category: %s"
+msgstr "Danh mục: %s"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:897
+msgid "Sort elements"
+msgstr "Sắp xếp các mục"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:1047 lib/view/WpAdvQuiz_View_FrontQuiz.php:1057
+msgid "Correct"
+msgstr "Đúng"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:1050 lib/view/WpAdvQuiz_View_FrontQuiz.php:1085 lib/view/WpAdvQuiz_View_FrontToplist.php:26
+msgid "Points"
+msgstr "Điểm"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:1082 lib/view/WpAdvQuiz_View_FrontQuiz.php:1092
+msgid "Incorrect"
+msgstr "Sai"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:1123 lib/view/WpAdvQuiz_View_FrontQuiz.php:1150
+msgid "Hint"
+msgstr "Gợi ý"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:1139
+msgid "Skip question"
+msgstr "Bỏ qua"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:1145
+msgid "Back"
+msgstr "Quay lại"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:1155
+msgid "Next"
+msgstr "Câu tiếp"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:1158
+msgid "Check"
+msgstr "Kiểm tra"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:1166
+msgid "Clear"
+msgstr "Xóa lựa chọn"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:1174
+msgid "Practice"
+msgstr "Xem đáp án"
+
+#: lib/view/WpAdvQuiz_View_FrontQuiz.php:1192 lib/view/WpAdvQuiz_View_FrontQuiz.php:1195
+#, php-format
+msgid "Page %d"
+msgstr "Trang %d"
+
+#: lib/view/WpAdvQuiz_View_FrontToplist.php:17
+msgid "Leaderboard"
+msgstr "Bảng xếp hạng"
+
+#: lib/view/WpAdvQuiz_View_FrontToplist.php:20
+#, php-format
+msgid "maximum of %s points"
+msgstr "tối đa %s điểm"
+
+#: lib/view/WpAdvQuiz_View_FrontToplist.php:23
+msgid "Pos."
+msgstr "Hạng"
+
+#: lib/view/WpAdvQuiz_View_FrontToplist.php:25
+msgid "Entered on"
+msgstr "Ngày"
+
+#: lib/view/WpAdvQuiz_View_FrontToplist.php:27
+msgid "Result"
+msgstr "Kết quả"
+
+#: lib/view/WpAdvQuiz_View_FrontToplist.php:32
+msgid "Table is loading"
+msgstr "Đang tải bảng..."
+
+#: lib/view/WpAdvQuiz_View_FrontToplist.php:35
+msgid "No data available"
+msgstr "Chưa có dữ liệu"
+
+#: lib/controller/WpAdvQuiz_Controller_Front.php:35
+msgid "You must answer this question."
+msgstr "Bạn cần trả lời câu hỏi này."
+
+#: lib/controller/WpAdvQuiz_Controller_Front.php:36
+msgid "You must answer all questions before you can completed the quiz."
+msgstr "Bạn cần trả lời tất cả câu hỏi trước khi nộp bài."
+
+#: lib/controller/WpAdvQuiz_Controller_Front.php:38
+msgid "All fields have to be filled."
+msgstr "Vui lòng điền đầy đủ các trường."
+
+#: lib/controller/WpAdvQuiz_Controller_Toplist.php:65 lib/controller/WpAdvQuiz_Controller_Toplist.php:69 lib/controller/WpAdvQuiz_Controller_Toplist.php:86
+msgid "An error has occurred."
+msgstr "Đã xảy ra lỗi."
+
+#: lib/controller/WpAdvQuiz_Controller_Toplist.php:107 lib/controller/WpAdvQuiz_Controller_Toplist.php:116
+msgid "You can not enter again."
+msgstr "Bạn không thể gửi kết quả thêm lần nữa."
+
+#: lib/controller/WpAdvQuiz_Controller_Toplist.php:120
+msgid "No name or e-mail entered."
+msgstr "Bạn chưa nhập tên hoặc email."
+
+#: lib/controller/WpAdvQuiz_Controller_Toplist.php:124
+msgid "Your name can not exceed 15 characters."
+msgstr "Tên không được dài quá 15 ký tự."
+
+#: lib/controller/WpAdvQuiz_Controller_Toplist.php:132
+msgid "You entered wrong captcha code."
+msgstr "Mã xác nhận không đúng."
+
+#: lib/controller/WpAdvQuiz_Controller_Toplist.php:259
+msgid "You signed up successfully."
+msgstr "Đã ghi kết quả của bạn vào bảng xếp hạng."

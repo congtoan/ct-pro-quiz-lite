@@ -302,18 +302,18 @@ class WpAdvQuiz_View_QuizOverall extends WpAdvQuiz_View_View
         ?>
 
         <div id="wpAdvQuiz_tab_donat" style="display: none;" class="hide-if-no-js screen-meta-toggle">
-            <a href="https://www.paypal.com/donate?hosted_button_id=7EL8K7ELFWHSY" class="button show-settings" target="_blank"><?php _e('Donate', 'wp-adv-quiz'); ?></a>
+            <a href="https://www.paypal.com/donate?hosted_button_id=7EL8K7ELFWHSY" class="button show-settings" target="_blank"><?php _e('Donate', 'ct-pro-quiz-lite'); ?></a>
         </div>
 
         <div class="wrap wpAdvQuiz_quizOverall" style="">
             <h2>
-                <?php _e('Quiz overview', 'wp-adv-quiz'); ?>
+                <?php _e('Quiz overview', 'ct-pro-quiz-lite'); ?>
                 <?php if (current_user_can('wpAdvQuiz_add_quiz')) { ?>
                     <a class="add-new-h2" href="admin.php?page=wpAdvQuiz&action=addEdit"><?php echo __('Add quiz',
-                            'wp-adv-quiz'); ?></a>
+                            'ct-pro-quiz-lite'); ?></a>
                 <?php }
                 if (current_user_can('wpAdvQuiz_import')) { ?>
-                    <a class="add-new-h2 wpAdvQuiz_import" href="#"><?php echo __('Import', 'wp-adv-quiz'); ?></a>
+                    <a class="add-new-h2 wpAdvQuiz_import" href="#"><?php echo __('Import', 'ct-pro-quiz-lite'); ?></a>
                 <?php } ?>
                 <?php do_action('wpAdvQuiz_view_quizOverall_head_buttons', $this); ?>
             </h2>
@@ -327,9 +327,9 @@ class WpAdvQuiz_View_QuizOverall extends WpAdvQuiz_View_View
 
                     <div style="background-color: #FFFBCC; padding: 6px; border: 1px solid #E6DB55; float: left;">
                         <strong><?php _e('You need special WP-Adv-Quiz modification for your website?',
-                                'wp-adv-quiz'); ?></strong><br>
+                                'ct-pro-quiz-lite'); ?></strong><br>
                         <a class="button-primary" href="admin.php?page=wpAdvQuiz&module=info_adaptation"
-                           style="margin-top: 5px;"><?php _e('Learn more', 'wp-adv-quiz'); ?></a>
+                           style="margin-top: 5px;"><?php _e('Learn more', 'ct-pro-quiz-lite'); ?></a>
                     </div>
 
                     <div style="clear: both;"></div>
@@ -340,10 +340,10 @@ class WpAdvQuiz_View_QuizOverall extends WpAdvQuiz_View_View
             <p style="margin-bottom: 0; display: none;">
                 <?php if (current_user_can('wpAdvQuiz_add_quiz')) { ?>
                     <a class="button-secondary" href="admin.php?page=wpAdvQuiz&action=addEdit"><?php echo __('Add quiz',
-                            'wp-adv-quiz'); ?></a>
+                            'ct-pro-quiz-lite'); ?></a>
                 <?php }
                 if (current_user_can('wpAdvQuiz_import')) { ?>
-                    <a class="button-secondary wpAdvQuiz_import" href="#"><?php echo __('Import', 'wp-adv-quiz'); ?></a>
+                    <a class="button-secondary wpAdvQuiz_import" href="#"><?php echo __('Import', 'ct-pro-quiz-lite'); ?></a>
                 <?php } ?>
             </p>
 
@@ -392,10 +392,10 @@ class WpAdvQuiz_View_QuizOverall extends WpAdvQuiz_View_View
             <div class="wpAdvQuiz_importList">
                 <form action="admin.php?page=wpAdvQuiz&module=importExport&action=import" method="POST"
                       enctype="multipart/form-data">
-                    <h3 style="margin-top: 0;"><?php _e('Import', 'wp-adv-quiz'); ?></h3>
+                    <h3 style="margin-top: 0;"><?php _e('Import', 'ct-pro-quiz-lite'); ?></h3>
 
-                    <p><?php _e('Import only files from known and trusted sources.', 'wp-adv-quiz'); ?></p>
-                    <p><?php echo sprintf(__('Supported formats: %s', 'wp-adv-quiz'), implode(', ', $this->supportedImportFormats['extensions'])) ?></p>
+                    <p><?php _e('Import only files from known and trusted sources.', 'ct-pro-quiz-lite'); ?></p>
+                    <p><?php echo sprintf(__('Supported formats: %s', 'ct-pro-quiz-lite'), implode(', ', $this->supportedImportFormats['extensions'])) ?></p>
 
 
                     <?php do_action('wpAdvQuiz_view_quizOVerall_importListBox', $this); ?>
@@ -405,10 +405,10 @@ class WpAdvQuiz_View_QuizOverall extends WpAdvQuiz_View_View
                         $uploadMB = $this->getMaxUploadSize();
                         ?>
                         <input type="file" name="import" accept=".waq,.xml"
-                               required="required"> <?php printf(__('Maximal %d MiB', 'wp-adv-quiz'), $uploadMB); ?>
+                               required="required"> <?php printf(__('Maximal %d MiB', 'ct-pro-quiz-lite'), $uploadMB); ?>
                     </div>
                     <input class="button-primary" name="importStart" id="importStart"
-                           value="<?php _e('Start import', 'wp-adv-quiz'); ?>" type="submit">
+                           value="<?php _e('Start import', 'ct-pro-quiz-lite'); ?>" type="submit">
                 </form>
             </div>
         </div>
@@ -432,10 +432,10 @@ class WpAdvQuiz_View_QuizOverall extends WpAdvQuiz_View_View
         <div id="wpAdvQuiz_exportList_box" style="display: none;">
             <div class="wpAdvQuiz_exportList">
                 <form action="admin.php?page=wpAdvQuiz&module=importExport&action=export&noheader=true" method="POST">
-                    <h3 style="margin-top: 0;"><?php _e('Export', 'wp-adv-quiz'); ?></h3>
+                    <h3 style="margin-top: 0;"><?php _e('Export', 'ct-pro-quiz-lite'); ?></h3>
 
                     <p><?php echo __('Choose the respective question, which you would like to export and press on "Start export"',
-                            'wp-adv-quiz'); ?></p>
+                            'ct-pro-quiz-lite'); ?></p>
                     <ul></ul>
                     <div style="clear: both; margin-bottom: 10px;"></div>
                     <div id="exportHidden"></div>
@@ -450,7 +450,7 @@ class WpAdvQuiz_View_QuizOverall extends WpAdvQuiz_View_View
                         </select>
                     </div>
                     <input class="button-primary" name="exportStart" id="exportStart"
-                           value="<?php echo __('Start export', 'wp-adv-quiz'); ?>" type="submit">
+                           value="<?php echo __('Start export', 'ct-pro-quiz-lite'); ?>" type="submit">
                 </form>
             </div>
         </div>
@@ -465,9 +465,9 @@ class WpAdvQuiz_View_QuizOverall extends WpAdvQuiz_View_View
         <div id="wpAdvQuiz_setQuizCategoryList_box" style="display: none;">
             <div class="wpAdvQuiz_setQuizCategoryList">
                 <form action="#" method="POST">
-                    <h3 style="margin-top: 0;"><?php _e('Set Quiz Categories', 'wp-adv-quiz'); ?></h3>
+                    <h3 style="margin-top: 0;"><?php _e('Set Quiz Categories', 'ct-pro-quiz-lite'); ?></h3>
 
-                    <p><?php _e('Sets multiple quiz categories ', 'wp-adv-quiz'); ?></p>
+                    <p><?php _e('Sets multiple quiz categories ', 'ct-pro-quiz-lite'); ?></p>
 
                     <div style="margin-bottom: 10px">
                     </div>
@@ -477,17 +477,17 @@ class WpAdvQuiz_View_QuizOverall extends WpAdvQuiz_View_View
 
                     <div style="margin-bottom: 10px;">
                         <p class="description">
-                            <?php _e('You can assign classify category for a quiz.', 'wp-adv-quiz'); ?>
+                            <?php _e('You can assign classify category for a quiz.', 'ct-pro-quiz-lite'); ?>
                         </p>
 
                         <p class="description">
-                            <?php _e('You can manage categories in global settings.', 'wp-adv-quiz'); ?>
+                            <?php _e('You can manage categories in global settings.', 'ct-pro-quiz-lite'); ?>
                         </p>
 
                         <div>
                             <select name="category">
-                                <option value="-1">--- <?php _e('Create new category', 'wp-adv-quiz'); ?> ----</option>
-                                <option value="0" selected="selected">--- <?php _e('No category', 'wp-adv-quiz'); ?>
+                                <option value="-1">--- <?php _e('Create new category', 'ct-pro-quiz-lite'); ?> ----</option>
+                                <option value="0" selected="selected">--- <?php _e('No category', 'ct-pro-quiz-lite'); ?>
                                     ---
                                 </option>
                                 <?php
@@ -498,10 +498,10 @@ class WpAdvQuiz_View_QuizOverall extends WpAdvQuiz_View_View
                             </select>
                         </div>
                         <div style="display: none;" id="categoryAddBox">
-                            <h4><?php _e('Create new category', 'wp-adv-quiz'); ?></h4>
+                            <h4><?php _e('Create new category', 'ct-pro-quiz-lite'); ?></h4>
                             <input type="text" name="categoryAdd" value="">
                             <input type="button" class="button-secondary" name="" id="categoryAddBtn"
-                                   value="<?php _e('Create', 'wp-adv-quiz'); ?>">
+                                   value="<?php _e('Create', 'ct-pro-quiz-lite'); ?>">
                         </div>
                         <div id="categoryMsgBox"
                              style="display:none; padding: 5px; border: 1px solid rgb(160, 160, 160); background-color: rgb(255, 255, 168); font-weight: bold; margin: 5px; ">
@@ -510,7 +510,7 @@ class WpAdvQuiz_View_QuizOverall extends WpAdvQuiz_View_View
                     </div>
 
                     <input class="button-primary" name="setCategoriesStart" id="setCategoriesStart"
-                           value="<?php _e('Save', 'wp-adv-quiz'); ?>" type="button">
+                           value="<?php _e('Save', 'ct-pro-quiz-lite'); ?>" type="button">
                     <img id="ajaxLoad" style="display: none;" alt="load"
                          src="data:image/gif;base64,R0lGODlhEAAQAPYAAP///wAAANTU1JSUlGBgYEBAQERERG5ubqKiotzc3KSkpCQkJCgoKDAwMDY2Nj4+Pmpqarq6uhwcHHJycuzs7O7u7sLCwoqKilBQUF5eXr6+vtDQ0Do6OhYWFoyMjKqqqlxcXHx8fOLi4oaGhg4ODmhoaJycnGZmZra2tkZGRgoKCrCwsJaWlhgYGAYGBujo6PT09Hh4eISEhPb29oKCgqioqPr6+vz8/MDAwMrKyvj4+NbW1q6urvDw8NLS0uTk5N7e3s7OzsbGxry8vODg4NjY2PLy8tra2np6erS0tLKyskxMTFJSUlpaWmJiYkJCQjw8PMTExHZ2djIyMurq6ioqKo6OjlhYWCwsLB4eHqCgoE5OThISEoiIiGRkZDQ0NMjIyMzMzObm5ri4uH5+fpKSkp6enlZWVpCQkEpKSkhISCIiIqamphAQEAwMDKysrAQEBJqamiYmJhQUFDg4OHR0dC4uLggICHBwcCAgIFRUVGxsbICAgAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAAHjYAAgoOEhYUbIykthoUIHCQqLoI2OjeFCgsdJSsvgjcwPTaDAgYSHoY2FBSWAAMLE4wAPT89ggQMEbEzQD+CBQ0UsQA7RYIGDhWxN0E+ggcPFrEUQjuCCAYXsT5DRIIJEBgfhjsrFkaDERkgJhswMwk4CDzdhBohJwcxNB4sPAmMIlCwkOGhRo5gwhIGAgAh+QQJCgAAACwAAAAAEAAQAAAHjIAAgoOEhYU7A1dYDFtdG4YAPBhVC1ktXCRfJoVKT1NIERRUSl4qXIRHBFCbhTKFCgYjkII3g0hLUbMAOjaCBEw9ukZGgidNxLMUFYIXTkGzOmLLAEkQCLNUQMEAPxdSGoYvAkS9gjkyNEkJOjovRWAb04NBJlYsWh9KQ2FUkFQ5SWqsEJIAhq6DAAIBACH5BAkKAAAALAAAAAAQABAAAAeJgACCg4SFhQkKE2kGXiwChgBDB0sGDw4NDGpshTheZ2hRFRVDUmsMCIMiZE48hmgtUBuCYxBmkAAQbV2CLBM+t0puaoIySDC3VC4tgh40M7eFNRdH0IRgZUO3NjqDFB9mv4U6Pc+DRzUfQVQ3NzAULxU2hUBDKENCQTtAL9yGRgkbcvggEq9atUAAIfkECQoAAAAsAAAAABAAEAAAB4+AAIKDhIWFPygeEE4hbEeGADkXBycZZ1tqTkqFQSNIbBtGPUJdD088g1QmMjiGZl9MO4I5ViiQAEgMA4JKLAm3EWtXgmxmOrcUElWCb2zHkFQdcoIWPGK3Sm1LgkcoPrdOKiOCRmA4IpBwDUGDL2A5IjCCN/QAcYUURQIJIlQ9MzZu6aAgRgwFGAFvKRwUCAAh+QQJCgAAACwAAAAAEAAQAAAHjIAAgoOEhYUUYW9lHiYRP4YACStxZRc0SBMyFoVEPAoWQDMzAgolEBqDRjg8O4ZKIBNAgkBjG5AAZVtsgj44VLdCanWCYUI3txUPS7xBx5AVDgazAjC3Q3ZeghUJv5B1cgOCNmI/1YUeWSkCgzNUFDODKydzCwqFNkYwOoIubnQIt244MzDC1q2DggIBACH5BAkKAAAALAAAAAAQABAAAAeJgACCg4SFhTBAOSgrEUEUhgBUQThjSh8IcQo+hRUbYEdUNjoiGlZWQYM2QD4vhkI0ZWKCPQmtkG9SEYJURDOQAD4HaLuyv0ZeB4IVj8ZNJ4IwRje/QkxkgjYz05BdamyDN9uFJg9OR4YEK1RUYzFTT0qGdnduXC1Zchg8kEEjaQsMzpTZ8avgoEAAIfkECQoAAAAsAAAAABAAEAAAB4iAAIKDhIWFNz0/Oz47IjCGADpURAkCQUI4USKFNhUvFTMANxU7KElAhDA9OoZHH0oVgjczrJBRZkGyNpCCRCw8vIUzHmXBhDM0HoIGLsCQAjEmgjIqXrxaBxGCGw5cF4Y8TnybglprLXhjFBUWVnpeOIUIT3lydg4PantDz2UZDwYOIEhgzFggACH5BAkKAAAALAAAAAAQABAAAAeLgACCg4SFhjc6RhUVRjaGgzYzRhRiREQ9hSaGOhRFOxSDQQ0uj1RBPjOCIypOjwAJFkSCSyQrrhRDOYILXFSuNkpjggwtvo86H7YAZ1korkRaEYJlC3WuESxBggJLWHGGFhcIxgBvUHQyUT1GQWwhFxuFKyBPakxNXgceYY9HCDEZTlxA8cOVwUGBAAA7AAAAAAAAAAAA">
                 </form>

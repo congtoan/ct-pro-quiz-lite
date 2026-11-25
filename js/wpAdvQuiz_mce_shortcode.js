@@ -12,7 +12,7 @@
                 ed.addCommand('wp_adv_quiz_button_mce_cmd', function () {
                     ed.windowManager.open(
                         {
-                            title: 'Wp-Adv-Quiz',
+                            title: 'CT Pro Quiz Lite',
                             file: ajaxurl + '?action=wpAdvQuiz_generate_mce_shortcode',
                         },
                         {

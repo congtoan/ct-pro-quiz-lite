@@ -37,26 +37,26 @@ class WpAdvQuiz_Controller_Admin
         $isRtl = isset($wp_locale->is_rtl) ? $wp_locale->is_rtl : false;
 
         $translation_array = array(
-            'delete_msg' => __('Do you really want to delete the quiz/question?', 'wp-adv-quiz'),
-            'no_title_msg' => __('Title is not filled!', 'wp-adv-quiz'),
-            'no_question_msg' => __('No question deposited!', 'wp-adv-quiz'),
-            'no_correct_msg' => __('Correct answer was not selected!', 'wp-adv-quiz'),
-            'no_answer_msg' => __('No answer deposited!', 'wp-adv-quiz'),
-            'no_quiz_start_msg' => __('No quiz description filled!', 'wp-adv-quiz'),
-            'fail_grade_result' => __('The percent values in result text are incorrect.', 'wp-adv-quiz'),
-            'no_nummber_points' => __('No number in the field "Points" or less than 1', 'wp-adv-quiz'),
-            'no_nummber_points_new' => __('No number in the field "Points" or less than 0', 'wp-adv-quiz'),
-            'no_selected_quiz' => __('No quiz selected', 'wp-adv-quiz'),
-            'reset_statistics_msg' => __('Do you really want to reset the statistic?', 'wp-adv-quiz'),
-            'no_data_available' => __('No data available', 'wp-adv-quiz'),
-            'no_sort_element_criterion' => __('No sort element in the criterion', 'wp-adv-quiz'),
-            'dif_points' => __('"Different points for every answer" is not possible at "Free" choice', 'wp-adv-quiz'),
-            'category_no_name' => __('You must specify a name.', 'wp-adv-quiz'),
-            'confirm_delete_entry' => __('This entry should really be deleted?', 'wp-adv-quiz'),
-            'not_all_fields_completed' => __('Not all fields completed.', 'wp-adv-quiz'),
-            'temploate_no_name' => __('You must specify a template name.', 'wp-adv-quiz'),
-            'closeText' => __('Close', 'wp-adv-quiz'),
-            'currentText' => __('Today', 'wp-adv-quiz'),
+            'delete_msg' => __('Do you really want to delete the quiz/question?', 'ct-pro-quiz-lite'),
+            'no_title_msg' => __('Title is not filled!', 'ct-pro-quiz-lite'),
+            'no_question_msg' => __('No question deposited!', 'ct-pro-quiz-lite'),
+            'no_correct_msg' => __('Correct answer was not selected!', 'ct-pro-quiz-lite'),
+            'no_answer_msg' => __('No answer deposited!', 'ct-pro-quiz-lite'),
+            'no_quiz_start_msg' => __('No quiz description filled!', 'ct-pro-quiz-lite'),
+            'fail_grade_result' => __('The percent values in result text are incorrect.', 'ct-pro-quiz-lite'),
+            'no_nummber_points' => __('No number in the field "Points" or less than 1', 'ct-pro-quiz-lite'),
+            'no_nummber_points_new' => __('No number in the field "Points" or less than 0', 'ct-pro-quiz-lite'),
+            'no_selected_quiz' => __('No quiz selected', 'ct-pro-quiz-lite'),
+            'reset_statistics_msg' => __('Do you really want to reset the statistic?', 'ct-pro-quiz-lite'),
+            'no_data_available' => __('No data available', 'ct-pro-quiz-lite'),
+            'no_sort_element_criterion' => __('No sort element in the criterion', 'ct-pro-quiz-lite'),
+            'dif_points' => __('"Different points for every answer" is not possible at "Free" choice', 'ct-pro-quiz-lite'),
+            'category_no_name' => __('You must specify a name.', 'ct-pro-quiz-lite'),
+            'confirm_delete_entry' => __('This entry should really be deleted?', 'ct-pro-quiz-lite'),
+            'not_all_fields_completed' => __('Not all fields completed.', 'ct-pro-quiz-lite'),
+            'temploate_no_name' => __('You must specify a template name.', 'ct-pro-quiz-lite'),
+            'closeText' => __('Close', 'ct-pro-quiz-lite'),
+            'currentText' => __('Today', 'ct-pro-quiz-lite'),
             'monthNames' => array_values($wp_locale->month),
             'monthNamesShort' => array_values($wp_locale->month_abbrev),
             'dayNames' => array_values($wp_locale->weekday),
@@ -97,32 +97,32 @@ class WpAdvQuiz_Controller_Admin
         $pages = array();
 
         $pages[] = add_menu_page(
-            'WP-Adv-Quiz',
-            'WP-Adv-Quiz',
+            'CT Pro Quiz Lite',
+            'CT Pro Quiz Lite',
             'wpAdvQuiz_show',
             'wpAdvQuiz',
             array($this, 'route'));
 
         $pages[] = add_submenu_page(
             'wpAdvQuiz',
-            __('Global settings', 'wp-adv-quiz'),
-            __('Global settings', 'wp-adv-quiz'),
+            __('Global settings', 'ct-pro-quiz-lite'),
+            __('Global settings', 'ct-pro-quiz-lite'),
             'wpAdvQuiz_change_settings',
             'wpAdvQuiz_glSettings',
             array($this, 'route'));
 			
        $pages[] = add_submenu_page(
             'wpAdvQuiz',
-            __('Statistics', 'wp-adv-quiz'),
-            __('Statistics', 'wp-adv-quiz'),
+            __('Statistics', 'ct-pro-quiz-lite'),
+            __('Statistics', 'ct-pro-quiz-lite'),
             'wpAdvQuiz_show_statistics',
             'wpAdvQuiz_global_statistics',
             array($this, 'route'));
 			
         $pages[] = add_submenu_page(
             'wpAdvQuiz',
-            __('Support & More', 'wp-adv-quiz'),
-            __('Support & More', 'wp-adv-quiz'),
+            __('Support & More', 'ct-pro-quiz-lite'),
+            __('Support & More', 'ct-pro-quiz-lite'),
             'wpAdvQuiz_show',
             'wpAdvQuiz_waq_support',
             array($this, 'route'));

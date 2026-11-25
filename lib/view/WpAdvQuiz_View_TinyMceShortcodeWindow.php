@@ -12,7 +12,7 @@ class WpAdvQuiz_View_TinyMceShortcodeWindow extends WpAdvQuiz_View_View
         <html lang="en">
         <head>
             <meta charset="UTF-8">
-            <title>Wp-Adv-Quiz</title>
+            <title>CT Pro Quiz Lite</title>
             <script type="text/javascript" src="<?php echo site_url('/wp-includes/js/tinymce/tiny_mce_popup.js'); ?>"></script>
             <script type="text/javascript" src="<?php echo site_url('/wp-includes/js/tinymce/utils/mctabs.js'); ?>"></script>
             <script type="text/javascript" src="<?php echo site_url('/wp-includes/js/tinymce/utils/form_utils.js'); ?>"></script>

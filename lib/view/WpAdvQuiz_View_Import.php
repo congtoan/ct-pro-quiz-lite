@@ -30,13 +30,13 @@ class WpAdvQuiz_View_Import extends WpAdvQuiz_View_View
             }
         </style>
         <div class="wrap wpAdvQuiz_importOverall">
-            <h2><?php _e('Import', 'wp-adv-quiz'); ?></h2>
+            <h2><?php _e('Import', 'ct-pro-quiz-lite'); ?></h2>
 
             <p><a class="button-secondary" href="admin.php?page=wpAdvQuiz"><?php _e('back to overview',
-                        'wp-adv-quiz'); ?></a></p>
+                        'ct-pro-quiz-lite'); ?></a></p>
             <?php if ($this->error) { ?>
                 <div style="padding: 10px; background-color: rgb(255, 199, 199); margin-top: 20px; border: 1px dotted;">
-                    <h3 style="margin-top: 0;"><?php _e('Error', 'wp-adv-quiz'); ?></h3>
+                    <h3 style="margin-top: 0;"><?php _e('Error', 'ct-pro-quiz-lite'); ?></h3>
 
                     <div>
                         <?php echo esc_html($this->error); ?>
@@ -45,10 +45,10 @@ class WpAdvQuiz_View_Import extends WpAdvQuiz_View_View
             <?php } else {
                 if ($this->finish) { ?>
                     <div style="padding: 10px; background-color: #C7E4FF; margin-top: 20px; border: 1px dotted;">
-                        <h3 style="margin-top: 0;"><?php _e('Successfully', 'wp-adv-quiz'); ?></h3>
+                        <h3 style="margin-top: 0;"><?php _e('Successfully', 'ct-pro-quiz-lite'); ?></h3>
 
                         <div>
-                            <?php _e('Import completed successfully', 'wp-adv-quiz'); ?>
+                            <?php _e('Import completed successfully', 'ct-pro-quiz-lite'); ?>
                         </div>
                     </div>
                 <?php } else { ?>
@@ -57,8 +57,8 @@ class WpAdvQuiz_View_Import extends WpAdvQuiz_View_View
                             <thead>
                             <tr>
                                 <th scope="col" width="30px"></th>
-                                <th scope="col" width="40%"><?php _e('Quiz name', 'wp-adv-quiz'); ?></th>
-                                <th scope="col"><?php _e('Questions', 'wp-adv-quiz'); ?></th>
+                                <th scope="col" width="40%"><?php _e('Quiz name', 'ct-pro-quiz-lite'); ?></th>
+                                <th scope="col"><?php _e('Questions', 'ct-pro-quiz-lite'); ?></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -87,7 +87,7 @@ class WpAdvQuiz_View_Import extends WpAdvQuiz_View_View
                         <input name="importData" value="<?php echo esc_attr($this->importData); ?>" type="hidden">
                         <input name="importType" value="<?php echo esc_attr($this->importType); ?>" type="hidden">
                         <input style="margin-top: 20px;" class="button-primary" name="importSave"
-                               value="<?php echo __('Start import', 'wp-adv-quiz'); ?>" type="submit">
+                               value="<?php echo __('Start import', 'ct-pro-quiz-lite'); ?>" type="submit">
                     </form>
                 <?php }
             } ?>

@@ -15,10 +15,10 @@ class WpAdvQuiz_View_QuizOverallTable extends WP_List_Table
     {
         $columns = array(
             'cb' => '<input type="checkbox" />',
-            'name' => __('Name', 'wp-adv-quiz'),
-            'category' => __('Category', 'wp-adv-quiz'),
-            'shortcode' => __('Shortcode', 'wp-adv-quiz'),
-            'shortcode_leaderboard' => __('Shortcode-Leaderboard', 'wp-adv-quiz')
+            'name' => __('Name', 'ct-pro-quiz-lite'),
+            'category' => __('Category', 'ct-pro-quiz-lite'),
+            'shortcode' => __('Shortcode', 'ct-pro-quiz-lite'),
+            'shortcode_leaderboard' => __('Shortcode-Leaderboard', 'ct-pro-quiz-lite')
         );
 
         return $columns;
@@ -27,8 +27,8 @@ class WpAdvQuiz_View_QuizOverallTable extends WP_List_Table
     function __construct($quizItems, $quizCount, $categoryItems, $perPage)
     {
         parent::__construct(array(
-            'singular' => __('Quiz', 'wp-adv-quiz'),
-            'plural' => __('Quiz', 'wp-adv-quiz'),
+            'singular' => __('Quiz', 'ct-pro-quiz-lite'),
+            'plural' => __('Quiz', 'ct-pro-quiz-lite'),
             'ajax' => false,
             'screen' => 'toplevel_page_wpproquiz'
         ));
@@ -41,7 +41,7 @@ class WpAdvQuiz_View_QuizOverallTable extends WP_List_Table
 
     function no_items()
     {
-        _e('No data available', 'wp-adv-quiz');
+        _e('No data available', 'ct-pro-quiz-lite');
     }
 
     function column_default($item, $column_name)
@@ -68,30 +68,30 @@ class WpAdvQuiz_View_QuizOverallTable extends WP_List_Table
     {
         $actions = array(
             'wpAdvQuiz_questions' => sprintf('<a href="?page=wpAdvQuiz&module=question&quiz_id=%s">' . __('Questions',
-                    'wp-adv-quiz') . '</a>', $item['ID']),
+                    'ct-pro-quiz-lite') . '</a>', $item['ID']),
         );
 
         if (current_user_can('wpAdvQuiz_edit_quiz')) {
             $actions['wpAdvQuiz_edit'] = sprintf('<a href="?page=wpAdvQuiz&action=addEdit&quizId=%s">' . __('Edit',
-                    'wp-adv-quiz') . '</a>', $item['ID']);
+                    'ct-pro-quiz-lite') . '</a>', $item['ID']);
         }
 
         if (current_user_can('wpAdvQuiz_delete_quiz')) {
             $actions['wpAdvQuiz_delete'] = sprintf('<a style="color: red;" href="?page=wpAdvQuiz&action=delete&id=%s">' . __('Delete',
-                    'wp-adv-quiz') . '</a>', $item['ID']);
+                    'ct-pro-quiz-lite') . '</a>', $item['ID']);
         }
 
         $actions['wpAdvQuiz_preview'] = sprintf('<a href="?page=wpAdvQuiz&module=preview&id=%s">' . __('Preview',
-                'wp-adv-quiz') . '</a>', $item['ID']);
+                'ct-pro-quiz-lite') . '</a>', $item['ID']);
 
         if (current_user_can('wpAdvQuiz_show_statistics')) {
             $actions['wpAdvQuiz_statistics'] = sprintf('<a href="?page=wpAdvQuiz&module=statistics&id=%s">' . __('Statistics',
-                    'wp-adv-quiz') . '</a>', $item['ID']);
+                    'ct-pro-quiz-lite') . '</a>', $item['ID']);
         }
 
         if (current_user_can('wpAdvQuiz_toplist_edit')) {
             $actions['wpAdvQuiz_leaderboard'] = sprintf('<a href="?page=wpAdvQuiz&module=toplist&id=%s">' . __('Leaderboard',
-                    'wp-adv-quiz') . '</a>', $item['ID']);
+                    'ct-pro-quiz-lite') . '</a>', $item['ID']);
         }
 
         return sprintf('<a class="row-title" href="?page=wpAdvQuiz&module=question&quiz_id=%1$s">%2$s</a> %3$s',
@@ -103,15 +103,15 @@ class WpAdvQuiz_View_QuizOverallTable extends WP_List_Table
         $actions = array();
 
         if (current_user_can('wpAdvQuiz_delete_quiz')) {
-            $actions['delete'] = __('Delete', 'wp-adv-quiz');
+            $actions['delete'] = __('Delete', 'ct-pro-quiz-lite');
         }
 
         if (current_user_can('wpAdvQuiz_export')) {
-            $actions['export'] = __('Export', 'wp-adv-quiz');
+            $actions['export'] = __('Export', 'ct-pro-quiz-lite');
         }
 
         if (current_user_can('wpAdvQuiz_edit_quiz')) {
-            $actions['set_category'] = __('Set Category', 'wp-adv-quiz');
+            $actions['set_category'] = __('Set Category', 'ct-pro-quiz-lite');
         }
 
         return $actions;

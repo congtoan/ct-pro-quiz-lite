@@ -12,12 +12,12 @@ class WpAdvQuiz_View_StyleManager extends WpAdvQuiz_View_View
         <div class="wrap">
             <h2 style="margin-bottom: 10px;"><?php echo esc_html($this->header); ?></h2>
             <a class="button-secondary" href="admin.php?page=wpAdvQuiz"><?php _e('back to overview',
-                    'wp-adv-quiz'); ?></a>
+                    'ct-pro-quiz-lite'); ?></a>
 
             <form method="post">
                 <div id="poststuff">
                     <div class="postbox">
-                        <h3 class="hndle"><?php _e('Front', 'wp-adv-quiz'); ?></h3>
+                        <h3 class="hndle"><?php _e('Front', 'ct-pro-quiz-lite'); ?></h3>
 
                         <div class="wrap wpAdvQuiz_quizEdit">
                             <table class="form-table">

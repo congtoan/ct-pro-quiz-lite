@@ -17,7 +17,7 @@ class WpAdvQuiz_Controller_Question extends WpAdvQuiz_Controller_Controller
 		$questid = $questid ? : 0;
 		
 		if ($quizId == 0) {
-            WpAdvQuiz_View_View::admin_notices(__('Quiz not found', 'wp-adv-quiz'), 'error');
+            WpAdvQuiz_View_View::admin_notices(__('Quiz not found', 'ct-pro-quiz-lite'), 'error');
 
             return;
         }
@@ -28,7 +28,7 @@ class WpAdvQuiz_Controller_Question extends WpAdvQuiz_Controller_Controller
         $m = new WpAdvQuiz_Model_QuizMapper();
 
         if ($m->exists($this->_quizId) == 0) {
-            WpAdvQuiz_View_View::admin_notices(__('Quiz not found', 'wp-adv-quiz'), 'error');
+            WpAdvQuiz_View_View::admin_notices(__('Quiz not found', 'ct-pro-quiz-lite'), 'error');
 
             return;
         }
@@ -91,7 +91,7 @@ class WpAdvQuiz_Controller_Question extends WpAdvQuiz_Controller_Controller
             array('WpAdvQuiz_View_QuestionOverallTable', 'getColumnDefs'));
 
         add_screen_option('per_page', array(
-            'label' => __('Questions', 'wp-adv-quiz'),
+            'label' => __('Questions', 'ct-pro-quiz-lite'),
             'default' => 20,
             'option' => 'wp_adv_quiz_question_overview_per_page'
         ));
@@ -119,7 +119,7 @@ class WpAdvQuiz_Controller_Question extends WpAdvQuiz_Controller_Controller
         $templateMapper = new WpAdvQuiz_Model_TemplateMapper();
 
         if ($questionId && $questionMapper->existsAndWritable($questionId) == 0) {
-            WpAdvQuiz_View_View::admin_notices(__('Question not found', 'wp-adv-quiz'), 'error');
+            WpAdvQuiz_View_View::admin_notices(__('Question not found', 'ct-pro-quiz-lite'), 'error');
 
             return;
         }
@@ -144,9 +144,9 @@ class WpAdvQuiz_Controller_Question extends WpAdvQuiz_Controller_Controller
         } else {
             if (isset($this->_post['submit'])) {
                 if ($questionId) {
-                    WpAdvQuiz_View_View::admin_notices(__('Question edited', 'wp-adv-quiz'), 'info');
+                    WpAdvQuiz_View_View::admin_notices(__('Question edited', 'ct-pro-quiz-lite'), 'info');
                 } else {
-                    WpAdvQuiz_View_View::admin_notices(__('Question added', 'wp-adv-quiz'), 'info');
+                    WpAdvQuiz_View_View::admin_notices(__('Question added', 'ct-pro-quiz-lite'), 'info');
                 }
 
                 $question = $questionMapper->save($this->getPostQuestionModel($quizId, $questionId), true);
@@ -166,7 +166,7 @@ class WpAdvQuiz_Controller_Question extends WpAdvQuiz_Controller_Controller
         $view->question = $question;
         $view->answerData = $this->setAnswerObject($question);
 
-        $view->header = $questionId ? __('Edit question', 'wp-adv-quiz') : __('New question', 'wp-adv-quiz');
+        $view->header = $questionId ? __('Edit question', 'ct-pro-quiz-lite') : __('New question', 'ct-pro-quiz-lite');
 
         if ($view->question->isAnswerPointsActivated()) {
             $view->question->setPoints(1);
@@ -214,7 +214,7 @@ class WpAdvQuiz_Controller_Question extends WpAdvQuiz_Controller_Controller
         if (empty($post['title'])) {
             $count = $questionMapper->count($quizId);
 
-            $post['title'] = sprintf(__('Question: %d', 'wp-adv-quiz'), $count + 1);
+            $post['title'] = sprintf(__('Question: %d', 'ct-pro-quiz-lite'), $count + 1);
         }
 
         if ($post['answerType'] === 'assessment_answer') {
@@ -252,7 +252,7 @@ class WpAdvQuiz_Controller_Question extends WpAdvQuiz_Controller_Controller
             $m->save($question);
         }
 
-        WpAdvQuiz_View_View::admin_notices(__('questions copied', 'wp-adv-quiz'), 'info');
+        WpAdvQuiz_View_View::admin_notices(__('questions copied', 'ct-pro-quiz-lite'), 'info');
 
         $this->showAction();
     }

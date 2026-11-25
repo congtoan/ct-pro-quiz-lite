@@ -40,7 +40,7 @@ class WpAdvQuiz_Controller_ImportExport extends WpAdvQuiz_Controller_Controller
         $exporter = $helper->factory($this->_post['exportIds'], $exportType);
 
         if ($exporter === null) {
-            wp_die(__('Unsupported expoter', 'wp-adv-quiz'));
+            wp_die(__('Unsupported expoter', 'ct-pro-quiz-lite'));
         }
 
         $response = $exporter->response();
@@ -84,7 +84,7 @@ class WpAdvQuiz_Controller_ImportExport extends WpAdvQuiz_Controller_Controller
 				$this->saveImport();
 			} else {
 				$view = new WpAdvQuiz_View_Import();
-				$view->error = __('File cannot be processed', 'wp-adv-quiz');
+				$view->error = __('File cannot be processed', 'ct-pro-quiz-lite');
 				$view->show();
 			}
 		}
@@ -150,7 +150,7 @@ class WpAdvQuiz_Controller_ImportExport extends WpAdvQuiz_Controller_Controller
 		$importData = !empty($importData) ? $importData : null;
 		
         if(empty($name) || empty($type) || empty($importData)) {
-            WpAdvQuiz_View_View::admin_notices(__('Import failed', 'wp-adv-quiz'), 'error');
+            WpAdvQuiz_View_View::admin_notices(__('Import failed', 'ct-pro-quiz-lite'), 'error');
 
             return;
         }

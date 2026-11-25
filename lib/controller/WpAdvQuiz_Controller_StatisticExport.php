@@ -32,21 +32,21 @@ class WpAdvQuiz_Controller_StatisticExport extends WpAdvQuiz_Controller_Controll
                 try {
                     $this->exportUser($quizId, $refid, $userid, $avg,$exportType);
                 } catch (Exception $e) {
-                    wp_die(__('An error has occurred.', 'wp-adv-quiz'));
+                    wp_die(__('An error has occurred.', 'ct-pro-quiz-lite'));
                 }
                 break;
             case 'history_export':
                 try {
                     $this->exportHistory($exportType);
                 } catch (Exception $e) {
-                    wp_die(__('An error has occurred.', 'wp-adv-quiz'));
+                    wp_die(__('An error has occurred.', 'ct-pro-quiz-lite'));
                 }
                 break;
             case 'overview_export':
                 try {
                     $this->overviewExport($exportType);
                 } catch (Exception $e) {
-                    wp_die(__('An error has occurred.', 'wp-adv-quiz'));
+                    wp_die(__('An error has occurred.', 'ct-pro-quiz-lite'));
                 }
                 break;
         }

@@ -99,7 +99,7 @@ class WpAdvQuiz_Model_Email extends WpAdvQuiz_Model_Model
         $email = new WpAdvQuiz_Model_Email();
 
         if ($adminEmail) {
-            $email->setSubject(__('Wp-Adv-Quiz: One user completed a quiz', 'wp-adv-quiz'));
+            $email->setSubject(__('Wp-Adv-Quiz: One user completed a quiz', 'ct-pro-quiz-lite'));
             $email->setMessage(__('Wp-Adv-Quiz
 
 The user "$username" has completed "$quizname" the quiz.
@@ -107,9 +107,9 @@ The user "$username" has completed "$quizname" the quiz.
 Points: $points
 Result: $result
 
-', 'wp-adv-quiz'));
+', 'ct-pro-quiz-lite'));
         } else {
-            $email->setSubject(__('Wp-Adv-Quiz: One user completed a quiz', 'wp-adv-quiz'));
+            $email->setSubject(__('Wp-Adv-Quiz: One user completed a quiz', 'ct-pro-quiz-lite'));
             $email->setMessage(__('Wp-Adv-Quiz
 
 You have completed the quiz "$quizname".
@@ -117,7 +117,7 @@ You have completed the quiz "$quizname".
 Points: $points
 Result: $result
 
-', 'wp-adv-quiz'));
+', 'ct-pro-quiz-lite'));
         }
 
         return $email;

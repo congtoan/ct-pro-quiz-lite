@@ -29,17 +29,17 @@ class WpAdvQuiz_View_QuestionImportPreview extends WpAdvQuiz_View_View
             }
         </style>
         <div class="wrap wpAdvQuiz_importOverall">
-            <h2><?php _e('Import', 'wp-adv-quiz'); ?></h2>
+            <h2><?php _e('Import', 'ct-pro-quiz-lite'); ?></h2>
 
             <p>
-                <a class="button-secondary" href="<?php admin_url('admin.php?page=wpAdvQuiz&module=question&quiz_id='.$this->quizId); ?>"><?php _e('back to overview', 'wp-adv-quiz'); ?></a>
+                <a class="button-secondary" href="<?php admin_url('admin.php?page=wpAdvQuiz&module=question&quiz_id='.$this->quizId); ?>"><?php _e('back to overview', 'ct-pro-quiz-lite'); ?></a>
             </p>
 
             <form method="post" action="<?php echo admin_url('admin.php?page=wpAdvQuiz&module=questionImport&action=import&quizId='.$this->quizId); ?>">
                 <table class="wp-list-table widefat">
                     <thead>
                     <tr>
-                        <th scope="col"><?php _e('Questions', 'wp-adv-quiz'); ?></th>
+                        <th scope="col"><?php _e('Questions', 'ct-pro-quiz-lite'); ?></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -59,7 +59,7 @@ class WpAdvQuiz_View_QuestionImportPreview extends WpAdvQuiz_View_View
                 <input name="name" value="<?php echo esc_attr($this->name); ?>" type="hidden">
                 <input name="type" value="<?php echo esc_attr($this->type); ?>" type="hidden">
                 <input name="data" value="<?php echo esc_attr($this->data); ?>" type="hidden">
-                <input style="margin-top: 20px;" class="button-primary" name="importSave" value="<?php echo __('Start import', 'wp-adv-quiz'); ?>" type="submit">
+                <input style="margin-top: 20px;" class="button-primary" name="importSave" value="<?php echo __('Start import', 'ct-pro-quiz-lite'); ?>" type="submit">
             </form>
         </div>
 

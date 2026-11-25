@@ -85,33 +85,33 @@ class WpAdvQuiz_View_StatisticsNew extends WpAdvQuiz_View_View
         <div class="wrap wpAdvQuiz_statisticsNew">
             <input type="hidden" id="quizId" value="<?php echo esc_attr($this->quiz->getId()); ?>" name="quizId">
 
-            <h2><?php printf(__('Quiz: %s - Statistics', 'wp-adv-quiz'), $this->quiz->getName()); ?></h2>
+            <h2><?php printf(__('Quiz: %s - Statistics', 'ct-pro-quiz-lite'), $this->quiz->getName()); ?></h2>
 
             <p><a class="button-secondary" href="admin.php?page=wpAdvQuiz"><?php _e('back to overview',
-                        'wp-adv-quiz'); ?></a></p>
+                        'ct-pro-quiz-lite'); ?></a></p>
 
             <?php if (!$this->quiz->isStatisticsOn()) { ?>
                 <p style="padding: 30px; background: #F7E4E4; border: 1px dotted; width: 300px;">
                     <span style="font-weight: bold; padding-right: 10px;"><?php _e('Stats not enabled',
-                            'wp-adv-quiz'); ?></span>
+                            'ct-pro-quiz-lite'); ?></span>
                     <a class="button-secondary"
                        href="admin.php?page=wpAdvQuiz&action=addEdit&quizId=<?php echo esc_attr($this->quiz->getId()); ?>"><?php _e('Activate statistics',
-                            'wp-adv-quiz'); ?></a>
+                            'ct-pro-quiz-lite'); ?></a>
                 </p>
                 <?php return;
             } ?>
 
             <div style="padding: 10px 0px;" class="wpAdvQuiz_tab_wrapper">
                 <a class="button-primary" href="#" data-tab="#wpAdvQuiz_tabHistory"><?php _e('History',
-                        'wp-adv-quiz'); ?></a>
+                        'ct-pro-quiz-lite'); ?></a>
                 <a class="button-secondary" href="#" data-tab="#wpAdvQuiz_tabOverview"><?php _e('Overview',
-                        'wp-adv-quiz'); ?></a>
+                        'ct-pro-quiz-lite'); ?></a>
             </div>
 
             <div id="wpAdvQuiz_loadData" class="wpAdvQuiz_blueBox" style="background-color: #F8F5A8; display: none;">
                 <img alt="load"
                      src="data:image/gif;base64,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">
-                <?php _e('Loading', 'wp-adv-quiz'); ?>
+                <?php _e('Loading', 'ct-pro-quiz-lite'); ?>
             </div>
 
             <div id="wpAdvQuiz_content" style="display: block;">
@@ -133,24 +133,24 @@ class WpAdvQuiz_View_StatisticsNew extends WpAdvQuiz_View_View
 
             <div id="poststuff">
                 <div class="postbox">
-                    <h3 class="hndle"><?php _e('Filter', 'wp-adv-quiz'); ?></h3>
+                    <h3 class="hndle"><?php _e('Filter', 'ct-pro-quiz-lite'); ?></h3>
 
                     <div class="inside">
                         <ul>
                             <li>
                                 <label>
-                                    <?php _e('Which users should be displayed:', 'wp-adv-quiz'); ?>
+                                    <?php _e('Which users should be displayed:', 'ct-pro-quiz-lite'); ?>
                                     <select id="wpAdvQuiz_historyUser">
-                                        <optgroup label="<?php _e('special filter', 'wp-adv-quiz'); ?>">
+                                        <optgroup label="<?php _e('special filter', 'ct-pro-quiz-lite'); ?>">
                                             <option value="-1" selected="selected"><?php _e('all users',
-                                                    'wp-adv-quiz'); ?></option>
+                                                    'ct-pro-quiz-lite'); ?></option>
                                             <option value="-2"><?php _e('only registered users',
-                                                    'wp-adv-quiz'); ?></option>
+                                                    'ct-pro-quiz-lite'); ?></option>
                                             <option value="-3"><?php _e('only anonymous users',
-                                                    'wp-adv-quiz'); ?></option>
+                                                    'ct-pro-quiz-lite'); ?></option>
                                         </optgroup>
 
-                                        <optgroup label="<?php _e('User', 'wp-adv-quiz'); ?>">
+                                        <optgroup label="<?php _e('User', 'ct-pro-quiz-lite'); ?>">
                                             <?php foreach ($this->users as $user) {
                                                 if ($user->ID == 0) {
                                                     continue;
@@ -164,7 +164,7 @@ class WpAdvQuiz_View_StatisticsNew extends WpAdvQuiz_View_View
                             </li>
                             <li>
                                 <label>
-                                    <?php _e('How many entries should be shown on one page:', 'wp-adv-quiz'); ?>
+                                    <?php _e('How many entries should be shown on one page:', 'ct-pro-quiz-lite'); ?>
                                     <select id="wpAdvQuiz_historyPageLimit">
                                         <option>1</option>
                                         <option selected="selected">10</option>
@@ -180,11 +180,11 @@ class WpAdvQuiz_View_StatisticsNew extends WpAdvQuiz_View_View
                                 $dateVon = '<input type="text" id="datepickerFrom">';
                                 $dateBis = '<input type="text" id="datepickerTo">';
 
-                                printf(__('Search to date limit from %s to %s', 'wp-adv-quiz'), $dateVon, $dateBis);
+                                printf(__('Search to date limit from %s to %s', 'ct-pro-quiz-lite'), $dateVon, $dateBis);
                                 ?>
                             </li>
                             <li>
-                                <input type="button" value="<?php _e('Filter', 'wp-adv-quiz'); ?>"
+                                <input type="button" value="<?php _e('Filter', 'ct-pro-quiz-lite'); ?>"
                                        class="button-secondary" id="filter">
                             </li>
                         </ul>
@@ -196,7 +196,7 @@ class WpAdvQuiz_View_StatisticsNew extends WpAdvQuiz_View_View
                  style="background-color: #F8F5A8; display: none;">
                 <img alt="load"
                      src="data:image/gif;base64,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">
-                <?php _e('Loading', 'wp-adv-quiz'); ?>
+                <?php _e('Loading', 'ct-pro-quiz-lite'); ?>
             </div>
 
             <div id="wpAdvQuiz_historyLoadContext"></div>
@@ -214,11 +214,11 @@ class WpAdvQuiz_View_StatisticsNew extends WpAdvQuiz_View_View
                 </div>
 
                 <div style="float: right;">
-                    <a class="button-secondary wpAdvQuiz_update" href="#"><?php _e('Refresh', 'wp-adv-quiz'); ?></a>
-                    <a class="button-secondary wpAdvQuiz_export" href="#"><?php _e('Export', 'wp-adv-quiz'); ?></a>
+                    <a class="button-secondary wpAdvQuiz_update" href="#"><?php _e('Refresh', 'ct-pro-quiz-lite'); ?></a>
+                    <a class="button-secondary wpAdvQuiz_export" href="#"><?php _e('Export', 'ct-pro-quiz-lite'); ?></a>
                     <?php if (current_user_can('wpAdvQuiz_reset_statistics')) { ?>
                         <a class="button-secondary wpAdvQuiz_resetComplete" href="#"><?php _e('Reset entire statistic',
-                                'wp-adv-quiz'); ?></a>
+                                'ct-pro-quiz-lite'); ?></a>
                     <?php } ?>
                 </div>
 
@@ -244,7 +244,7 @@ class WpAdvQuiz_View_StatisticsNew extends WpAdvQuiz_View_View
                      style="background-color: #F8F5A8; display: none; margin: 50px;">
                     <img alt="load"
                          src="data:image/gif;base64,R0lGODlhEAAQAPYAAP///wAAANTU1JSUlGBgYEBAQERERG5ubqKiotzc3KSkpCQkJCgoKDAwMDY2Nj4+Pmpqarq6uhwcHHJycuzs7O7u7sLCwoqKilBQUF5eXr6+vtDQ0Do6OhYWFoyMjKqqqlxcXHx8fOLi4oaGhg4ODmhoaJycnGZmZra2tkZGRgoKCrCwsJaWlhgYGAYGBujo6PT09Hh4eISEhPb29oKCgqioqPr6+vz8/MDAwMrKyvj4+NbW1q6urvDw8NLS0uTk5N7e3s7OzsbGxry8vODg4NjY2PLy8tra2np6erS0tLKyskxMTFJSUlpaWmJiYkJCQjw8PMTExHZ2djIyMurq6ioqKo6OjlhYWCwsLB4eHqCgoE5OThISEoiIiGRkZDQ0NMjIyMzMzObm5ri4uH5+fpKSkp6enlZWVpCQkEpKSkhISCIiIqamphAQEAwMDKysrAQEBJqamiYmJhQUFDg4OHR0dC4uLggICHBwcCAgIFRUVGxsbICAgAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAAHjYAAgoOEhYUbIykthoUIHCQqLoI2OjeFCgsdJSsvgjcwPTaDAgYSHoY2FBSWAAMLE4wAPT89ggQMEbEzQD+CBQ0UsQA7RYIGDhWxN0E+ggcPFrEUQjuCCAYXsT5DRIIJEBgfhjsrFkaDERkgJhswMwk4CDzdhBohJwcxNB4sPAmMIlCwkOGhRo5gwhIGAgAh+QQJCgAAACwAAAAAEAAQAAAHjIAAgoOEhYU7A1dYDFtdG4YAPBhVC1ktXCRfJoVKT1NIERRUSl4qXIRHBFCbhTKFCgYjkII3g0hLUbMAOjaCBEw9ukZGgidNxLMUFYIXTkGzOmLLAEkQCLNUQMEAPxdSGoYvAkS9gjkyNEkJOjovRWAb04NBJlYsWh9KQ2FUkFQ5SWqsEJIAhq6DAAIBACH5BAkKAAAALAAAAAAQABAAAAeJgACCg4SFhQkKE2kGXiwChgBDB0sGDw4NDGpshTheZ2hRFRVDUmsMCIMiZE48hmgtUBuCYxBmkAAQbV2CLBM+t0puaoIySDC3VC4tgh40M7eFNRdH0IRgZUO3NjqDFB9mv4U6Pc+DRzUfQVQ3NzAULxU2hUBDKENCQTtAL9yGRgkbcvggEq9atUAAIfkECQoAAAAsAAAAABAAEAAAB4+AAIKDhIWFPygeEE4hbEeGADkXBycZZ1tqTkqFQSNIbBtGPUJdD088g1QmMjiGZl9MO4I5ViiQAEgMA4JKLAm3EWtXgmxmOrcUElWCb2zHkFQdcoIWPGK3Sm1LgkcoPrdOKiOCRmA4IpBwDUGDL2A5IjCCN/QAcYUURQIJIlQ9MzZu6aAgRgwFGAFvKRwUCAAh+QQJCgAAACwAAAAAEAAQAAAHjIAAgoOEhYUUYW9lHiYRP4YACStxZRc0SBMyFoVEPAoWQDMzAgolEBqDRjg8O4ZKIBNAgkBjG5AAZVtsgj44VLdCanWCYUI3txUPS7xBx5AVDgazAjC3Q3ZeghUJv5B1cgOCNmI/1YUeWSkCgzNUFDODKydzCwqFNkYwOoIubnQIt244MzDC1q2DggIBACH5BAkKAAAALAAAAAAQABAAAAeJgACCg4SFhTBAOSgrEUEUhgBUQThjSh8IcQo+hRUbYEdUNjoiGlZWQYM2QD4vhkI0ZWKCPQmtkG9SEYJURDOQAD4HaLuyv0ZeB4IVj8ZNJ4IwRje/QkxkgjYz05BdamyDN9uFJg9OR4YEK1RUYzFTT0qGdnduXC1Zchg8kEEjaQsMzpTZ8avgoEAAIfkECQoAAAAsAAAAABAAEAAAB4iAAIKDhIWFNz0/Oz47IjCGADpURAkCQUI4USKFNhUvFTMANxU7KElAhDA9OoZHH0oVgjczrJBRZkGyNpCCRCw8vIUzHmXBhDM0HoIGLsCQAjEmgjIqXrxaBxGCGw5cF4Y8TnybglprLXhjFBUWVnpeOIUIT3lydg4PantDz2UZDwYOIEhgzFggACH5BAkKAAAALAAAAAAQABAAAAeLgACCg4SFhjc6RhUVRjaGgzYzRhRiREQ9hSaGOhRFOxSDQQ0uj1RBPjOCIypOjwAJFkSCSyQrrhRDOYILXFSuNkpjggwtvo86H7YAZ1korkRaEYJlC3WuESxBggJLWHGGFhcIxgBvUHQyUT1GQWwhFxuFKyBPakxNXgceYY9HCDEZTlxA8cOVwUGBAAA7AAAAAAAAAAAA">
-                    <?php _e('Loading', 'wp-adv-quiz'); ?>
+                    <?php _e('Loading', 'ct-pro-quiz-lite'); ?>
                 </div>
             </div>
             <div class="wpAdvQuiz_modal_backdrop"></div>
@@ -259,19 +259,19 @@ class WpAdvQuiz_View_StatisticsNew extends WpAdvQuiz_View_View
         <div id="wpAdvQuiz_tabOverview" class="wpAdvQuiz_tabContent" style="display: none;">
             <div id="poststuff">
                 <div class="postbox">
-                    <h3 class="hndle"><?php _e('Filter', 'wp-adv-quiz'); ?></h3>
+                    <h3 class="hndle"><?php _e('Filter', 'ct-pro-quiz-lite'); ?></h3>
 
                     <div class="inside">
                         <ul>
                             <li>
                                 <label>
-                                    <?php _e('Show only users, who solved the quiz:', 'wp-adv-quiz'); ?>
+                                    <?php _e('Show only users, who solved the quiz:', 'ct-pro-quiz-lite'); ?>
                                     <input type="checkbox" value="1" id="wpAdvQuiz_overviewOnlyCompleted">
                                 </label>
                             </li>
                             <li>
                                 <label>
-                                    <?php _e('How many entries should be shown on one page:', 'wp-adv-quiz'); ?>
+                                    <?php _e('How many entries should be shown on one page:', 'ct-pro-quiz-lite'); ?>
                                     <select id="wpAdvQuiz_overviewPageLimit">
                                         <option>1</option>
                                         <option>4</option>
@@ -283,7 +283,7 @@ class WpAdvQuiz_View_StatisticsNew extends WpAdvQuiz_View_View
                                 </label>
                             </li>
                             <li>
-                                <input type="button" value="<?php _e('Filter', 'wp-adv-quiz'); ?>"
+                                <input type="button" value="<?php _e('Filter', 'ct-pro-quiz-lite'); ?>"
                                        class="button-secondary" id="overviewFilter">
                             </li>
                         </ul>
@@ -295,7 +295,7 @@ class WpAdvQuiz_View_StatisticsNew extends WpAdvQuiz_View_View
                  style="background-color: #F8F5A8; display: none;">
                 <img alt="load"
                      src="data:image/gif;base64,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">
-                <?php _e('Loading', 'wp-adv-quiz'); ?>
+                <?php _e('Loading', 'ct-pro-quiz-lite'); ?>
             </div>
 
             <div id="wpAdvQuiz_overviewLoadContext"></div>
@@ -313,11 +313,11 @@ class WpAdvQuiz_View_StatisticsNew extends WpAdvQuiz_View_View
                 </div>
 
                 <div style="float: right;">
-                    <a class="button-secondary wpAdvQuiz_update" href="#"><?php _e('Refresh', 'wp-adv-quiz'); ?></a>
-                    <a class="button-secondary wpAdvQuiz_export" href="#"><?php _e('Export', 'wp-adv-quiz'); ?></a>
+                    <a class="button-secondary wpAdvQuiz_update" href="#"><?php _e('Refresh', 'ct-pro-quiz-lite'); ?></a>
+                    <a class="button-secondary wpAdvQuiz_export" href="#"><?php _e('Export', 'ct-pro-quiz-lite'); ?></a>
                     <?php if (current_user_can('wpAdvQuiz_reset_statistics')) { ?>
                         <a class="button-secondary wpAdvQuiz_resetComplete" href="#"><?php _e('Reset entire statistic',
-                                'wp-adv-quiz'); ?></a>
+                                'ct-pro-quiz-lite'); ?></a>
                     <?php } ?>
                 </div>
 
@@ -335,9 +335,9 @@ class WpAdvQuiz_View_StatisticsNew extends WpAdvQuiz_View_View
         <div id="wpAdvQuiz_statsticExportList_box" style="display: none;">
             <div class="wpAdvQuiz_exportList">
                 <form action="" method="POST">
-                    <h3 style="margin-top: 0;"><?php _e('Export', 'wp-adv-quiz'); ?></h3>
+                    <h3 style="margin-top: 0;"><?php _e('Export', 'ct-pro-quiz-lite'); ?></h3>
 
-                    <p><?php echo __('Please select a format', 'wp-adv-quiz'); ?></p>
+                    <p><?php echo __('Please select a format', 'ct-pro-quiz-lite'); ?></p>
 
                     <?php do_action('wpAdvQuiz_view_statistics_exportListBox', $this); ?>
 
@@ -352,7 +352,7 @@ class WpAdvQuiz_View_StatisticsNew extends WpAdvQuiz_View_View
                         </select>
                     </div>
                     <input class="button-primary" name="exportStart" id="exportStart"
-                           value="<?php echo __('Start export', 'wp-adv-quiz'); ?>" type="submit">
+                           value="<?php echo __('Start export', 'ct-pro-quiz-lite'); ?>" type="submit">
                 </form>
             </div>
         </div>

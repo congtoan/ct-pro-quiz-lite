@@ -8,19 +8,43 @@ class WpAdvQuiz_Controller_Front
      */
     private $_settings = null;
 
+    /**
+     * Shortcodes / block handled by the plugin. Assets are only loaded on pages that contain one of them.
+     */
+    const SHORTCODES = array('WpAdvQuiz', 'WpAdvQuiz_toplist');
+    const BLOCK_NAME = 'wp-adv-quiz/quiz';
+
     public function __construct()
     {
-        $this->loadSettings();
-
-        add_action('wp_enqueue_scripts', array($this, 'loadDefaultScripts'));
+        // Register early (priority 5) so shortcodes outside the post content (widgets, templates...)
+        // can still enqueue while rendering; enqueue for real at the default priority when the post has a quiz.
+        add_action('wp_enqueue_scripts', array($this, 'registerAssets'), 5);
+        add_action('wp_enqueue_scripts', array($this, 'maybeEnqueueAssets'));
         add_shortcode('WpAdvQuiz', array($this, 'shortcode'));
         add_shortcode('WpAdvQuiz_toplist', array($this, 'shortcodeToplist'));
     }
 
-    public function loadDefaultScripts()
+    /**
+     * Data for JS (WpAdvQuizGlobal). Shared by the quiz, the leaderboard and the admin Preview page.
+     */
+    public static function jsGlobals()
     {
-        wp_enqueue_script('jquery');
+        return array(
+            'ajaxurl' => admin_url('admin-ajax.php'),
+            'loadData' => __('Loading', 'ct-pro-quiz-lite'),
+            'questionNotSolved' => __('You must answer this question.', 'ct-pro-quiz-lite'),
+            'questionsNotSolved' => __('You must answer all questions before you can completed the quiz.',
+                'ct-pro-quiz-lite'),
+            'fieldsNotFilled' => __('All fields have to be filled.', 'ct-pro-quiz-lite')
+        );
+    }
 
+    /**
+     * Register (do not load yet) the frontend CSS and JS. The JS is plain JavaScript, no jQuery dependency.
+     * Handle names are kept from the original so outside code can still dequeue/replace them.
+     */
+    public function registerAssets()
+    {
         $data = array(
             'src' => plugins_url('css/wpAdvQuiz_front' . (WPADVQUIZ_DEV ? '' : '.min') . '.css', WPADVQUIZ_FILE),
             'deps' => array(),
@@ -29,74 +53,99 @@ class WpAdvQuiz_Controller_Front
 
         $data = apply_filters('wpAdvQuiz_front_style', $data);
 
-        wp_enqueue_style('wpAdvQuiz_front_style', $data['src'], $data['deps'], $data['ver']);
+        wp_register_style('wpAdvQuiz_front_style', $data['src'], $data['deps'], $data['ver']);
 
-        if ($this->_settings->isJsLoadInHead()) {
-            $this->loadJsScripts(false, true, true);
-        }
+        $footer = !$this->settings()->isJsLoadInHead();
+
+        wp_register_script(
+            'wpAdvQuiz_front_javascript',
+            plugins_url('js/wpAdvQuiz_front.js', WPADVQUIZ_FILE),
+            array(),
+            self::assetVersion('js/wpAdvQuiz_front.js'),
+            $footer
+        );
+        wp_localize_script('wpAdvQuiz_front_javascript', 'WpAdvQuizGlobal', self::jsGlobals());
+
+        wp_register_script(
+            'wpAdvQuiz_front_javascript_toplist',
+            plugins_url('js/wpAdvQuiz_toplist.js', WPADVQUIZ_FILE),
+            array(),
+            self::assetVersion('js/wpAdvQuiz_toplist.js'),
+            $footer
+        );
+        wp_localize_script('wpAdvQuiz_front_javascript_toplist', 'WpAdvQuizGlobal', self::jsGlobals());
     }
 
-    private function loadJsScripts($footer = true, $quiz = true, $toplist = false)
+    /**
+     * Version based on file modification time, so browsers/CDNs fetch new JS right after an edit.
+     */
+    public static function assetVersion($relative)
     {
-        if ($quiz) {
-            wp_enqueue_script(
-                'wpAdvQuiz_front_javascript',
-                plugins_url('js/wpAdvQuiz_front' . (WPADVQUIZ_DEV ? '' : '.min') . '.js', WPADVQUIZ_FILE),
-                array('jquery-ui-sortable'),
-                WPADVQUIZ_VERSION,
-                $footer
-            );
+        $file = WPADVQUIZ_PATH . '/' . $relative;
 
-            wp_localize_script('wpAdvQuiz_front_javascript', 'WpAdvQuizGlobal', array(
-                'ajaxurl' => admin_url('admin-ajax.php'),
-                'loadData' => __('Loading', 'wp-adv-quiz'),
-                'questionNotSolved' => __('You must answer this question.', 'wp-adv-quiz'),
-                'questionsNotSolved' => __('You must answer all questions before you can completed the quiz.',
-                    'wp-adv-quiz'),
-                'fieldsNotFilled' => __('All fields have to be filled.', 'wp-adv-quiz')
-            ));
-        }
+        return file_exists($file) ? WPADVQUIZ_VERSION . '.' . filemtime($file) : WPADVQUIZ_VERSION;
+    }
 
-        if ($toplist) {
-            wp_enqueue_script(
-                'wpAdvQuiz_front_javascript_toplist',
-                plugins_url('js/wpAdvQuiz_toplist' . (WPADVQUIZ_DEV ? '' : '.min') . '.js', WPADVQUIZ_FILE),
-                array('jquery-ui-sortable'),
-                WPADVQUIZ_VERSION,
-                $footer
-            );
+    /**
+     * Does the current post/page contain a quiz (shortcode or block in the content)?
+     * Can be forced with the 'wpAdvQuiz_should_enqueue_assets' filter.
+     *
+     * @return array ['quiz' => bool, 'toplist' => bool]
+     */
+    private function detectInContent()
+    {
+        $found = array('quiz' => false, 'toplist' => false);
 
-            if (!wp_script_is('wpAdvQuiz_front_javascript')) {
-                wp_localize_script('wpAdvQuiz_front_javascript_toplist', 'WpAdvQuizGlobal', array(
-                    'ajaxurl' => admin_url('admin-ajax.php'),
-                    'loadData' => __('Loading', 'wp-adv-quiz'),
-                    'questionNotSolved' => __('You must answer this question.', 'wp-adv-quiz'),
-                    'questionsNotSolved' => __('You must answer all questions before you can completed the quiz.',
-                        'wp-adv-quiz'),
-                    'fieldsNotFilled' => __('All fields have to be filled.', 'wp-adv-quiz')
-                ));
+        if (is_singular()) {
+            $post = get_queried_object();
+
+            if ($post instanceof WP_Post) {
+                $content = $post->post_content;
+
+                $found['quiz'] = has_shortcode($content, 'WpAdvQuiz') || has_block(self::BLOCK_NAME, $post);
+                $found['toplist'] = has_shortcode($content, 'WpAdvQuiz_toplist');
             }
         }
 
-        if (!$this->_settings->isTouchLibraryDeactivate()) {
-            wp_enqueue_script(
-                'jquery-ui-touch-punch',
-                plugins_url('js/jquery.ui.touch-punch.min.js', WPADVQUIZ_FILE),
-                array('jquery-ui-sortable'),
-                '0.2.2',
-                $footer
-            );
+        return (array)apply_filters('wpAdvQuiz_should_enqueue_assets', $found) + $found;
+    }
+
+    public function maybeEnqueueAssets()
+    {
+        $found = $this->detectInContent();
+
+        if ($found['quiz']) {
+            $this->enqueueAssets(true, false);
+        }
+
+        if ($found['toplist']) {
+            $this->enqueueAssets(false, true);
+        }
+    }
+
+    /**
+     * Enqueue CSS + JS. Safe to call repeatedly. The shortcode also calls this (fallback for shortcodes
+     * outside the post content, e.g. in a widget): WordPress then prints the CSS in the footer.
+     */
+    private function enqueueAssets($quiz = true, $toplist = false)
+    {
+        wp_enqueue_style('wpAdvQuiz_front_style');
+
+        if ($quiz) {
+            wp_enqueue_script('wpAdvQuiz_front_javascript');
+        }
+
+        if ($toplist) {
+            wp_enqueue_script('wpAdvQuiz_front_javascript_toplist');
         }
     }
 
     public function shortcode($attr)
     {
-        $id = $attr[0];
+        $id = isset($attr[0]) ? $attr[0] : 0;
         $content = '';
 
-        if (!$this->_settings->isJsLoadInHead()) {
-            $this->loadJsScripts();
-        }
+        $this->enqueueAssets(true, false);
 
         if (is_numeric($id)) {
             ob_start();
@@ -108,7 +157,7 @@ class WpAdvQuiz_Controller_Front
             ob_end_clean();
         }
 
-        if ($this->_settings->isAddRawShortcode()) {
+        if ($this->settings()->isAddRawShortcode()) {
             return '[raw]' . $content . '[/raw]';
         }
 
@@ -221,12 +270,10 @@ class WpAdvQuiz_Controller_Front
 
     public function shortcodeToplist($attr)
     {
-        $id = $attr[0];
+        $id = isset($attr[0]) ? $attr[0] : 0;
         $content = '';
 
-        if (!$this->_settings->isJsLoadInHead()) {
-            $this->loadJsScripts(true, false, true);
-        }
+        $this->enqueueAssets(false, true);
 
         if (is_numeric($id)) {
             ob_start();
@@ -238,7 +285,7 @@ class WpAdvQuiz_Controller_Front
             ob_end_clean();
         }
 
-        if ($this->_settings->isAddRawShortcode() && !isset($attr['q'])) {
+        if ($this->settings()->isAddRawShortcode() && !isset($attr['q'])) {
             return '[raw]' . $content . '[/raw]';
         }
 
@@ -264,12 +311,20 @@ class WpAdvQuiz_Controller_Front
         $view->show();
     }
 
-    private function loadSettings()
+    /**
+     * Global settings, read lazily (all options are autoloaded, so no extra query).
+     *
+     * @return WpAdvQuiz_Model_GlobalSettings
+     */
+    private function settings()
     {
-        $mapper = new WpAdvQuiz_Model_GlobalSettingsMapper();
+        if ($this->_settings === null) {
+            $mapper = new WpAdvQuiz_Model_GlobalSettingsMapper();
 
-        $this->_settings = $mapper->fetchAll();
+            $this->_settings = $mapper->fetchAll();
+        }
 
+        return $this->_settings;
     }
 
     public static function ajaxQuizLoadData($data)

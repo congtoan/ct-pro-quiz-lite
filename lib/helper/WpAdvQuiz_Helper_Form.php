@@ -102,7 +102,7 @@ class WpAdvQuiz_Helper_Form
                 return $escape ? esc_html($str) : $str;
                 break;
             case WpAdvQuiz_Model_Form::FORM_TYPE_CHECKBOX:
-                return $str == '1' ? __('ticked', 'wp-adv-quiz') : __('not ticked', 'wp-adv-quiz');
+                return $str == '1' ? __('ticked', 'ct-pro-quiz-lite') : __('not ticked', 'ct-pro-quiz-lite');
                 break;
             case WpAdvQuiz_Model_Form::FORM_TYPE_YES_NO:
                 return $str == 1 ? __('Yes') : __('No');

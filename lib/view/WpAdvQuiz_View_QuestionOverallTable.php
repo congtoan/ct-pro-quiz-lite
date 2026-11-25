@@ -15,9 +15,9 @@ class WpAdvQuiz_View_QuestionOverallTable extends WP_List_Table
     {
         $columns = array(
             'cb' => '<input type="checkbox" />',
-            'name' => __('Name', 'wp-adv-quiz'),
-            'category' => __('Category', 'wp-adv-quiz'),
-            'points' => __('Points', 'wp-adv-quiz'),
+            'name' => __('Name', 'ct-pro-quiz-lite'),
+            'category' => __('Category', 'ct-pro-quiz-lite'),
+            'points' => __('Points', 'ct-pro-quiz-lite'),
         );
 
         return $columns;
@@ -26,8 +26,8 @@ class WpAdvQuiz_View_QuestionOverallTable extends WP_List_Table
     function __construct($questionItems, $questionCount, $categoryItems, $perPage)
     {
         parent::__construct(array(
-            'singular' => __('Quiz', 'wp-adv-quiz'),
-            'plural' => __('Quiz', 'wp-adv-quiz'),
+            'singular' => __('Quiz', 'ct-pro-quiz-lite'),
+            'plural' => __('Quiz', 'ct-pro-quiz-lite'),
             'ajax' => false,
             'screen' => get_current_screen()->id
         ));
@@ -40,7 +40,7 @@ class WpAdvQuiz_View_QuestionOverallTable extends WP_List_Table
 
     function no_items()
     {
-        _e('No data available', 'wp-adv-quiz');
+        _e('No data available', 'ct-pro-quiz-lite');
     }
 
     function column_default($item, $column_name)
@@ -69,13 +69,13 @@ class WpAdvQuiz_View_QuestionOverallTable extends WP_List_Table
 
         if (current_user_can('wpAdvQuiz_edit_quiz')) {
             $actions['wpAdvQuiz_edit'] = sprintf('<a href="?page=wpAdvQuiz&module=question&action=addEdit&quiz_id=%1$s&questionId=%2$s">' . __('Edit',
-                    'wp-adv-quiz') . '</a>',
+                    'ct-pro-quiz-lite') . '</a>',
                 $item['quizId'], $item['ID']);
         }
 
         if (current_user_can('wpAdvQuiz_delete_quiz')) {
             $actions['wpAdvQuiz_delete'] = sprintf('<a style="color: red;" value="' . wp_create_nonce('delete_question') .'"; href="?page=wpAdvQuiz&module=question&action=delete&quiz_id=%1$s&id=%2$s">' . __('Delete',
-                    'wp-adv-quiz') . '</a>',
+                    'ct-pro-quiz-lite') . '</a>',
                 $item['quizId'], $item['ID']);
         }
 
@@ -93,15 +93,15 @@ class WpAdvQuiz_View_QuestionOverallTable extends WP_List_Table
         $actions = array();
 
         if (current_user_can('wpAdvQuiz_delete_quiz')) {
-            $actions['delete'] = __('Delete', 'wp-adv-quiz');
+            $actions['delete'] = __('Delete', 'ct-pro-quiz-lite');
         }
 
         if (current_user_can('wpAdvQuiz_export')) {
-            $actions['export'] = __('Export', 'wp-adv-quiz');
+            $actions['export'] = __('Export', 'ct-pro-quiz-lite');
         }
 
         if (current_user_can('wpAdvQuiz_edit_quiz')) {
-            $actions['set_category'] = __('Set Category', 'wp-adv-quiz');
+            $actions['set_category'] = __('Set Category', 'ct-pro-quiz-lite');
         }
 
         return $actions;

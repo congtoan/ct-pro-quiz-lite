@@ -613,3 +613,41 @@ span.wpAdvQuiz_catPercent {
 .wpAdvQuiz_quiz input[type="radio"] {
     -webkit-appearance: radio;
 }
+/* ---- CT Pro Quiz Lite ----
+ * Section titles (Quiz-summary, Information, Results, Categories, Question, Hint...)
+ * use <div class="wpAdvQuiz_header"> instead of <h4>/<h5>, so table-of-contents
+ * plugins do not pick them up. They are only bold and slightly larger. */
+.wpAdvQuiz_content .wpAdvQuiz_header {
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.wpAdvQuiz_content .wpAdvQuiz_title {
+    font-size: 1.25em;
+    margin: 0 0 10px 0 !important;
+}
+
+.wpAdvQuiz_content .wpAdvQuiz_questionHeader {
+    font-size: 1.1em;
+}
+
+.wpAdvQuiz_content .wpAdvQuiz_subTitle {
+    font-size: 1.05em;
+}
+
+/* Drag & drop (replaces jQuery UI Sortable) */
+.wpAdvQuiz_sortableOn > li {
+    touch-action: none;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: move;
+}
+
+.wpAdvQuiz_dragging {
+    opacity: .9;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .25) !important;
+}
+
+.wpAdvQuiz_reviewQuestion div {
+    touch-action: none;
+}

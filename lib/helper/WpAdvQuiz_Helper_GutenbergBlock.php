@@ -39,10 +39,14 @@ class WpAdvQuiz_Helper_GutenbergBlock
 
     protected function registerBlock()
     {
-        $mapper = new WpAdvQuiz_Model_QuizMapper();
         $results = [];
 
-        foreach ($mapper->fetchAll() as $quiz) {
+        // The quiz list is only needed by the block editor (admin / REST).
+        // Skipped on the frontend to avoid an extra SELECT on every page view.
+        $mapper = new WpAdvQuiz_Model_QuizMapper();
+        $quizzes = self::isEditorContext() ? $mapper->fetchAll() : [];
+
+        foreach ($quizzes as $quiz) {
             $results[] = [
                 'id' => $quiz->getId(),
                 'title' => $quiz->getName(),
@@ -77,6 +81,17 @@ class WpAdvQuiz_Helper_GutenbergBlock
         } 
 
         return $html;
+    }
+
+    protected static function isEditorContext()
+    {
+        if (is_admin()) {
+            return true;
+        }
+
+        $uri = isset($_SERVER['REQUEST_URI']) ? (string)$_SERVER['REQUEST_URI'] : '';
+
+        return strpos($uri, '/wp-json/') !== false || isset($_GET['rest_route']);
     }
 
     public static function init()

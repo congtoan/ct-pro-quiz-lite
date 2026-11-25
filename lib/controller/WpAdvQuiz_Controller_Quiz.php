@@ -64,7 +64,7 @@ class WpAdvQuiz_Controller_Quiz extends WpAdvQuiz_Controller_Controller
             array('WpAdvQuiz_View_QuizOverallTable', 'getColumnDefs'));
 
         add_screen_option('per_page', array(
-            'label' => __('Quiz', 'wp-adv-quiz'),
+            'label' => __('Quiz', 'ct-pro-quiz-lite'),
             'default' => 20,
             'option' => 'wp_adv_quiz_quiz_overview_per_page'
         ));
@@ -97,7 +97,7 @@ class WpAdvQuiz_Controller_Quiz extends WpAdvQuiz_Controller_Controller
         $prerequisiteQuizList = array();
 
         if ($quizId && $quizMapper->exists($quizId) == 0) {
-            WpAdvQuiz_View_View::admin_notices(__('Quiz not found', 'wp-adv-quiz'), 'error');
+            WpAdvQuiz_View_View::admin_notices(__('Quiz not found', 'ct-pro-quiz-lite'), 'error');
 
             return;
         }
@@ -141,9 +141,9 @@ class WpAdvQuiz_Controller_Quiz extends WpAdvQuiz_Controller_Controller
 
                 if ($this->checkValidit($this->_post)) {
                     if ($quizId) {
-                        WpAdvQuiz_View_View::admin_notices(__('Quiz edited', 'wp-adv-quiz'), 'info');
+                        WpAdvQuiz_View_View::admin_notices(__('Quiz edited', 'ct-pro-quiz-lite'), 'info');
                     } else {
-                        WpAdvQuiz_View_View::admin_notices(__('quiz created', 'wp-adv-quiz'), 'info');
+                        WpAdvQuiz_View_View::admin_notices(__('quiz created', 'ct-pro-quiz-lite'), 'info');
                     }
 
                     $quizMapper->save($quiz);
@@ -167,7 +167,7 @@ class WpAdvQuiz_Controller_Quiz extends WpAdvQuiz_Controller_Controller
 
                 } else {
                     WpAdvQuiz_View_View::admin_notices(__('Quiz title or quiz description are not filled',
-                        'wp-adv-quiz'));
+                        'ct-pro-quiz-lite'));
                 }
 		
             } else {
@@ -190,7 +190,7 @@ class WpAdvQuiz_Controller_Quiz extends WpAdvQuiz_Controller_Controller
         $view->captchaIsInstalled = class_exists('ReallySimpleCaptcha');
         $view->categories = $cateoryMapper->fetchAll(WpAdvQuiz_Model_Category::CATEGORY_TYPE_QUIZ);
 
-        $view->header = $quizId ? __('Edit quiz', 'wp-adv-quiz') : __('Create quiz', 'wp-adv-quiz');
+        $view->header = $quizId ? __('Edit quiz', 'ct-pro-quiz-lite') : __('Create quiz', 'ct-pro-quiz-lite');
 
 
         $view->show();
@@ -415,7 +415,7 @@ class WpAdvQuiz_Controller_Quiz extends WpAdvQuiz_Controller_Controller
             $forms[] = new WpAdvQuiz_Model_Form($f);
         }
 
-        WpAdvQuiz_View_View::admin_notices(__('Template stored', 'wp-adv-quiz'), 'info');
+        WpAdvQuiz_View_View::admin_notices(__('Template stored', 'ct-pro-quiz-lite'), 'info');
 
         $data = array(
             'quiz' => $quiz,
@@ -516,7 +516,7 @@ class WpAdvQuiz_Controller_Quiz extends WpAdvQuiz_Controller_Controller
 
         $m->deleteAll($id);
 
-        WpAdvQuiz_View_View::admin_notices(__('Quiz deleted', 'wp-adv-quiz'), 'info');
+        WpAdvQuiz_View_View::admin_notices(__('Quiz deleted', 'ct-pro-quiz-lite'), 'info');
 
         $this->showAction();
     }
@@ -538,7 +538,7 @@ class WpAdvQuiz_Controller_Quiz extends WpAdvQuiz_Controller_Controller
             }
         }
 
-        WpAdvQuiz_View_View::admin_notices(__('Quiz deleted', 'wp-adv-quiz'), 'info');
+        WpAdvQuiz_View_View::admin_notices(__('Quiz deleted', 'ct-pro-quiz-lite'), 'info');
 
         $this->showAction();
     }
@@ -737,13 +737,13 @@ class WpAdvQuiz_Controller_Quiz extends WpAdvQuiz_Controller_Controller
             /* @var $cat WpAdvQuiz_Model_Category */
 
             if (!$cat->getCategoryId()) {
-                $cat->setCategoryName(__('Not categorized', 'wp-adv-quiz'));
+                $cat->setCategoryName(__('Not categorized', 'ct-pro-quiz-lite'));
             }
 
             $cats[$cat->getCategoryId()] = $cat->getCategoryName();
         }
 
-        $a = __('Categories', 'wp-adv-quiz') . ":\n";
+        $a = __('Categories', 'ct-pro-quiz-lite') . ":\n";
 
         foreach ($catArray as $id => $value) {
             if (!isset($cats[$id])) {

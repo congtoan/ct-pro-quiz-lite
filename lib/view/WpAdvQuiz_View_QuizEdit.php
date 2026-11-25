@@ -26,7 +26,7 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                 <input type="hidden" name="ajax_quiz_id" value="<?php echo esc_attr($this->quiz->getId()); ?>">
 
                 <a style="float: left;" class="button-secondary" href="<?php echo admin_url('admin.php?page=wpAdvQuiz'); ?>">
-                    <?php _e('back to overview', 'wp-adv-quiz'); ?>
+                    <?php _e('back to overview', 'ct-pro-quiz-lite'); ?>
                 </a>
 
                 <div style="float: right;">
@@ -37,7 +37,7 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                         }
                         ?>
                     </select>
-                    <input type="submit" name="templateLoad" value="<?php _e('load template', 'wp-adv-quiz'); ?>"
+                    <input type="submit" name="templateLoad" value="<?php _e('load template', 'ct-pro-quiz-lite'); ?>"
                            class="button-primary">
                 </div>
                 <div style="clear: both;"></div>
@@ -49,13 +49,13 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
 
                     <div style="float: left;">
                         <input type="submit" name="submit" class="button-primary" id="wpAdvQuiz_save"
-                               value="<?php _e('Save', 'wp-adv-quiz'); ?>">
+                               value="<?php _e('Save', 'ct-pro-quiz-lite'); ?>">
                     </div>
                     <div style="float: right;">
-                        <input type="text" placeholder="<?php _e('template name', 'wp-adv-quiz'); ?>"
+                        <input type="text" placeholder="<?php _e('template name', 'ct-pro-quiz-lite'); ?>"
                                class="regular-text" name="templateName" style="border: 1px solid rgb(255, 134, 134);">
                         <select name="templateSaveList">
-                            <option value="0">=== <?php _e('Create new template', 'wp-adv-quiz'); ?> ===</option>
+                            <option value="0">=== <?php _e('Create new template', 'ct-pro-quiz-lite'); ?> ===</option>
                             <?php
                             foreach ($this->templates as $template) {
                                 echo '<option value="', esc_attr($template->getTemplateId()), '">', esc_html($template->getName()), '</option>';
@@ -64,7 +64,7 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                         </select>
 
                         <input type="submit" name="template" class="button-primary" id="wpAdvQuiz_saveTemplate"
-                               value="<?php _e('Save as template', 'wp-adv-quiz'); ?>">
+                               value="<?php _e('Save as template', 'ct-pro-quiz-lite'); ?>">
                     </div>
                     <div style="clear: both;"></div>
                 </div>
@@ -104,13 +104,13 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
     {
         ?>
         <div class="nav-tab-wrapper wpAdvQuiz-top-tab-wrapper">
-            <a href="#tabGeneral" data-tab="tabGeneral" class="nav-tab nav-tab-active"><?php _e('General', 'wp-adv-quiz'); ?></a>
-            <a href="#tabResult" data-tab="tabResult" class="nav-tab "><?php _e('Result', 'wp-adv-quiz'); ?></a>
-            <a href="#tabOptions" data-tab="tabOptions" class="nav-tab "><?php _e('Options', 'wp-adv-quiz'); ?></a>
-            <a href="#tabCustomFields" data-tab="tabCustomFields" class="nav-tab "><?php _e('Custom fields', 'wp-adv-quiz'); ?></a>
-            <a href="#tabLeaderboard" data-tab="tabLeaderboard" class="nav-tab "><?php _e('Leaderboard', 'wp-adv-quiz'); ?></a>
-            <a href="#tabEmailSettings" data-tab="tabEmailSettings" class="nav-tab "><?php _e('Email Settings', 'wp-adv-quiz'); ?></a>
-            <a href="#tabPlugins" data-tab="tabPlugins" class="nav-tab "><?php _e('Plugins', 'wp-adv-quiz'); ?></a>
+            <a href="#tabGeneral" data-tab="tabGeneral" class="nav-tab nav-tab-active"><?php _e('General', 'ct-pro-quiz-lite'); ?></a>
+            <a href="#tabResult" data-tab="tabResult" class="nav-tab "><?php _e('Result', 'ct-pro-quiz-lite'); ?></a>
+            <a href="#tabOptions" data-tab="tabOptions" class="nav-tab "><?php _e('Options', 'ct-pro-quiz-lite'); ?></a>
+            <a href="#tabCustomFields" data-tab="tabCustomFields" class="nav-tab "><?php _e('Custom fields', 'ct-pro-quiz-lite'); ?></a>
+            <a href="#tabLeaderboard" data-tab="tabLeaderboard" class="nav-tab "><?php _e('Leaderboard', 'ct-pro-quiz-lite'); ?></a>
+            <a href="#tabEmailSettings" data-tab="tabEmailSettings" class="nav-tab "><?php _e('Email Settings', 'ct-pro-quiz-lite'); ?></a>
+            <a href="#tabPlugins" data-tab="tabPlugins" class="nav-tab "><?php _e('Plugins', 'ct-pro-quiz-lite'); ?></a>
             <?php do_action('wpAdvQuiz_quizEdit_tab_wrapper', $this); ?>
         </div>
         <?php
@@ -207,270 +207,270 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
     {
         ?>
         <div class="postbox">
-            <h3 class="hndle"><?php _e('Options', 'wp-adv-quiz'); ?></h3>
+            <h3 class="hndle"><?php _e('Options', 'ct-pro-quiz-lite'); ?></h3>
 
             <div class="inside">
                 <table class="form-table">
                     <tbody>
                     <tr>
                         <th scope="row">
-                            <?php _e('Hide quiz title', 'wp-adv-quiz'); ?>
+                            <?php _e('Hide quiz title', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
-                                    <span><?php _e('Hide title', 'wp-adv-quiz'); ?></span>
+                                    <span><?php _e('Hide title', 'ct-pro-quiz-lite'); ?></span>
                                 </legend>
                                 <label for="title_hidden">
                                     <input type="checkbox" id="title_hidden" value="1"
                                            name="titleHidden" <?php echo esc_attr($this->quiz->isTitleHidden()) ? 'checked="checked"' : '' ?> >
-                                    <?php _e('Activate', 'wp-adv-quiz'); ?>
+                                    <?php _e('Activate', 'ct-pro-quiz-lite'); ?>
                                 </label>
 
                                 <p class="description">
-                                    <?php _e('The title serves as quiz heading.', 'wp-adv-quiz'); ?>
+                                    <?php _e('The title serves as quiz heading.', 'ct-pro-quiz-lite'); ?>
                                 </p>
                             </fieldset>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('Hide "Restart quiz" button', 'wp-adv-quiz'); ?>
+                            <?php _e('Hide "Restart quiz" button', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
-                                    <span><?php _e('Hide "Restart quiz" button', 'wp-adv-quiz'); ?></span>
+                                    <span><?php _e('Hide "Restart quiz" button', 'ct-pro-quiz-lite'); ?></span>
                                 </legend>
                                 <label for="btn_restart_quiz_hidden">
                                     <input type="checkbox" id="btn_restart_quiz_hidden" value="1"
                                            name="btnRestartQuizHidden" <?php echo esc_attr($this->quiz->isBtnRestartQuizHidden()) ? 'checked="checked"' : '' ?> >
-                                    <?php _e('Activate', 'wp-adv-quiz'); ?>
+                                    <?php _e('Activate', 'ct-pro-quiz-lite'); ?>
                                 </label>
 
                                 <p class="description">
                                     <?php _e('Hide the "Restart quiz" button in the Frontend.',
-                                        'wp-adv-quiz'); ?>
+                                        'ct-pro-quiz-lite'); ?>
                                 </p>
                             </fieldset>
                         </td>
                     </tr>
 					<tr>
                         <th scope="row">
-                            <?php _e('Hide "Clear question" button', 'wp-adv-quiz'); ?>
+                            <?php _e('Hide "Clear question" button', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
-                                    <span><?php _e('Hide "Clear question" button', 'wp-adv-quiz'); ?></span>
+                                    <span><?php _e('Hide "Clear question" button', 'ct-pro-quiz-lite'); ?></span>
                                 </legend>
                                 <label for="btn_clear_quiz_hidden">
                                     <input type="checkbox" id="btn_clear_quiz_hidden" value="1"
                                            name="btnClearQuizHidden" <?php echo esc_attr($this->quiz->isBtnClearQuizHidden()) ? 'checked="checked"' : '' ?> >
-                                    <?php _e('Activate', 'wp-adv-quiz'); ?>
+                                    <?php _e('Activate', 'ct-pro-quiz-lite'); ?>
                                 </label>
 							
                                 <p class="description">
                                     <?php _e('Hide the "Clear question" button in the Frontend.',
-                                        'wp-adv-quiz'); ?>
+                                        'ct-pro-quiz-lite'); ?>
                                 </p>
                             </fieldset>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('Hide "View question" button', 'wp-adv-quiz'); ?>
+                            <?php _e('Hide "View question" button', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
-                                    <span><?php _e('Hide "View question" button', 'wp-adv-quiz'); ?></span>
+                                    <span><?php _e('Hide "View question" button', 'ct-pro-quiz-lite'); ?></span>
                                 </legend>
                                 <label for="btn_view_question_hidden">
                                     <input type="checkbox" id="btn_view_question_hidden" value="1"
                                            name="btnViewQuestionHidden" <?php echo esc_attr($this->quiz->isBtnViewQuestionHidden()) ? 'checked="checked"' : '' ?> >
-                                    <?php _e('Activate', 'wp-adv-quiz'); ?>
+                                    <?php _e('Activate', 'ct-pro-quiz-lite'); ?>
                                 </label>
 
                                 <p class="description">
                                     <?php _e('Hide the "View question" button in the Frontend.',
-                                        'wp-adv-quiz'); ?>
+                                        'ct-pro-quiz-lite'); ?>
                                 </p>
                             </fieldset>
                         </td>
                     </tr>
 					<tr>
                         <th scope="row">
-                            <?php _e('Display practice button', 'wp-adv-quiz'); ?>
+                            <?php _e('Display practice button', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
-                                    <span><?php _e('Display practice button', 'wp-adv-quiz'); ?></span>
+                                    <span><?php _e('Display practice button', 'ct-pro-quiz-lite'); ?></span>
                                 </legend>
                                 <label for="btn_view_practice_show">
                                     <input type="checkbox" id="btn_view_practice_show" value="1"
                                            name="btnViewPracticeShow" <?php echo esc_attr($this->quiz->isBtnViewPracticeShow()) ? 'checked="checked"' : '' ?> >
 										   
 										       
-									<?php _e('Activate', 'wp-adv-quiz'); ?>
+									<?php _e('Activate', 'ct-pro-quiz-lite'); ?>
                                 </label>
 								
 								<p class="description">
                                     <?php _e('Show a  button in the Frontend to check the results on runtime.',
-                                        'wp-adv-quiz'); ?>
+                                        'ct-pro-quiz-lite'); ?>
                                 </p>
                             </fieldset>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('Display question randomly', 'wp-adv-quiz'); ?>
+                            <?php _e('Display question randomly', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
-                                    <span><?php _e('Display question randomly', 'wp-adv-quiz'); ?></span>
+                                    <span><?php _e('Display question randomly', 'ct-pro-quiz-lite'); ?></span>
                                 </legend>
                                 <label for="question_random">
                                     <input type="checkbox" id="question_random" value="1"
                                            name="questionRandom" <?php echo esc_attr($this->quiz->isQuestionRandom()) ? 'checked="checked"' : '' ?> >
-                                    <?php _e('Activate', 'wp-adv-quiz'); ?>
+                                    <?php _e('Activate', 'ct-pro-quiz-lite'); ?>
                                 </label>
                             </fieldset>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('Display answers randomly', 'wp-adv-quiz'); ?>
+                            <?php _e('Display answers randomly', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
-                                    <span><?php _e('Display answers randomly', 'wp-adv-quiz'); ?></span>
+                                    <span><?php _e('Display answers randomly', 'ct-pro-quiz-lite'); ?></span>
                                 </legend>
                                 <label for="answer_random">
                                     <input type="checkbox" id="answer_random" value="1"
                                            name="answerRandom" <?php echo esc_attr($this->quiz->isAnswerRandom()) ? 'checked="checked"' : '' ?> >
-                                    <?php _e('Activate', 'wp-adv-quiz'); ?>
+                                    <?php _e('Activate', 'ct-pro-quiz-lite'); ?>
                                 </label>
                             </fieldset>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('Sort questions by category', 'wp-adv-quiz'); ?>
+                            <?php _e('Sort questions by category', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
-                                    <span><?php _e('Sort questions by category', 'wp-adv-quiz'); ?></span>
+                                    <span><?php _e('Sort questions by category', 'ct-pro-quiz-lite'); ?></span>
                                 </legend>
                                 <label>
                                     <input type="checkbox" value="1"
                                            name="sortCategories" <?php $this->checked($this->quiz->isSortCategories()); ?> >
-                                    <?php _e('Activate', 'wp-adv-quiz'); ?>
+                                    <?php _e('Activate', 'ct-pro-quiz-lite'); ?>
                                 </label>
 
                                 <p class="description">
                                     <?php _e('Also works in conjunction with the "display randomly question" option.',
-                                        'wp-adv-quiz'); ?>
+                                        'ct-pro-quiz-lite'); ?>
                                 </p>
                             </fieldset>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('Time limit', 'wp-adv-quiz'); ?>
+                            <?php _e('Time limit', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
-                                    <span><?php _e('Time limit', 'wp-adv-quiz'); ?></span>
+                                    <span><?php _e('Time limit', 'ct-pro-quiz-lite'); ?></span>
                                 </legend>
                                 <label for="time_limit">
                                     <input type="number" min="0" class="small-text" id="time_limit"
                                            value="<?php echo esc_attr($this->quiz->getTimeLimit()); ?>"
-                                           name="timeLimit"> <?php _e('Seconds', 'wp-adv-quiz'); ?>
+                                           name="timeLimit"> <?php _e('Seconds', 'ct-pro-quiz-lite'); ?>
                                 </label>
 
                                 <p class="description">
-                                    <?php _e('0 = no limit', 'wp-adv-quiz'); ?>
+                                    <?php _e('0 = no limit', 'ct-pro-quiz-lite'); ?>
                                 </p>
                             </fieldset>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('Statistics', 'wp-adv-quiz'); ?>
+                            <?php _e('Statistics', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
-                                    <span><?php _e('Statistics', 'wp-adv-quiz'); ?></span>
+                                    <span><?php _e('Statistics', 'ct-pro-quiz-lite'); ?></span>
                                 </legend>
                                 <label for="statistics_on">
                                     <input type="checkbox" id="statistics_on" value="1"
                                            name="statisticsOn" <?php echo esc_attr($this->quiz->isStatisticsOn()) ? 'checked="checked"' : ''; ?>>
-                                    <?php _e('Activate', 'wp-adv-quiz'); ?>
+                                    <?php _e('Activate', 'ct-pro-quiz-lite'); ?>
                                 </label>
 
                                 <p class="description">
                                     <?php _e('Statistics about right or wrong answers. Statistics will be saved by completed quiz, not after every question. The statistics is only visible over administration menu. (internal statistics)',
-                                        'wp-adv-quiz'); ?>
+                                        'ct-pro-quiz-lite'); ?>
                                 </p>
                             </fieldset>
                         </td>
                     </tr>
                     <tr id="statistics_ip_lock_tr" style="display: none;">
                         <th scope="row">
-                            <?php _e('Statistics IP-lock', 'wp-adv-quiz'); ?>
+                            <?php _e('Statistics IP-lock', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
-                                    <span><?php _e('Statistics IP-lock', 'wp-adv-quiz'); ?></span>
+                                    <span><?php _e('Statistics IP-lock', 'ct-pro-quiz-lite'); ?></span>
                                 </legend>
                                 <label for="statistics_ip_lock">
                                     <input type="number" min="0" class="small-text" id="statistics_ip_lock"
                                            value="<?php echo ($this->quiz->getStatisticsIpLock() === null) ? 1440 : $this->quiz->getStatisticsIpLock(); ?>"
                                            name="statisticsIpLock">
                                     <?php _e('in minutes (recommended 1440 minutes = 1 day)',
-                                        'wp-adv-quiz'); ?>
+                                        'ct-pro-quiz-lite'); ?>
                                 </label>
 
                                 <p class="description">
                                     <?php _e('Protect the statistics from spam. Result will only be saved every X minutes from same IP. (0 = deactivated)',
-                                        'wp-adv-quiz'); ?>
+                                        'ct-pro-quiz-lite'); ?>
                                 </p>
                             </fieldset>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('Execute quiz only once', 'wp-adv-quiz'); ?>
+                            <?php _e('Execute quiz only once', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
 
                                 <legend class="screen-reader-text">
-                                    <span><?php _e('Execute quiz only once', 'wp-adv-quiz'); ?></span>
+                                    <span><?php _e('Execute quiz only once', 'ct-pro-quiz-lite'); ?></span>
                                 </legend>
 
                                 <label>
                                     <input type="checkbox" value="1"
                                            name="quizRunOnce" <?php echo esc_attr($this->quiz->isQuizRunOnce()) ? 'checked="checked"' : '' ?>>
-                                    <?php _e('Activate', 'wp-adv-quiz'); ?>
+                                    <?php _e('Activate', 'ct-pro-quiz-lite'); ?>
                                 </label>
 
                                 <p class="description">
                                     <?php _e('If you activate this option, the user can complete the quiz only once. Afterwards the quiz is blocked for this user.',
-                                        'wp-adv-quiz'); ?>
+                                        'ct-pro-quiz-lite'); ?>
                                 </p>
 
                                 <div id="wpAdvQuiz_quiz_run_once_type"
                                      style="margin-bottom: 5px; display: none;">
-                                    <?php _e('This option applies to:', 'wp-adv-quiz');
+                                    <?php _e('This option applies to:', 'ct-pro-quiz-lite');
 
                                     $quizRunOnceType = $this->quiz->getQuizRunOnceType();
                                     $quizRunOnceType = ($quizRunOnceType == 0) ? 1 : $quizRunOnceType;
@@ -479,42 +479,42 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                                     <label>
                                         <input name="quizRunOnceType" type="radio"
                                                value="1" <?php echo ($quizRunOnceType == 1) ? 'checked="checked"' : ''; ?>>
-                                        <?php _e('all users', 'wp-adv-quiz'); ?>
+                                        <?php _e('all users', 'ct-pro-quiz-lite'); ?>
                                     </label>
                                     <label>
                                         <input name="quizRunOnceType" type="radio"
                                                value="2" <?php echo ($quizRunOnceType == 2) ? 'checked="checked"' : ''; ?>>
-                                        <?php _e('registered useres only', 'wp-adv-quiz'); ?>
+                                        <?php _e('registered useres only', 'ct-pro-quiz-lite'); ?>
                                     </label>
                                     <label>
                                         <input name="quizRunOnceType" type="radio"
                                                value="3" <?php echo ($quizRunOnceType == 3) ? 'checked="checked"' : ''; ?>>
-                                        <?php _e('anonymous users only', 'wp-adv-quiz'); ?>
+                                        <?php _e('anonymous users only', 'ct-pro-quiz-lite'); ?>
                                     </label>
 
                                     <div id="wpAdvQuiz_quiz_run_once_cookie" style="margin-top: 10px;">
                                         <label>
                                             <input type="checkbox" value="1"
                                                    name="quizRunOnceCookie" <?php echo esc_attr($this->quiz->isQuizRunOnceCookie()) ? 'checked="checked"' : '' ?>>
-                                            <?php _e('user identification by cookie', 'wp-adv-quiz'); ?>
+                                            <?php _e('user identification by cookie', 'ct-pro-quiz-lite'); ?>
                                         </label>
 
                                         <p class="description">
                                             <?php _e('If you activate this option, a cookie is set additionally for unregistrated (anonymous) users. This ensures a longer assignment of the user than the simple assignment by the IP address.',
-                                                'wp-adv-quiz'); ?>
+                                                'ct-pro-quiz-lite'); ?>
                                         </p>
                                     </div>
 
                                     <div style="margin-top: 15px;">
                                         <input class="button-secondary" type="button" name="resetQuizLock"
                                                value="<?php _e('Reset the user identification',
-                                                   'wp-adv-quiz'); ?>">
+                                                   'ct-pro-quiz-lite'); ?>">
                                         <span id="resetLockMsg"
                                               style="display:none; background-color: rgb(255, 255, 173); border: 1px solid rgb(143, 143, 143); padding: 4px; margin-left: 5px; "><?php _e('User identification has been reset.'); ?></span>
 
                                         <p class="description">
                                             <?php _e('Resets user identification for all users.',
-                                                'wp-adv-quiz'); ?>
+                                                'ct-pro-quiz-lite'); ?>
                                         </p>
                                     </div>
                                 </div>
@@ -523,36 +523,36 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('Show only specific number of questions', 'wp-adv-quiz'); ?>
+                            <?php _e('Show only specific number of questions', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
                                                 <span><?php _e('Show only specific number of questions',
-                                                        'wp-adv-quiz'); ?></span>
+                                                        'ct-pro-quiz-lite'); ?></span>
                                 </legend>
                                 <label>
                                     <input type="checkbox" value="1"
                                            name="showMaxQuestion" <?php echo esc_attr($this->quiz->isShowMaxQuestion()) ? 'checked="checked"' : '' ?>>
-                                    <?php _e('Activate', 'wp-adv-quiz'); ?>
+                                    <?php _e('Activate', 'ct-pro-quiz-lite'); ?>
                                 </label>
 
                                 <p class="description">
                                     <?php _e('If you enable this option, maximum number of displayed questions will be X from X questions. (The output of questions is random)',
-                                        'wp-adv-quiz'); ?>
+                                        'ct-pro-quiz-lite'); ?>
                                 </p>
 
                                 <div id="wpAdvQuiz_showMaxBox" style="display: none;">
                                     <label>
                                         <?php _e('How many questions should be displayed simultaneously:',
-                                            'wp-adv-quiz'); ?>
+                                            'ct-pro-quiz-lite'); ?>
                                         <input class="small-text" type="text" name="showMaxQuestionValue"
                                                value="<?php echo esc_attr($this->quiz->getShowMaxQuestionValue()); ?>">
                                     </label>
                                     <label>
                                         <input type="checkbox" value="1"
                                                name="showMaxQuestionPercent" <?php echo esc_attr($this->quiz->isShowMaxQuestionPercent()) ? 'checked="checked"' : '' ?>>
-                                        <?php _e('in percent', 'wp-adv-quiz'); ?>
+                                        <?php _e('in percent', 'ct-pro-quiz-lite'); ?>
                                     </label>
                                 </div>
                             </fieldset>
@@ -560,37 +560,37 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('Prerequisites', 'wp-adv-quiz'); ?>
+                            <?php _e('Prerequisites', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
-                                    <span><?php _e('Prerequisites', 'wp-adv-quiz'); ?></span>
+                                    <span><?php _e('Prerequisites', 'ct-pro-quiz-lite'); ?></span>
                                 </legend>
                                 <label>
                                     <input type="checkbox" value="1"
                                            name="prerequisite" <?php $this->checked($this->quiz->isPrerequisite()); ?>>
-                                    <?php _e('Activate', 'wp-adv-quiz'); ?>
+                                    <?php _e('Activate', 'ct-pro-quiz-lite'); ?>
                                 </label>
 
                                 <p class="description">
                                     <?php _e('If you enable this option, you can choose quiz, which user have to finish before he can start this quiz.',
-                                        'wp-adv-quiz'); ?>
+                                        'ct-pro-quiz-lite'); ?>
                                 </p>
 
                                 <p class="description">
                                     <?php _e('In all selected quizzes statistic function have to be active. If it is not it will be activated automatically.',
-                                        'wp-adv-quiz'); ?>
+                                        'ct-pro-quiz-lite'); ?>
                                 </p>
 
                                 <div id="prerequisiteBox" style="display: none;">
                                     <table>
                                         <tr>
                                             <th style="width: 120px; padding: 0;"><?php _e('Quiz',
-                                                    'wp-adv-quiz'); ?></th>
+                                                    'ct-pro-quiz-lite'); ?></th>
                                             <th style="padding: 0; width: 50px;"></th>
                                             <th style="padding: 0; width: 400px;"><?php _e('Prerequisites (This quiz have to be finished)',
-                                                    'wp-adv-quiz'); ?></th>
+                                                    'ct-pro-quiz-lite'); ?></th>
                                         </tr>
                                         <tr>
                                             <td style="padding: 0;">
@@ -638,32 +638,32 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('Question overview', 'wp-adv-quiz'); ?>
+                            <?php _e('Question overview', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
-                                    <span><?php _e('Question overview', 'wp-adv-quiz'); ?></span>
+                                    <span><?php _e('Question overview', 'ct-pro-quiz-lite'); ?></span>
                                 </legend>
                                 <label>
                                     <input type="checkbox" value="1"
                                            name="showReviewQuestion" <?php $this->checked($this->quiz->isShowReviewQuestion()); ?>>
-                                    <?php _e('Activate', 'wp-adv-quiz'); ?>
+                                    <?php _e('Activate', 'ct-pro-quiz-lite'); ?>
                                 </label>
 
                                 <p class="description">
                                     <?php _e('Add at the top of the quiz a question overview, which allows easy navigation. Additional questions can be marked "to review".',
-                                        'wp-adv-quiz'); ?>
+                                        'ct-pro-quiz-lite'); ?>
                                 </p>
 
                                 <p class="description">
                                     <?php _e('Additional quiz overview will be displayed, before quiz is finished.',
-                                        'wp-adv-quiz'); ?>
+                                        'ct-pro-quiz-lite'); ?>
                                 </p>
 
                                 <div class="wpAdvQuiz_demoBox">
-                                    <?php _e('Question overview', 'wp-adv-quiz'); ?>: <a
-                                            href="#"><?php _e('Demo', 'wp-adv-quiz'); ?></a>
+                                    <?php _e('Question overview', 'ct-pro-quiz-lite'); ?>: <a
+                                            href="#"><?php _e('Demo', 'ct-pro-quiz-lite'); ?></a>
 
                                     <div>
                                         <img alt=""
@@ -671,8 +671,8 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                                     </div>
                                 </div>
                                 <div class="wpAdvQuiz_demoBox">
-                                    <?php _e('Quiz-summary', 'wp-adv-quiz'); ?>: <a
-                                            href="#"><?php _e('Demo', 'wp-adv-quiz'); ?></a>
+                                    <?php _e('Quiz-summary', 'ct-pro-quiz-lite'); ?>: <a
+                                            href="#"><?php _e('Demo', 'ct-pro-quiz-lite'); ?></a>
 
                                     <div>
                                         <img alt=""
@@ -684,44 +684,44 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                     </tr>
                     <tr class="wpAdvQuiz_reviewQuestionOptions" style="display: none;">
                         <th scope="row">
-                            <?php _e('Quiz-summary', 'wp-adv-quiz'); ?>
+                            <?php _e('Quiz-summary', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
-                                    <span><?php _e('Quiz-summary', 'wp-adv-quiz'); ?></span>
+                                    <span><?php _e('Quiz-summary', 'ct-pro-quiz-lite'); ?></span>
                                 </legend>
                                 <label>
                                     <input type="checkbox" value="1"
                                            name="quizSummaryHide" <?php $this->checked($this->quiz->isQuizSummaryHide()); ?>>
-                                    <?php _e('Deactivate', 'wp-adv-quiz'); ?>
+                                    <?php _e('Deactivate', 'ct-pro-quiz-lite'); ?>
                                 </label>
 
                                 <p class="description">
                                     <?php _e('If you enalbe this option, no quiz overview will be displayed, before finishing quiz.',
-                                        'wp-adv-quiz'); ?>
+                                        'ct-pro-quiz-lite'); ?>
                                 </p>
                             </fieldset>
                         </td>
                     </tr>
                     <tr class="wpAdvQuiz_reviewQuestionOptions" style="display: none;">
                         <th scope="row">
-                            <?php _e('Skip question', 'wp-adv-quiz'); ?>
+                            <?php _e('Skip question', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
-                                    <span><?php _e('Skip question', 'wp-adv-quiz'); ?></span>
+                                    <span><?php _e('Skip question', 'ct-pro-quiz-lite'); ?></span>
                                 </legend>
                                 <label>
                                     <input type="checkbox" value="1"
                                            name="skipQuestionDisabled" <?php $this->checked($this->quiz->isSkipQuestionDisabled()); ?>>
-                                    <?php _e('Deactivate', 'wp-adv-quiz'); ?>
+                                    <?php _e('Deactivate', 'ct-pro-quiz-lite'); ?>
                                 </label>
 
                                 <p class="description">
                                     <?php _e('If you enable this option, user won\'t be able to skip question. (only in "Overview -> next" mode). User still will be able to navigate over "Question-Overview"',
-                                        'wp-adv-quiz'); ?>
+                                        'ct-pro-quiz-lite'); ?>
                                 </p>
                             </fieldset>
                         </td>
@@ -729,35 +729,35 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                     <!--
 							<tr>
 								<th scope="row">
-									<?php _e('Admin e-mail notification', 'wp-adv-quiz'); ?>
+									<?php _e('Admin e-mail notification', 'ct-pro-quiz-lite'); ?>
 								</th>
 								<td>
 									<fieldset>
 										<legend class="screen-reader-text">
-											<span><?php _e('Admin e-mail notification', 'wp-adv-quiz'); ?></span>
+											<span><?php _e('Admin e-mail notification', 'ct-pro-quiz-lite'); ?></span>
 										</legend>
 										<label>
 											<input type="radio" name="emailNotification" value="<?php echo WpAdvQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_NONE; ?>" <?php $this->checked($this->quiz->getEmailNotification(),
                         WpAdvQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_NONE); ?>>
-											<?php _e('Deactivate', 'wp-adv-quiz'); ?>
+											<?php _e('Deactivate', 'ct-pro-quiz-lite'); ?>
 										</label>
 										<label>
 											<input type="radio" name="emailNotification" value="<?php echo WpAdvQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_REG_USER; ?>" <?php $this->checked($this->quiz->getEmailNotification(),
                         WpAdvQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_REG_USER); ?>>
-											<?php _e('for registered users only', 'wp-adv-quiz'); ?>
+											<?php _e('for registered users only', 'ct-pro-quiz-lite'); ?>
 										</label>
 										<label>
 											<input type="radio" name="emailNotification" value="<?php echo WpAdvQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_ALL; ?>" <?php $this->checked($this->quiz->getEmailNotification(),
                         WpAdvQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_ALL); ?>>
-											<?php _e('for all users', 'wp-adv-quiz'); ?>
+											<?php _e('for all users', 'ct-pro-quiz-lite'); ?>
 										</label>
 										<p class="description">
 											<?php _e('If you enable this option, you will be informed if a user completes this quiz.',
-                        'wp-adv-quiz'); ?>
+                        'ct-pro-quiz-lite'); ?>
 										</p>
 										<p class="description">
 											<?php _e('E-Mail settings can be edited in global settings.',
-                        'wp-adv-quiz'); ?>
+                        'ct-pro-quiz-lite'); ?>
 										</p>
 									</fieldset>
 								</td>
@@ -765,24 +765,24 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
 
 							<tr>
 								<th scope="row">
-									<?php _e('User e-mail notification', 'wp-adv-quiz'); ?>
+									<?php _e('User e-mail notification', 'ct-pro-quiz-lite'); ?>
 								</th>
 								<td>
 									<fieldset>
 										<legend class="screen-reader-text">
-											<span><?php _e('User e-mail notification', 'wp-adv-quiz'); ?></span>
+											<span><?php _e('User e-mail notification', 'ct-pro-quiz-lite'); ?></span>
 										</legend>
 										<label>
 											<input type="checkbox" name="userEmailNotification" value="1" <?php $this->checked($this->quiz->isUserEmailNotification()); ?>>
-											<?php _e('Activate', 'wp-adv-quiz'); ?>
+											<?php _e('Activate', 'ct-pro-quiz-lite'); ?>
 										</label>
 										<p class="description">
 											<?php _e('If you enable this option, an email is sent with his quiz result to the user. (only registered users)',
-                        'wp-adv-quiz'); ?>
+                        'ct-pro-quiz-lite'); ?>
 										</p>
 										<p class="description">
 											<?php _e('E-Mail settings can be edited in global settings.',
-                        'wp-adv-quiz'); ?>
+                        'ct-pro-quiz-lite'); ?>
 										</p>
 									</fieldset>
 								</td>
@@ -790,22 +790,22 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
 							 -->
                     <tr>
                         <th scope="row">
-                            <?php _e('Autostart', 'wp-adv-quiz'); ?>
+                            <?php _e('Autostart', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
-                                    <span><?php _e('Autostart', 'wp-adv-quiz'); ?></span>
+                                    <span><?php _e('Autostart', 'ct-pro-quiz-lite'); ?></span>
                                 </legend>
                                 <label>
                                     <input type="checkbox" name="autostart"
                                            value="1" <?php $this->checked($this->quiz->isAutostart()); ?>>
-                                    <?php _e('Activate', 'wp-adv-quiz'); ?>
+                                    <?php _e('Activate', 'ct-pro-quiz-lite'); ?>
                                 </label>
 
                                 <p class="description">
                                     <?php _e('If you enable this option, the quiz will start automatically after the page is loaded.',
-                                        'wp-adv-quiz'); ?>
+                                        'ct-pro-quiz-lite'); ?>
                                 </p>
                             </fieldset>
                         </td>
@@ -813,23 +813,23 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                     <tr>
                         <th scope="row">
                             <?php _e('Only registered users are allowed to start the quiz',
-                                'wp-adv-quiz'); ?>
+                                'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
                                                 <span><?php _e('Only registered users are allowed to start the quiz',
-                                                        'wp-adv-quiz'); ?></span>
+                                                        'ct-pro-quiz-lite'); ?></span>
                                 </legend>
                                 <label>
                                     <input type="checkbox" name="startOnlyRegisteredUser"
                                            value="1" <?php $this->checked($this->quiz->isStartOnlyRegisteredUser()); ?>>
-                                    <?php _e('Activate', 'wp-adv-quiz'); ?>
+                                    <?php _e('Activate', 'ct-pro-quiz-lite'); ?>
                                 </label>
 
                                 <p class="description">
                                     <?php _e('If you enable this option, only registered users allowed start the quiz.',
-                                        'wp-adv-quiz'); ?>
+                                        'ct-pro-quiz-lite'); ?>
                                 </p>
                             </fieldset>
                         </td>
@@ -845,36 +845,36 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
     {
         ?>
         <div class="postbox">
-            <h3 class="hndle"><?php _e('Results text', 'wp-adv-quiz'); ?><?php _e('(optional)',
-                    'wp-adv-quiz'); ?></h3>
+            <h3 class="hndle"><?php _e('Results text', 'ct-pro-quiz-lite'); ?><?php _e('(optional)',
+                    'ct-pro-quiz-lite'); ?></h3>
 
             <div class="inside">
                 <p class="description">
                     <?php _e('This text will be displayed at the end of the quiz (in results). (this text is optional)',
-                        'wp-adv-quiz'); ?>
+                        'ct-pro-quiz-lite'); ?>
                 </p>
 
                 <div style="padding-top: 10px; padding-bottom: 10px;">
                     <label for="wpAdvQuiz_resultGradeEnabled">
-                        <?php _e('Activate graduation', 'wp-adv-quiz'); ?>
+                        <?php _e('Activate graduation', 'ct-pro-quiz-lite'); ?>
                         <input type="checkbox" name="resultGradeEnabled" id="wpAdvQuiz_resultGradeEnabled"
                                value="1" <?php echo esc_attr($this->quiz->isResultGradeEnabled()) ? 'checked="checked"' : ''; ?>>
                     </label>
                 </div>
                 <div style="display: none;" id="resultGrade">
                     <div>
-                        <strong><?php _e('Hint:', 'wp-adv-quiz'); ?></strong>
+                        <strong><?php _e('Hint:', 'ct-pro-quiz-lite'); ?></strong>
                         <ul style="list-style-type: square; padding: 5px; margin-left: 20px; margin-top: 0;">
-                            <li><?php _e('Maximal 15 levels', 'wp-adv-quiz'); ?></li>
+                            <li><?php _e('Maximal 15 levels', 'ct-pro-quiz-lite'); ?></li>
                             <li>
                                 <?php printf(__('Percentages refer to the total score of the quiz. (Current total %d points in %d questions.',
-                                    'wp-adv-quiz'),
+                                    'ct-pro-quiz-lite'),
                                     $this->quiz->fetchSumQuestionPoints(),
                                     $this->quiz->fetchCountQuestions()); ?>
                             </li>
-                            <li><?php _e('Values can also be mixed up', 'wp-adv-quiz'); ?></li>
+                            <li><?php _e('Values can also be mixed up', 'ct-pro-quiz-lite'); ?></li>
                             <li><?php _e('10,15% or 10.15% allowed (max. two digits after the decimal point)',
-                                    'wp-adv-quiz'); ?></li>
+                                    'ct-pro-quiz-lite'); ?></li>
                         </ul>
 
                     </div>
@@ -904,15 +904,15 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                                                 )); ?></div>
                                         <div
                                                 style="margin-bottom: 5px;background-color: rgb(207, 207, 207);padding: 10px;">
-                                            <?php _e('from:', 'wp-adv-quiz'); ?> <input type="text"
+                                            <?php _e('from:', 'ct-pro-quiz-lite'); ?> <input type="text"
                                                                                         name="resultTextGrade[prozent][]"
                                                                                         class="small-text"
                                                                                         value="<?php echo esc_attr($resultText['prozent'][$i]) ?>"> <?php _e('percent',
-                                                'wp-adv-quiz'); ?> <?php printf(__('(Will be displayed, when result-percent is >= <span class="resultProzent">%s</span>%%)',
-                                                'wp-adv-quiz'), $resultText['prozent'][$i]); ?>
+                                                'ct-pro-quiz-lite'); ?> <?php printf(__('(Will be displayed, when result-percent is >= <span class="resultProzent">%s</span>%%)',
+                                                'ct-pro-quiz-lite'), $resultText['prozent'][$i]); ?>
                                             <input type="button" style="float: right;"
                                                    class="button-primary deleteResult"
-                                                   value="<?php _e('Delete graduation', 'wp-adv-quiz'); ?>">
+                                                   value="<?php _e('Delete graduation', 'ct-pro-quiz-lite'); ?>">
 
                                             <div style="clear: right;"></div>
                                             <input type="hidden" value="1" name="resultTextGrade[activ][]">
@@ -928,15 +928,15 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                                                 )); ?></div>
                                         <div
                                                 style="margin-bottom: 5px;background-color: rgb(207, 207, 207);padding: 10px;">
-                                            <?php _e('from:', 'wp-adv-quiz'); ?> <input type="text"
+                                            <?php _e('from:', 'ct-pro-quiz-lite'); ?> <input type="text"
                                                                                         name="resultTextGrade[prozent][]"
                                                                                         class="small-text"
                                                                                         value="0"> <?php _e('percent',
-                                                'wp-adv-quiz'); ?> <?php printf(__('(Will be displayed, when result-percent is >= <span class="resultProzent">%s</span>%%)',
-                                                'wp-adv-quiz'), '0'); ?>
+                                                'ct-pro-quiz-lite'); ?> <?php printf(__('(Will be displayed, when result-percent is >= <span class="resultProzent">%s</span>%%)',
+                                                'ct-pro-quiz-lite'), '0'); ?>
                                             <input type="button" style="float: right;"
                                                    class="button-primary deleteResult"
-                                                   value="<?php _e('Delete graduation', 'wp-adv-quiz'); ?>">
+                                                   value="<?php _e('Delete graduation', 'ct-pro-quiz-lite'); ?>">
 
                                             <div style="clear: right;"></div>
                                             <input type="hidden" value="<?php echo esc_attr($i) ? '0' : '1' ?>"
@@ -947,7 +947,7 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                             } ?>
                         </ul>
                         <input type="button" class="button-primary addResult"
-                               value="<?php _e('Add graduation', 'wp-adv-quiz'); ?>">
+                               value="<?php _e('Add graduation', 'ct-pro-quiz-lite'); ?>">
                     </div>
                 </div>
                 <div id="resultNormal">
@@ -963,7 +963,7 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                     ?>
                 </div>
 
-                <h4><?php _e('Custom fields - Variables', 'wp-adv-quiz'); ?></h4>
+                <h4><?php _e('Custom fields - Variables', 'ct-pro-quiz-lite'); ?></h4>
                 <ul class="formVariables"></ul>
 
             </div>
@@ -979,8 +979,8 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
 		$postBoxTitle = sanitize_text_field($postBoxTitle);
         ?>
         <div class="postbox">
-            <h3 class="hndle"><?php _e('Quiz title', 'wp-adv-quiz'); ?><?php _e('(required)',
-                    'wp-adv-quiz'); ?></h3>
+            <h3 class="hndle"><?php _e('Quiz title', 'ct-pro-quiz-lite'); ?><?php _e('(required)',
+                    'ct-pro-quiz-lite'); ?></h3>
 
             <div class="inside">
                 <input name="name" id="wpAdvQuiz_title" type="text" class="regular-text"
@@ -994,25 +994,25 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
     {
         ?>
         <div class="postbox">
-            <h3 class="hndle"><?php _e('Category', 'wp-adv-quiz'); ?><?php _e('(optional)',
-                    'wp-adv-quiz'); ?></h3>
+            <h3 class="hndle"><?php _e('Category', 'ct-pro-quiz-lite'); ?><?php _e('(optional)',
+                    'ct-pro-quiz-lite'); ?></h3>
 
             <div class="inside">
                 <p class="description">
-                    <?php _e('You can assign classify category for a quiz.', 'wp-adv-quiz'); ?>
+                    <?php _e('You can assign classify category for a quiz.', 'ct-pro-quiz-lite'); ?>
                 </p>
 
                 <p class="description">
-                    <?php _e('You can manage categories in global settings.', 'wp-adv-quiz'); ?>
+                    <?php _e('You can manage categories in global settings.', 'ct-pro-quiz-lite'); ?>
                 </p>
 
                 <div>
                     <select name="category">
-                        <option value="-1">--- <?php _e('Create new category', 'wp-adv-quiz'); ?>----
+                        <option value="-1">--- <?php _e('Create new category', 'ct-pro-quiz-lite'); ?>----
                         </option>
                         <option
                                 value="0" <?php echo esc_attr($this->quiz->getCategoryId()) == 0 ? 'selected="selected"' : ''; ?>>
-                            --- <?php _e('No category', 'wp-adv-quiz'); ?> ---
+                            --- <?php _e('No category', 'ct-pro-quiz-lite'); ?> ---
                         </option>
                         <?php
                         foreach ($this->categories as $cat) {
@@ -1022,10 +1022,10 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                     </select>
                 </div>
                 <div style="display: none;" id="categoryAddBox">
-                    <h4><?php _e('Create new category', 'wp-adv-quiz'); ?></h4>
+                    <h4><?php _e('Create new category', 'ct-pro-quiz-lite'); ?></h4>
                     <input type="text" name="categoryAdd" value="">
                     <input type="button" class="button-secondary" name="" id="categoryAddBtn"
-                           value="<?php _e('Create', 'wp-adv-quiz'); ?>">
+                           value="<?php _e('Create', 'ct-pro-quiz-lite'); ?>">
                 </div>
                 <div id="categoryMsgBox"
                      style="display:none; padding: 5px; border: 1px solid rgb(160, 160, 160); background-color: rgb(255, 255, 168); font-weight: bold; margin: 5px; ">
@@ -1047,12 +1047,12 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
 		
         ?>
         <div class="postbox">
-            <h3 class="hndle"><?php _e('Quiz description', 'wp-adv-quiz'); ?><?php _e('(required)',
-                    'wp-adv-quiz'); ?></h3>
+            <h3 class="hndle"><?php _e('Quiz description', 'ct-pro-quiz-lite'); ?><?php _e('(required)',
+                    'ct-pro-quiz-lite'); ?></h3>
 
             <div class="inside">
                 <p class="description">
-                    <?php _e('This text will be displayed before start of the quiz.', 'wp-adv-quiz'); ?>
+                    <?php _e('This text will be displayed before start of the quiz.', 'ct-pro-quiz-lite'); ?>
                 </p>
                 <?php
                 wp_editor($postBoxQuizDescription, "text");
@@ -1066,32 +1066,32 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
     {
         ?>
         <div class="postbox">
-            <h3 class="hndle"><?php _e('Result-Options', 'wp-adv-quiz'); ?></h3>
+            <h3 class="hndle"><?php _e('Result-Options', 'ct-pro-quiz-lite'); ?></h3>
 
             <div class="inside">
                 <table class="form-table">
                     <tbody>
                     <tr>
                         <th scope="row">
-                            <?php _e('Show average points', 'wp-adv-quiz'); ?>
+                            <?php _e('Show average points', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
-                                    <span><?php _e('Show average points', 'wp-adv-quiz'); ?></span>
+                                    <span><?php _e('Show average points', 'ct-pro-quiz-lite'); ?></span>
                                 </legend>
                                 <label>
                                     <input type="checkbox" value="1"
                                            name="showAverageResult" <?php $this->checked($this->quiz->isShowAverageResult()); ?>>
-                                    <?php _e('Activate', 'wp-adv-quiz'); ?>
+                                    <?php _e('Activate', 'ct-pro-quiz-lite'); ?>
                                 </label>
 
                                 <p class="description">
-                                    <?php _e('Statistics-function must be enabled.', 'wp-adv-quiz'); ?>
+                                    <?php _e('Statistics-function must be enabled.', 'ct-pro-quiz-lite'); ?>
                                 </p>
 
                                 <div class="wpAdvQuiz_demoBox">
-                                    <a href="#"><?php _e('Demo', 'wp-adv-quiz'); ?></a>
+                                    <a href="#"><?php _e('Demo', 'ct-pro-quiz-lite'); ?></a>
 
                                     <div>
                                         <img alt="" src="<?php echo esc_attr(WPADVQUIZ_URL) . '/img/averagePoints.png'; ?> ">
@@ -1102,27 +1102,27 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('Show category score', 'wp-adv-quiz'); ?>
+                            <?php _e('Show category score', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
-                                    <span><?php _e('Show category score', 'wp-adv-quiz'); ?></span>
+                                    <span><?php _e('Show category score', 'ct-pro-quiz-lite'); ?></span>
                                 </legend>
                                 <label>
                                     <input type="checkbox" name="showCategoryScore"
                                            value="1" <?php $this->checked($this->quiz->isShowCategoryScore()); ?>>
-                                    <?php _e('Activate', 'wp-adv-quiz'); ?>
+                                    <?php _e('Activate', 'ct-pro-quiz-lite'); ?>
                                 </label>
 
                                 <p class="description">
                                     <?php _e('If you enable this option, the results of each category is displayed on the results page.',
-                                        'wp-adv-quiz'); ?>
+                                        'ct-pro-quiz-lite'); ?>
                                 </p>
                             </fieldset>
 
                             <div class="wpAdvQuiz_demoBox">
-                                <a href="#"><?php _e('Demo', 'wp-adv-quiz'); ?></a>
+                                <a href="#"><?php _e('Demo', 'ct-pro-quiz-lite'); ?></a>
 
                                 <div>
                                     <img alt="" src="<?php echo esc_attr(WPADVQUIZ_URL) . '/img/catOverview.png'; ?> ">
@@ -1132,27 +1132,27 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('Hide correct questions - display', 'wp-adv-quiz'); ?>
+                            <?php _e('Hide correct questions - display', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
-                                    <span><?php _e('Hide correct questions - display', 'wp-adv-quiz'); ?></span>
+                                    <span><?php _e('Hide correct questions - display', 'ct-pro-quiz-lite'); ?></span>
                                 </legend>
                                 <label>
                                     <input type="checkbox" name="hideResultCorrectQuestion"
                                            value="1" <?php $this->checked($this->quiz->isHideResultCorrectQuestion()); ?>>
-                                    <?php _e('Activate', 'wp-adv-quiz'); ?>
+                                    <?php _e('Activate', 'ct-pro-quiz-lite'); ?>
                                 </label>
 
                                 <p class="description">
                                     <?php _e('If you select this option, no longer the number of correctly answered questions are displayed on the results page.',
-                                        'wp-adv-quiz'); ?>
+                                        'ct-pro-quiz-lite'); ?>
                                 </p>
                             </fieldset>
 
                             <div class="wpAdvQuiz_demoBox">
-                                <a href="#"><?php _e('Demo', 'wp-adv-quiz'); ?></a>
+                                <a href="#"><?php _e('Demo', 'ct-pro-quiz-lite'); ?></a>
 
                                 <div>
                                     <img alt="" src="<?php echo esc_attr(WPADVQUIZ_URL) . '/img/hideCorrectQuestion.png'; ?> ">
@@ -1162,27 +1162,27 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('Hide quiz time - display', 'wp-adv-quiz'); ?>
+                            <?php _e('Hide quiz time - display', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
-                                    <span><?php _e('Hide quiz time - display', 'wp-adv-quiz'); ?></span>
+                                    <span><?php _e('Hide quiz time - display', 'ct-pro-quiz-lite'); ?></span>
                                 </legend>
                                 <label>
                                     <input type="checkbox" name="hideResultQuizTime"
                                            value="1" <?php $this->checked($this->quiz->isHideResultQuizTime()); ?>>
-                                    <?php _e('Activate', 'wp-adv-quiz'); ?>
+                                    <?php _e('Activate', 'ct-pro-quiz-lite'); ?>
                                 </label>
 
                                 <p class="description">
                                     <?php _e('If you enable this option, the time for finishing the quiz won\'t be displayed on the results page anymore.',
-                                        'wp-adv-quiz'); ?>
+                                        'ct-pro-quiz-lite'); ?>
                                 </p>
                             </fieldset>
 
                             <div class="wpAdvQuiz_demoBox">
-                                <a href="#"><?php _e('Demo', 'wp-adv-quiz'); ?></a>
+                                <a href="#"><?php _e('Demo', 'ct-pro-quiz-lite'); ?></a>
 
                                 <div>
                                     <img alt="" src="<?php echo esc_attr(WPADVQUIZ_URL) . '/img/hideQuizTime.png'; ?> ">
@@ -1192,27 +1192,27 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('Hide score - display', 'wp-adv-quiz'); ?>
+                            <?php _e('Hide score - display', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
-                                    <span><?php _e('Hide score - display', 'wp-adv-quiz'); ?></span>
+                                    <span><?php _e('Hide score - display', 'ct-pro-quiz-lite'); ?></span>
                                 </legend>
                                 <label>
                                     <input type="checkbox" name="hideResultPoints"
                                            value="1" <?php $this->checked($this->quiz->isHideResultPoints()); ?>>
-                                    <?php _e('Activate', 'wp-adv-quiz'); ?>
+                                    <?php _e('Activate', 'ct-pro-quiz-lite'); ?>
                                 </label>
 
                                 <p class="description">
                                     <?php _e('If you enable this option, final score won\'t be displayed on the results page anymore.',
-                                        'wp-adv-quiz'); ?>
+                                        'ct-pro-quiz-lite'); ?>
                                 </p>
                             </fieldset>
 
                             <div class="wpAdvQuiz_demoBox">
-                                <a href="#"><?php _e('Demo', 'wp-adv-quiz'); ?></a>
+                                <a href="#"><?php _e('Demo', 'ct-pro-quiz-lite'); ?></a>
 
                                 <div>
                                     <img alt="" src="<?php echo esc_attr(WPADVQUIZ_URL) . '/img/hideQuizPoints.png'; ?> ">
@@ -1233,55 +1233,55 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
         ?>
 
         <div class="postbox">
-            <h3 class="hndle"><?php _e('Question-Options', 'wp-adv-quiz'); ?></h3>
+            <h3 class="hndle"><?php _e('Question-Options', 'ct-pro-quiz-lite'); ?></h3>
 
             <div class="inside">
                 <table class="form-table">
                     <tbody>
                     <tr>
                         <th scope="row">
-                            <?php _e('Show points', 'wp-adv-quiz'); ?>
+                            <?php _e('Show points', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
-                                    <span><?php _e('Show points', 'wp-adv-quiz'); ?></span>
+                                    <span><?php _e('Show points', 'ct-pro-quiz-lite'); ?></span>
                                 </legend>
                                 <label for="show_points">
                                     <input type="checkbox" id="show_points" value="1"
                                            name="showPoints" <?php echo esc_attr($this->quiz->isShowPoints()) ? 'checked="checked"' : '' ?> >
-                                    <?php _e('Activate', 'wp-adv-quiz'); ?>
+                                    <?php _e('Activate', 'ct-pro-quiz-lite'); ?>
                                 </label>
 
                                 <p class="description">
                                     <?php _e('Shows in quiz, how many points are reachable for respective question.',
-                                        'wp-adv-quiz'); ?>
+                                        'ct-pro-quiz-lite'); ?>
                                 </p>
                             </fieldset>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('Number answers', 'wp-adv-quiz'); ?>
+                            <?php _e('Number answers', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
-                                    <span><?php _e('Number answers', 'wp-adv-quiz'); ?></span>
+                                    <span><?php _e('Number answers', 'ct-pro-quiz-lite'); ?></span>
                                 </legend>
                                 <label>
                                     <input type="checkbox" value="1"
                                            name="numberedAnswer" <?php echo esc_attr($this->quiz->isNumberedAnswer()) ? 'checked="checked"' : '' ?>>
-                                    <?php _e('Activate', 'wp-adv-quiz'); ?>
+                                    <?php _e('Activate', 'ct-pro-quiz-lite'); ?>
                                 </label>
 
                                 <p class="description">
                                     <?php _e('If this option is activated, all answers are numbered (only single and multiple choice)',
-                                        'wp-adv-quiz'); ?>
+                                        'ct-pro-quiz-lite'); ?>
                                 </p>
 
                                 <div class="wpAdvQuiz_demoBox">
-                                    <a href="#"><?php _e('Demo', 'wp-adv-quiz'); ?></a>
+                                    <a href="#"><?php _e('Demo', 'ct-pro-quiz-lite'); ?></a>
 
                                     <div>
                                         <img alt="" src="<?php echo esc_attr(WPADVQUIZ_URL) . '/img/numbering.png'; ?> ">
@@ -1292,26 +1292,26 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('Hide correct- and incorrect message', 'wp-adv-quiz'); ?>
+                            <?php _e('Hide correct- and incorrect message', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
-                                    <span><?php _e('Hide correct- and incorrect message', 'wp-adv-quiz'); ?></span>
+                                    <span><?php _e('Hide correct- and incorrect message', 'ct-pro-quiz-lite'); ?></span>
                                 </legend>
                                 <label>
                                     <input type="checkbox" value="1"
                                            name="hideAnswerMessageBox" <?php echo esc_attr($this->quiz->isHideAnswerMessageBox()) ? 'checked="checked"' : '' ?>>
-                                    <?php _e('Activate', 'wp-adv-quiz'); ?>
+                                    <?php _e('Activate', 'ct-pro-quiz-lite'); ?>
                                 </label>
 
                                 <p class="description">
                                     <?php _e('If you enable this option, no correct- or incorrect message will be displayed.',
-                                        'wp-adv-quiz'); ?>
+                                        'ct-pro-quiz-lite'); ?>
                                 </p>
 
                                 <div class="wpAdvQuiz_demoBox">
-                                    <a href="#"><?php _e('Demo', 'wp-adv-quiz'); ?></a>
+                                    <a href="#"><?php _e('Demo', 'ct-pro-quiz-lite'); ?></a>
 
                                     <div>
                                         <img alt=""
@@ -1323,26 +1323,26 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('Correct and incorrect answer mark', 'wp-adv-quiz'); ?>
+                            <?php _e('Correct and incorrect answer mark', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
-                                    <span><?php _e('Correct and incorrect answer mark', 'wp-adv-quiz'); ?></span>
+                                    <span><?php _e('Correct and incorrect answer mark', 'ct-pro-quiz-lite'); ?></span>
                                 </legend>
                                 <label>
                                     <input type="checkbox" value="1"
                                            name="disabledAnswerMark" <?php echo esc_attr($this->quiz->isDisabledAnswerMark()) ? 'checked="checked"' : '' ?>>
-                                    <?php _e('Deactivate', 'wp-adv-quiz'); ?>
+                                    <?php _e('Deactivate', 'ct-pro-quiz-lite'); ?>
                                 </label>
 
                                 <p class="description">
                                     <?php _e('If you enable this option, answers won\'t be color highlighted as correct or incorrect. ',
-                                        'wp-adv-quiz'); ?>
+                                        'ct-pro-quiz-lite'); ?>
                                 </p>
 
                                 <div class="wpAdvQuiz_demoBox">
-                                    <a href="#"><?php _e('Demo', 'wp-adv-quiz'); ?></a>
+                                    <a href="#"><?php _e('Demo', 'ct-pro-quiz-lite'); ?></a>
 
                                     <div>
                                         <img alt="" src="<?php echo esc_attr(WPADVQUIZ_URL) . '/img/mark.png'; ?> ">
@@ -1353,50 +1353,50 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('Force user to answer each question', 'wp-adv-quiz'); ?>
+                            <?php _e('Force user to answer each question', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
-                                    <span><?php _e('Force user to answer each question', 'wp-adv-quiz'); ?></span>
+                                    <span><?php _e('Force user to answer each question', 'ct-pro-quiz-lite'); ?></span>
                                 </legend>
                                 <label>
                                     <input type="checkbox" value="1"
                                            name="forcingQuestionSolve" <?php $this->checked($this->quiz->isForcingQuestionSolve()); ?>>
-                                    <?php _e('Activate', 'wp-adv-quiz'); ?>
+                                    <?php _e('Activate', 'ct-pro-quiz-lite'); ?>
                                 </label>
 
                                 <p class="description">
                                     <?php _e('If you enable this option, the user is forced to answer each question.',
-                                        'wp-adv-quiz'); ?> <br>
+                                        'ct-pro-quiz-lite'); ?> <br>
                                     <?php _e('If the option "Question overview" is activated, this notification will appear after end of the quiz, otherwise after each question.',
-                                        'wp-adv-quiz'); ?>
+                                        'ct-pro-quiz-lite'); ?>
                                 </p>
                             </fieldset>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('Hide question position overview', 'wp-adv-quiz'); ?>
+                            <?php _e('Hide question position overview', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
-                                    <span><?php _e('Hide question position overview', 'wp-adv-quiz'); ?></span>
+                                    <span><?php _e('Hide question position overview', 'ct-pro-quiz-lite'); ?></span>
                                 </legend>
                                 <label>
                                     <input type="checkbox" value="1"
                                            name="hideQuestionPositionOverview" <?php $this->checked($this->quiz->isHideQuestionPositionOverview()); ?>>
-                                    <?php _e('Activate', 'wp-adv-quiz'); ?>
+                                    <?php _e('Activate', 'ct-pro-quiz-lite'); ?>
                                 </label>
 
                                 <p class="description">
                                     <?php _e('If you enable this option, the question position overview is hidden.',
-                                        'wp-adv-quiz'); ?>
+                                        'ct-pro-quiz-lite'); ?>
                                 </p>
 
                                 <div class="wpAdvQuiz_demoBox">
-                                    <a href="#"><?php _e('Demo', 'wp-adv-quiz'); ?></a>
+                                    <a href="#"><?php _e('Demo', 'ct-pro-quiz-lite'); ?></a>
 
                                     <div>
                                         <img alt=""
@@ -1408,26 +1408,26 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('Hide question numbering', 'wp-adv-quiz'); ?>
+                            <?php _e('Hide question numbering', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
-                                    <span><?php _e('Hide question numbering', 'wp-adv-quiz'); ?></span>
+                                    <span><?php _e('Hide question numbering', 'ct-pro-quiz-lite'); ?></span>
                                 </legend>
                                 <label>
                                     <input type="checkbox" value="1"
                                            name="hideQuestionNumbering" <?php $this->checked($this->quiz->isHideQuestionNumbering()); ?>>
-                                    <?php _e('Activate', 'wp-adv-quiz'); ?>
+                                    <?php _e('Activate', 'ct-pro-quiz-lite'); ?>
                                 </label>
 
                                 <p class="description">
                                     <?php _e('If you enable this option, the question numbering is hidden.',
-                                        'wp-adv-quiz'); ?>
+                                        'ct-pro-quiz-lite'); ?>
                                 </p>
 
                                 <div class="wpAdvQuiz_demoBox">
-                                    <a href="#"><?php _e('Demo', 'wp-adv-quiz'); ?></a>
+                                    <a href="#"><?php _e('Demo', 'ct-pro-quiz-lite'); ?></a>
 
                                     <div>
                                         <img alt=""
@@ -1439,26 +1439,26 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('Display category', 'wp-adv-quiz'); ?>
+                            <?php _e('Display category', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
-                                    <span><?php _e('Display category', 'wp-adv-quiz'); ?></span>
+                                    <span><?php _e('Display category', 'ct-pro-quiz-lite'); ?></span>
                                 </legend>
                                 <label>
                                     <input type="checkbox" value="1"
                                            name="showCategory" <?php $this->checked($this->quiz->isShowCategory()); ?>>
-                                    <?php _e('Activate', 'wp-adv-quiz'); ?>
+                                    <?php _e('Activate', 'ct-pro-quiz-lite'); ?>
                                 </label>
 
                                 <p class="description">
                                     <?php _e('If you enable this option, category will be displayed in the question.',
-                                        'wp-adv-quiz'); ?>
+                                        'ct-pro-quiz-lite'); ?>
                                 </p>
 
                                 <div class="wpAdvQuiz_demoBox">
-                                    <a href="#"><?php _e('Demo', 'wp-adv-quiz'); ?></a>
+                                    <a href="#"><?php _e('Demo', 'ct-pro-quiz-lite'); ?></a>
 
                                     <div>
                                         <img alt="" src="<?php echo esc_attr(WPADVQUIZ_URL) . '/img/showCategory.png'; ?> ">
@@ -1479,103 +1479,103 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
     {
         ?>
         <div class="postbox">
-            <h3 class="hndle"><?php _e('Leaderboard', 'wp-adv-quiz'); ?><?php _e('(optional)', 'wp-adv-quiz'); ?></h3>
+            <h3 class="hndle"><?php _e('Leaderboard', 'ct-pro-quiz-lite'); ?><?php _e('(optional)', 'ct-pro-quiz-lite'); ?></h3>
 
             <div class="inside">
                 <p>
                     <?php _e('The leaderboard allows users to enter results in public list and to share the result this way.',
-                        'wp-adv-quiz'); ?>
+                        'ct-pro-quiz-lite'); ?>
                 </p>
 
                 <p>
-                    <?php _e('The leaderboard works independent from internal statistics function.', 'wp-adv-quiz'); ?>
+                    <?php _e('The leaderboard works independent from internal statistics function.', 'ct-pro-quiz-lite'); ?>
                 </p>
                 <table class="form-table">
                     <tbody id="toplistBox">
                     <tr>
                         <th scope="row">
-                            <?php _e('Leaderboard', 'wp-adv-quiz'); ?>
+                            <?php _e('Leaderboard', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <label>
                                 <input type="checkbox" name="toplistActivated"
                                        value="1" <?php echo esc_attr($this->quiz->isToplistActivated()) ? 'checked="checked"' : ''; ?>>
-                                <?php _e('Activate', 'wp-adv-quiz'); ?>
+                                <?php _e('Activate', 'ct-pro-quiz-lite'); ?>
                             </label>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('Who can sign up to the list', 'wp-adv-quiz'); ?>
+                            <?php _e('Who can sign up to the list', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <label>
                                 <input name="toplistDataAddPermissions" type="radio"
                                        value="1" <?php echo esc_attr($this->quiz->getToplistDataAddPermissions()) == 1 ? 'checked="checked"' : ''; ?>>
-                                <?php _e('all users', 'wp-adv-quiz'); ?>
+                                <?php _e('all users', 'ct-pro-quiz-lite'); ?>
                             </label>
                             <label>
                                 <input name="toplistDataAddPermissions" type="radio"
                                        value="2" <?php echo esc_attr($this->quiz->getToplistDataAddPermissions()) == 2 ? 'checked="checked"' : ''; ?>>
-                                <?php _e('registered useres only', 'wp-adv-quiz'); ?>
+                                <?php _e('registered useres only', 'ct-pro-quiz-lite'); ?>
                             </label>
                             <label>
                                 <input name="toplistDataAddPermissions" type="radio"
                                        value="3" <?php echo esc_attr($this->quiz->getToplistDataAddPermissions()) == 3 ? 'checked="checked"' : ''; ?>>
-                                <?php _e('anonymous users only', 'wp-adv-quiz'); ?>
+                                <?php _e('anonymous users only', 'ct-pro-quiz-lite'); ?>
                             </label>
 
                             <p class="description">
                                 <?php _e('Not registered users have to enter name and e-mail (e-mail won\'t be displayed)',
-                                    'wp-adv-quiz'); ?>
+                                    'ct-pro-quiz-lite'); ?>
                             </p>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('insert automatically', 'wp-adv-quiz'); ?>
+                            <?php _e('insert automatically', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <label>
                                 <input name="toplistDataAddAutomatic" type="checkbox"
                                        value="1" <?php $this->checked($this->quiz->isToplistDataAddAutomatic()); ?>>
-                                <?php _e('Activate', 'wp-adv-quiz'); ?>
+                                <?php _e('Activate', 'ct-pro-quiz-lite'); ?>
                             </label>
 
                             <p class="description">
                                 <?php _e('If you enable this option, logged in users will be automatically entered into leaderboard',
-                                    'wp-adv-quiz'); ?>
+                                    'ct-pro-quiz-lite'); ?>
                             </p>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('display captcha', 'wp-adv-quiz'); ?>
+                            <?php _e('display captcha', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <label>
                                 <input type="checkbox" name="toplistDataCaptcha"
                                        value="1" <?php echo esc_attr($this->quiz->isToplistDataCaptcha()) ? 'checked="checked"' : ''; ?> <?php echo esc_attr($this->captchaIsInstalled) ? '' : 'disabled="disabled"'; ?>>
-                                <?php _e('Activate', 'wp-adv-quiz'); ?>
+                                <?php _e('Activate', 'ct-pro-quiz-lite'); ?>
                             </label>
 
                             <p class="description">
                                 <?php _e('If you enable this option, additional captcha will be displayed for users who are not registered.',
-                                    'wp-adv-quiz'); ?>
+                                    'ct-pro-quiz-lite'); ?>
                             </p>
 
                             <p class="description" style="color: red;">
-                                <?php _e('This option requires additional plugin:', 'wp-adv-quiz'); ?>
+                                <?php _e('This option requires additional plugin:', 'ct-pro-quiz-lite'); ?>
                                 <a href="http://wordpress.org/extend/plugins/really-simple-captcha/" target="_blank">Really
                                     Simple CAPTCHA</a>
                             </p>
                             <?php if ($this->captchaIsInstalled) { ?>
                                 <p class="description" style="color: green;">
-                                    <?php _e('Plugin has been detected.', 'wp-adv-quiz'); ?>
+                                    <?php _e('Plugin has been detected.', 'ct-pro-quiz-lite'); ?>
                                 </p>
                             <?php } else { ?>
                                 <p class="description" style="color: red;">
-                                    <?php _e('Plugin is not installed.', 'wp-adv-quiz'); ?>
+                                    <?php _e('Plugin is not installed.', 'ct-pro-quiz-lite'); ?>
                                 </p>
                             <?php } ?>
 
@@ -1583,81 +1583,81 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('Sort list by', 'wp-adv-quiz'); ?>
+                            <?php _e('Sort list by', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <label>
                                 <input name="toplistDataSort" type="radio"
                                        value="1" <?php echo ($this->quiz->getToplistDataSort() == 1) ? 'checked="checked"' : ''; ?>>
-                                <?php _e('best user', 'wp-adv-quiz'); ?>
+                                <?php _e('best user', 'ct-pro-quiz-lite'); ?>
                             </label>
                             <label>
                                 <input name="toplistDataSort" type="radio"
                                        value="2" <?php echo ($this->quiz->getToplistDataSort() == 2) ? 'checked="checked"' : ''; ?>>
-                                <?php _e('newest entry', 'wp-adv-quiz'); ?>
+                                <?php _e('newest entry', 'ct-pro-quiz-lite'); ?>
                             </label>
                             <label>
                                 <input name="toplistDataSort" type="radio"
                                        value="3" <?php echo ($this->quiz->getToplistDataSort() == 3) ? 'checked="checked"' : ''; ?>>
-                                <?php _e('oldest entry', 'wp-adv-quiz'); ?>
+                                <?php _e('oldest entry', 'ct-pro-quiz-lite'); ?>
                             </label>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('Users can apply multiple times', 'wp-adv-quiz'); ?>
+                            <?php _e('Users can apply multiple times', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <div>
                                 <label>
                                     <input type="checkbox" name="toplistDataAddMultiple"
                                            value="1" <?php echo esc_attr($this->quiz->isToplistDataAddMultiple()) ? 'checked="checked"' : ''; ?>>
-                                    <?php _e('Activate', 'wp-adv-quiz'); ?>
+                                    <?php _e('Activate', 'ct-pro-quiz-lite'); ?>
                                 </label>
                             </div>
                             <div id="toplistDataAddBlockBox" style="display: none;">
                                 <label>
-                                    <?php _e('User can apply after:', 'wp-adv-quiz'); ?>
+                                    <?php _e('User can apply after:', 'ct-pro-quiz-lite'); ?>
                                     <input type="number" min="0" class="small-text" name="toplistDataAddBlock"
                                            value="<?php echo esc_attr($this->quiz->getToplistDataAddBlock()); ?>">
-                                    <?php _e('minute', 'wp-adv-quiz'); ?>
+                                    <?php _e('minute', 'ct-pro-quiz-lite'); ?>
                                 </label>
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('How many entries should be displayed', 'wp-adv-quiz'); ?>
+                            <?php _e('How many entries should be displayed', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <div>
                                 <label>
                                     <input type="number" min="0" class="small-text" name="toplistDataShowLimit"
                                            value="<?php echo esc_attr($this->quiz->getToplistDataShowLimit()); ?>">
-                                    <?php _e('Entries', 'wp-adv-quiz'); ?>
+                                    <?php _e('Entries', 'ct-pro-quiz-lite'); ?>
                                 </label>
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('Automatically display leaderboard in quiz result', 'wp-adv-quiz'); ?>
+                            <?php _e('Automatically display leaderboard in quiz result', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <div style="margin-top: 6px;">
-                                <?php _e('Where should leaderboard be displayed:', 'wp-adv-quiz'); ?>
+                                <?php _e('Where should leaderboard be displayed:', 'ct-pro-quiz-lite'); ?>
                                 <label style="margin-right: 5px; margin-left: 5px;">
                                     <input type="radio" name="toplistDataShowIn"
                                            value="0" <?php echo ($this->quiz->getToplistDataShowIn() == 0) ? 'checked="checked"' : ''; ?>>
-                                    <?php _e('don\'t display', 'wp-adv-quiz'); ?>
+                                    <?php _e('don\'t display', 'ct-pro-quiz-lite'); ?>
                                 </label>
                                 <label>
                                     <input type="radio" name="toplistDataShowIn"
                                            value="1" <?php echo ($this->quiz->getToplistDataShowIn() == 1) ? 'checked="checked"' : ''; ?>>
-                                    <?php _e('below the "result text"', 'wp-adv-quiz'); ?>
+                                    <?php _e('below the "result text"', 'ct-pro-quiz-lite'); ?>
                                 </label>
 									<span class="wpAdvQuiz_demoBox" style="margin-right: 5px;">
-										<a href="#"><?php _e('Demo', 'wp-adv-quiz'); ?></a>
+										<a href="#"><?php _e('Demo', 'ct-pro-quiz-lite'); ?></a>
 										<span>
 											<img alt=""
                                                  src="<?php echo esc_attr(WPADVQUIZ_URL) . '/img/leaderboardInResultText.png'; ?> ">
@@ -1666,10 +1666,10 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                                 <label>
                                     <input type="radio" name="toplistDataShowIn"
                                            value="2" <?php echo ($this->quiz->getToplistDataShowIn() == 2) ? 'checked="checked"' : ''; ?>>
-                                    <?php _e('in a button', 'wp-adv-quiz'); ?>
+                                    <?php _e('in a button', 'ct-pro-quiz-lite'); ?>
                                 </label>
 									<span class="wpAdvQuiz_demoBox">
-										<a href="#"><?php _e('Demo', 'wp-adv-quiz'); ?></a>
+										<a href="#"><?php _e('Demo', 'ct-pro-quiz-lite'); ?></a>
 										<span>
 											<img alt=""
                                                  src="<?php echo esc_attr(WPADVQUIZ_URL) . '/img/leaderboardInButton.png'; ?> ">
@@ -1689,17 +1689,17 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
     {
         ?>
         <div class="postbox">
-            <h3 class="hndle"><?php _e('Quiz-Mode', 'wp-adv-quiz'); ?><?php _e('(required)', 'wp-adv-quiz'); ?></h3>
+            <h3 class="hndle"><?php _e('Quiz-Mode', 'ct-pro-quiz-lite'); ?><?php _e('(required)', 'ct-pro-quiz-lite'); ?></h3>
 
             <div class="inside">
                 <table style="width: 100%; border-collapse: collapse; border: 1px solid #A0A0A0;"
                        class="wpAdvQuiz_quizModus">
                     <thead>
                     <tr>
-                        <th style="width: 25%;"><?php _e('Normal', 'wp-adv-quiz'); ?></th>
-                        <th style="width: 25%;"><?php _e('Normal + Back-Button', 'wp-adv-quiz'); ?></th>
-                        <th style="width: 25%;"><?php _e('Check -> continue', 'wp-adv-quiz'); ?></th>
-                        <th style="width: 25%;"><?php _e('Questions below each other', 'wp-adv-quiz'); ?></th>
+                        <th style="width: 25%;"><?php _e('Normal', 'ct-pro-quiz-lite'); ?></th>
+                        <th style="width: 25%;"><?php _e('Normal + Back-Button', 'ct-pro-quiz-lite'); ?></th>
+                        <th style="width: 25%;"><?php _e('Check -> continue', 'ct-pro-quiz-lite'); ?></th>
+                        <th style="width: 25%;"><?php _e('Questions below each other', 'ct-pro-quiz-lite'); ?></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -1707,40 +1707,40 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                         <td><label><input type="radio" name="quizModus"
                                           value="0" <?php $this->checked($this->quiz->getQuizModus(),
                                     WpAdvQuiz_Model_Quiz::QUIZ_MODUS_NORMAL); ?>> <?php _e('Activate',
-                                    'wp-adv-quiz'); ?></label></td>
+                                    'ct-pro-quiz-lite'); ?></label></td>
                         <td><label><input type="radio" name="quizModus"
                                           value="1" <?php $this->checked($this->quiz->getQuizModus(),
                                     WpAdvQuiz_Model_Quiz::QUIZ_MODUS_BACK_BUTTON); ?>> <?php _e('Activate',
-                                    'wp-adv-quiz'); ?></label></td>
+                                    'ct-pro-quiz-lite'); ?></label></td>
                         <td><label><input type="radio" name="quizModus"
                                           value="2" <?php $this->checked($this->quiz->getQuizModus(),
-                                    WpAdvQuiz_Model_Quiz::QUIZ_MODUS_CHECK); ?>> <?php _e('Activate', 'wp-adv-quiz'); ?>
+                                    WpAdvQuiz_Model_Quiz::QUIZ_MODUS_CHECK); ?>> <?php _e('Activate', 'ct-pro-quiz-lite'); ?>
                             </label></td>
                         <td><label><input type="radio" name="quizModus"
                                           value="3" <?php $this->checked($this->quiz->getQuizModus(),
                                     WpAdvQuiz_Model_Quiz::QUIZ_MODUS_SINGLE); ?>> <?php _e('Activate',
-                                    'wp-adv-quiz'); ?></label></td>
+                                    'ct-pro-quiz-lite'); ?></label></td>
                     </tr>
                     <tr>
                         <td>
                             <?php _e('Displays all questions sequentially, "right" or "false" will be displayed at the end of the quiz.',
-                                'wp-adv-quiz'); ?>
+                                'ct-pro-quiz-lite'); ?>
                         </td>
                         <td>
-                            <?php _e('Allows to use the back button in a question.', 'wp-adv-quiz'); ?>
+                            <?php _e('Allows to use the back button in a question.', 'ct-pro-quiz-lite'); ?>
                         </td>
                         <td>
-                            <?php _e('Shows "right or wrong" after each question.', 'wp-adv-quiz'); ?>
+                            <?php _e('Shows "right or wrong" after each question.', 'ct-pro-quiz-lite'); ?>
                         </td>
                         <td>
                             <?php _e('If this option is activated, all answers are displayed below each other, i.e. all questions are on a single page.',
-                                'wp-adv-quiz'); ?>
+                                'ct-pro-quiz-lite'); ?>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <div class="wpAdvQuiz_demoBox">
-                                <a href="#"><?php _e('Demo', 'wp-adv-quiz'); ?></a>
+                                <a href="#"><?php _e('Demo', 'ct-pro-quiz-lite'); ?></a>
 
                                 <div>
                                     <img alt="" src="<?php echo esc_attr(WPADVQUIZ_URL) . '/img/normal.png'; ?> ">
@@ -1749,7 +1749,7 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                         </td>
                         <td>
                             <div class="wpAdvQuiz_demoBox">
-                                <a href="#"><?php _e('Demo', 'wp-adv-quiz'); ?></a>
+                                <a href="#"><?php _e('Demo', 'ct-pro-quiz-lite'); ?></a>
 
                                 <div>
                                     <img alt="" src="<?php echo esc_attr(WPADVQUIZ_URL) . '/img/backButton.png'; ?> ">
@@ -1758,7 +1758,7 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                         </td>
                         <td>
                             <div class="wpAdvQuiz_demoBox" style="position: relative;">
-                                <a href="#"><?php _e('Demo', 'wp-adv-quiz'); ?></a>
+                                <a href="#"><?php _e('Demo', 'ct-pro-quiz-lite'); ?></a>
 
                                 <div>
                                     <img alt="" src="<?php echo esc_attr(WPADVQUIZ_URL) . '/img/checkCcontinue.png'; ?> ">
@@ -1767,7 +1767,7 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                         </td>
                         <td>
                             <div class="wpAdvQuiz_demoBox" style="position: relative;">
-                                <a href="#"><?php _e('Demo', 'wp-adv-quiz'); ?></a>
+                                <a href="#"><?php _e('Demo', 'ct-pro-quiz-lite'); ?></a>
 
                                 <div>
                                     <img alt="" src="<?php echo esc_attr(WPADVQUIZ_URL) . '/img/singlePage.png'; ?> ">
@@ -1780,11 +1780,11 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                         <td></td>
                         <td></td>
                         <td>
-                            <?php _e('How many questions to be displayed on a page:', 'wp-adv-quiz'); ?><br>
+                            <?php _e('How many questions to be displayed on a page:', 'ct-pro-quiz-lite'); ?><br>
                             <input type="number" name="questionsPerPage"
                                    value="<?php echo esc_attr($this->quiz->getQuestionsPerPage()); ?>" min="0">
 									<span class="description">
-										<?php _e('(0 = All on one page)', 'wp-adv-quiz'); ?>
+										<?php _e('(0 = All on one page)', 'ct-pro-quiz-lite'); ?>
 									</span>
                         </td>
                     </tr>
@@ -1808,61 +1808,61 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
 
         ?>
         <div class="postbox">
-            <h3 class="hndle"><?php _e('Custom fields', 'wp-adv-quiz'); ?></h3>
+            <h3 class="hndle"><?php _e('Custom fields', 'ct-pro-quiz-lite'); ?></h3>
 
             <div class="inside">
 
                 <p class="description">
                     <?php _e('You can create custom fields, e.g. to request the name or the e-mail address of the users.',
-                        'wp-adv-quiz'); ?>
+                        'ct-pro-quiz-lite'); ?>
                 </p>
 
                 <p class="description">
-                    <?php _e('The statistic function have to be enabled.', 'wp-adv-quiz'); ?>
+                    <?php _e('The statistic function have to be enabled.', 'ct-pro-quiz-lite'); ?>
                 </p>
 
                 <table class="form-table">
                     <tbody>
                     <tr>
                         <th scope="row">
-                            <?php _e('Custom fields enable', 'wp-adv-quiz'); ?>
+                            <?php _e('Custom fields enable', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
-                                    <span><?php _e('Custom fields enable', 'wp-adv-quiz'); ?></span>
+                                    <span><?php _e('Custom fields enable', 'ct-pro-quiz-lite'); ?></span>
                                 </legend>
                                 <label>
                                     <input type="checkbox" id="formActivated" value="1"
                                            name="formActivated" <?php $this->checked($this->quiz->isFormActivated()); ?>>
-                                    <?php _e('Activate', 'wp-adv-quiz'); ?>
+                                    <?php _e('Activate', 'ct-pro-quiz-lite'); ?>
                                 </label>
 
                                 <p class="description">
-                                    <?php _e('If you enable this option, custom fields are enabled.', 'wp-adv-quiz'); ?>
+                                    <?php _e('If you enable this option, custom fields are enabled.', 'ct-pro-quiz-lite'); ?>
                                 </p>
                             </fieldset>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('Display position', 'wp-adv-quiz'); ?>
+                            <?php _e('Display position', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
-                                    <span><?php _e('Display position', 'wp-adv-quiz'); ?></span>
+                                    <span><?php _e('Display position', 'ct-pro-quiz-lite'); ?></span>
                                 </legend>
-                                <?php _e('Where should the fileds be displayed:', 'wp-adv-quiz'); ?>
+                                <?php _e('Where should the fileds be displayed:', 'ct-pro-quiz-lite'); ?>
                                 <label>
                                     <input type="radio"
                                            value="<?php echo esc_attr(WpAdvQuiz_Model_Quiz::QUIZ_FORM_POSITION_START); ?>"
                                            name="formShowPosition" <?php $this->checked($this->quiz->getFormShowPosition(),
                                         WpAdvQuiz_Model_Quiz::QUIZ_FORM_POSITION_START); ?>>
-                                    <?php _e('On the quiz startpage', 'wp-adv-quiz'); ?>
+                                    <?php _e('On the quiz startpage', 'ct-pro-quiz-lite'); ?>
 
                                     <div style="display: inline-block;" class="wpAdvQuiz_demoBox">
-                                        <a href="#"><?php _e('Demo', 'wp-adv-quiz'); ?></a>
+                                        <a href="#"><?php _e('Demo', 'ct-pro-quiz-lite'); ?></a>
 
                                         <div>
                                             <img alt=""
@@ -1876,10 +1876,10 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                                            value="<?php echo esc_attr(WpAdvQuiz_Model_Quiz::QUIZ_FORM_POSITION_END); ?>"
                                            name="formShowPosition" <?php $this->checked($this->quiz->getFormShowPosition(),
                                         WpAdvQuiz_Model_Quiz::QUIZ_FORM_POSITION_END); ?> >
-                                    <?php _e('At the end of the quiz (before the quiz result)', 'wp-adv-quiz'); ?>
+                                    <?php _e('At the end of the quiz (before the quiz result)', 'ct-pro-quiz-lite'); ?>
 
                                     <div style="display: inline-block;" class="wpAdvQuiz_demoBox">
-                                        <a href="#"><?php _e('Demo', 'wp-adv-quiz'); ?></a>
+                                        <a href="#"><?php _e('Demo', 'ct-pro-quiz-lite'); ?></a>
 
                                         <div>
                                             <img alt=""
@@ -1888,7 +1888,7 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                                     </div>
 
                                     <div style="display: inline-block;" class="wpAdvQuiz_demoBox">
-                                        <a href="#"><?php _e('Demo', 'wp-adv-quiz'); ?></a>
+                                        <a href="#"><?php _e('Demo', 'ct-pro-quiz-lite'); ?></a>
 
                                         <div>
                                             <img alt=""
@@ -1908,13 +1908,13 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                         <thead>
                         <tr>
                             <th>#ID</th>
-                            <th><?php _e('Field name', 'wp-adv-quiz'); ?></th>
-                            <th><?php _e('Type', 'wp-adv-quiz'); ?></th>
-                            <th><?php _e('Required?', 'wp-adv-quiz'); ?></th>
+                            <th><?php _e('Field name', 'ct-pro-quiz-lite'); ?></th>
+                            <th><?php _e('Type', 'ct-pro-quiz-lite'); ?></th>
+                            <th><?php _e('Required?', 'ct-pro-quiz-lite'); ?></th>
                             <th>
-                                <?php _e('Show in statistic table?', 'wp-adv-quiz'); ?>
+                                <?php _e('Show in statistic table?', 'ct-pro-quiz-lite'); ?>
                                 <div style="display: inline-block;" class="wpAdvQuiz_demoBox">
-                                    <a href="#"><?php _e('Demo', 'wp-adv-quiz'); ?></a>
+                                    <a href="#"><?php _e('Demo', 'ct-pro-quiz-lite'); ?></a>
 
                                     <div>
                                         <img alt=""
@@ -1952,38 +1952,38 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                                     <select name="form[][type]">
                                         <option
                                             value="<?php echo esc_attr(WpAdvQuiz_Model_Form::FORM_TYPE_TEXT); ?>" <?php echo esc_attr($checkType[0]); ?>><?php _e('Text',
-                                                'wp-adv-quiz'); ?></option>
+                                                'ct-pro-quiz-lite'); ?></option>
                                         <option
                                             value="<?php echo esc_attr(WpAdvQuiz_Model_Form::FORM_TYPE_TEXTAREA); ?>" <?php echo esc_attr($checkType[1]); ?>><?php _e('Textarea',
-                                                'wp-adv-quiz'); ?></option>
+                                                'ct-pro-quiz-lite'); ?></option>
                                         <option
                                             value="<?php echo esc_attr(WpAdvQuiz_Model_Form::FORM_TYPE_CHECKBOX); ?>" <?php echo esc_attr($checkType[2]); ?>><?php _e('Checkbox',
-                                                'wp-adv-quiz'); ?></option>
+                                                'ct-pro-quiz-lite'); ?></option>
                                         <option
                                             value="<?php echo esc_attr(WpAdvQuiz_Model_Form::FORM_TYPE_SELECT); ?>" <?php echo esc_attr($checkType[3]); ?>><?php _e('Drop-Down menu',
-                                                'wp-adv-quiz'); ?></option>
+                                                'ct-pro-quiz-lite'); ?></option>
                                         <option
                                             value="<?php echo esc_attr(WpAdvQuiz_Model_Form::FORM_TYPE_RADIO); ?>" <?php echo esc_attr($checkType[4]); ?>><?php _e('Radio',
-                                                'wp-adv-quiz'); ?></option>
+                                                'ct-pro-quiz-lite'); ?></option>
                                         <option
                                             value="<?php echo esc_attr(WpAdvQuiz_Model_Form::FORM_TYPE_NUMBER); ?>" <?php echo esc_attr($checkType[5]); ?>><?php _e('Number',
-                                                'wp-adv-quiz'); ?></option>
+                                                'ct-pro-quiz-lite'); ?></option>
                                         <option
                                             value="<?php echo esc_attr(WpAdvQuiz_Model_Form::FORM_TYPE_EMAIL); ?>" <?php echo esc_attr($checkType[6]); ?>><?php _e('Email',
-                                                'wp-adv-quiz'); ?></option>
+                                                'ct-pro-quiz-lite'); ?></option>
                                         <option
                                             value="<?php echo esc_attr(WpAdvQuiz_Model_Form::FORM_TYPE_YES_NO); ?>" <?php echo esc_attr($checkType[7]); ?>><?php _e('Yes/No',
-                                                'wp-adv-quiz'); ?></option>
+                                                'ct-pro-quiz-lite'); ?></option>
                                         <option
                                             value="<?php echo esc_attr(WpAdvQuiz_Model_Form::FORM_TYPE_DATE); ?>" <?php echo esc_attr($checkType[8]); ?>><?php _e('Date',
-                                                'wp-adv-quiz'); ?></option>
+                                                'ct-pro-quiz-lite'); ?></option>
                                     </select>
 
-                                    <a href="#" class="editDropDown"><?php _e('Edit list', 'wp-adv-quiz'); ?></a>
+                                    <a href="#" class="editDropDown"><?php _e('Edit list', 'ct-pro-quiz-lite'); ?></a>
 
                                     <div class="dropDownEditBox"
                                          style="position: absolute; border: 1px solid #AFAFAF; background: #EBEBEB; padding: 5px; bottom: 0;right: 0;box-shadow: 1px 1px 1px 1px #AFAFAF; display: none;">
-                                        <h4><?php _e('One entry per line', 'wp-adv-quiz'); ?></h4>
+                                        <h4><?php _e('One entry per line', 'ct-pro-quiz-lite'); ?></h4>
 
                                         <div>
                                             <textarea rows="5" cols="50"
@@ -1991,7 +1991,7 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                                                     $form->getData())); ?></textarea>
                                         </div>
 
-                                        <input type="button" value="<?php _e('OK', 'wp-adv-quiz'); ?>"
+                                        <input type="button" value="<?php _e('OK', 'ct-pro-quiz-lite'); ?>"
                                                class="button-primary">
                                     </div>
                                 </td>
@@ -2005,9 +2005,9 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                                 </td>
                                 <td>
                                     <input type="button" name="form_delete"
-                                           value="<?php _e('Delete', 'wp-adv-quiz'); ?>" class="button-secondary">
+                                           value="<?php _e('Delete', 'ct-pro-quiz-lite'); ?>" class="button-secondary">
                                     <a class="form_move button-secondary" href="#" style="cursor:move;"><?php _e('Move',
-                                            'wp-adv-quiz'); ?></a>
+                                            'ct-pro-quiz-lite'); ?></a>
 
                                     <input type="hidden" name="form[][form_id]"
                                            value="<?php echo esc_attr($form->getFormId()); ?>">
@@ -2020,7 +2020,7 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
 
                     <div style="margin-top: 10px;">
                         <input type="button" name="form_add" id="form_add"
-                               value="<?php _e('Add field', 'wp-adv-quiz'); ?>" class="button-secondary">
+                               value="<?php _e('Add field', 'ct-pro-quiz-lite'); ?>" class="button-secondary">
                     </div>
                 </div>
             </div>
@@ -2035,49 +2035,49 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
         $email = $email === null ? WpAdvQuiz_Model_Email::getDefault(true) : $email;
         ?>
         <div class="postbox" id="adminEmailSettings">
-            <h3 class="hndle"><?php _e('Admin e-mail settings', 'wp-adv-quiz'); ?></h3>
+            <h3 class="hndle"><?php _e('Admin e-mail settings', 'ct-pro-quiz-lite'); ?></h3>
 
             <div class="inside">
                 <table class="form-table">
                     <tbody>
                     <tr>
                         <th scope="row">
-                            <?php _e('Admin e-mail notification', 'wp-adv-quiz'); ?>
+                            <?php _e('Admin e-mail notification', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
-                                    <span><?php _e('Admin e-mail notification', 'wp-adv-quiz'); ?></span>
+                                    <span><?php _e('Admin e-mail notification', 'ct-pro-quiz-lite'); ?></span>
                                 </legend>
                                 <label>
                                     <input type="radio" name="emailNotification"
                                            value="<?php echo esc_attr(WpAdvQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_NONE); ?>" <?php $this->checked($this->quiz->getEmailNotification(),
                                         WpAdvQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_NONE); ?>>
-                                    <?php _e('Deactivate', 'wp-adv-quiz'); ?>
+                                    <?php _e('Deactivate', 'ct-pro-quiz-lite'); ?>
                                 </label>
                                 <label>
                                     <input type="radio" name="emailNotification"
                                            value="<?php echo esc_attr(WpAdvQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_REG_USER); ?>" <?php $this->checked($this->quiz->getEmailNotification(),
                                         WpAdvQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_REG_USER); ?>>
-                                    <?php _e('for registered users only', 'wp-adv-quiz'); ?>
+                                    <?php _e('for registered users only', 'ct-pro-quiz-lite'); ?>
                                 </label>
                                 <label>
                                     <input type="radio" name="emailNotification"
                                            value="<?php echo esc_attr(WpAdvQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_ALL); ?>" <?php $this->checked($this->quiz->getEmailNotification(),
                                         WpAdvQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_ALL); ?>>
-                                    <?php _e('for all users', 'wp-adv-quiz'); ?>
+                                    <?php _e('for all users', 'ct-pro-quiz-lite'); ?>
                                 </label>
 
                                 <p class="description">
                                     <?php _e('If you enable this option, you will be informed if a user completes this quiz.',
-                                        'wp-adv-quiz'); ?>
+                                        'ct-pro-quiz-lite'); ?>
                                 </p>
                             </fieldset>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('To:', 'wp-adv-quiz'); ?>
+                            <?php _e('To:', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <label>
@@ -2087,13 +2087,13 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
 
                             <p class="description">
                                 <?php _e('Separate multiple email addresses with a comma, e.g. wp@test.com, test@test.com',
-                                    'wp-adv-quiz'); ?>
+                                    'ct-pro-quiz-lite'); ?>
                             </p>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('From:', 'wp-adv-quiz'); ?>
+                            <?php _e('From:', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <label>
@@ -2101,14 +2101,14 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                                        class="regular-text">
                             </label>
                             <!-- 								<p class="description"> -->
-                            <?php //_e('Server-Adresse empfohlen, z.B. info@YOUR-PAGE.com', 'wp-adv-quiz');
+                            <?php //_e('Server-Adresse empfohlen, z.B. info@YOUR-PAGE.com', 'ct-pro-quiz-lite');
                             ?>
                             <!-- 								</p> -->
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('Subject:', 'wp-adv-quiz'); ?>
+                            <?php _e('Subject:', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <label>
@@ -2119,19 +2119,19 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('HTML', 'wp-adv-quiz'); ?>
+                            <?php _e('HTML', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <label>
                                 <input type="checkbox" name="adminEmail[html]"
                                        value="1" <?php $this->checked($email->isHtml()); ?>> <?php _e('Activate',
-                                    'wp-adv-quiz'); ?>
+                                    'ct-pro-quiz-lite'); ?>
                             </label>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('Message body:', 'wp-adv-quiz'); ?>
+                            <?php _e('Message body:', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <?php
@@ -2144,10 +2144,10 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                                     <thead>
                                     <tr>
                                         <th style="padding: 0;">
-                                            <?php _e('Allowed variables', 'wp-adv-quiz'); ?>
+                                            <?php _e('Allowed variables', 'ct-pro-quiz-lite'); ?>
                                         </th>
                                         <th style="padding: 0;">
-                                            <?php _e('Custom fields - Variables', 'wp-adv-quiz'); ?>
+                                            <?php _e('Custom fields - Variables', 'ct-pro-quiz-lite'); ?>
                                         </th>
                                     </tr>
                                     </thead>
@@ -2155,19 +2155,19 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                                     <tr>
                                         <td style="vertical-align: top;">
                                             <ul>
-                                                <li><span>$userId</span> - <?php _e('User-ID', 'wp-adv-quiz'); ?></li>
-                                                <li><span>$username</span> - <?php _e('Username', 'wp-adv-quiz'); ?>
+                                                <li><span>$userId</span> - <?php _e('User-ID', 'ct-pro-quiz-lite'); ?></li>
+                                                <li><span>$username</span> - <?php _e('Username', 'ct-pro-quiz-lite'); ?>
                                                 </li>
-                                                <li><span>$quizname</span> - <?php _e('Quiz-Name', 'wp-adv-quiz'); ?>
+                                                <li><span>$quizname</span> - <?php _e('Quiz-Name', 'ct-pro-quiz-lite'); ?>
                                                 </li>
                                                 <li><span>$result</span> - <?php _e('Result in precent',
-                                                        'wp-adv-quiz'); ?></li>
-                                                <li><span>$points</span> - <?php _e('Reached points', 'wp-adv-quiz'); ?>
+                                                        'ct-pro-quiz-lite'); ?></li>
+                                                <li><span>$points</span> - <?php _e('Reached points', 'ct-pro-quiz-lite'); ?>
                                                 </li>
                                                 <li><span>$ip</span> - <?php _e('IP-address of the user',
-                                                        'wp-adv-quiz'); ?></li>
+                                                        'ct-pro-quiz-lite'); ?></li>
                                                 <li><span>$categories</span> - <?php _e('Category-Overview',
-                                                        'wp-adv-quiz'); ?></li>
+                                                        'ct-pro-quiz-lite'); ?></li>
                                             </ul>
                                         </td>
                                         <td style="vertical-align: top;">
@@ -2199,57 +2199,57 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
         $to = $email->getTo();
         ?>
         <div class="postbox" id="userEmailSettings">
-            <h3 class="hndle"><?php _e('User e-mail settings', 'wp-adv-quiz'); ?></h3>
+            <h3 class="hndle"><?php _e('User e-mail settings', 'ct-pro-quiz-lite'); ?></h3>
 
             <div class="inside">
                 <table class="form-table">
                     <tbody>
                     <tr>
                         <th scope="row">
-                            <?php _e('User e-mail notification', 'wp-adv-quiz'); ?>
+                            <?php _e('User e-mail notification', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <legend class="screen-reader-text">
-                                    <span><?php _e('User e-mail notification', 'wp-adv-quiz'); ?></span>
+                                    <span><?php _e('User e-mail notification', 'ct-pro-quiz-lite'); ?></span>
                                 </legend>
                                 <label>
                                     <input type="checkbox" name="userEmailNotification"
                                            value="1" <?php $this->checked($this->quiz->isUserEmailNotification()); ?>>
-                                    <?php _e('Activate', 'wp-adv-quiz'); ?>
+                                    <?php _e('Activate', 'ct-pro-quiz-lite'); ?>
                                 </label>
 
                                 <p class="description">
                                     <?php _e('If you enable this option, an email is sent with his quiz result to the user.',
-                                        'wp-adv-quiz'); ?>
+                                        'ct-pro-quiz-lite'); ?>
                                 </p>
                             </fieldset>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('To:', 'wp-adv-quiz'); ?>
+                            <?php _e('To:', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <label>
                                 <input type="checkbox" name="userEmail[toUser]"
                                        value="1" <?php $this->checked($email->isToUser()); ?>>
-                                <?php _e('User Email-Address (only registered users)', 'wp-adv-quiz'); ?>
+                                <?php _e('User Email-Address (only registered users)', 'ct-pro-quiz-lite'); ?>
                             </label><br>
                             <label>
                                 <input type="checkbox" name="userEmail[toForm]"
                                        value="1" <?php $this->checked($email->isToForm()); ?>>
-                                <?php _e('Custom fields', 'wp-adv-quiz'); ?> :
+                                <?php _e('Custom fields', 'ct-pro-quiz-lite'); ?> :
                                 <select name="userEmail[to]" class="emailFormVariables"
                                         data-default="<?php echo empty($to) && $to != 0 ? -1 : $email->getTo(); ?>"></select>
-                                <?php _e('(Type Email)', 'wp-adv-quiz'); ?>
+                                <?php _e('(Type Email)', 'ct-pro-quiz-lite'); ?>
                             </label>
 
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('From:', 'wp-adv-quiz'); ?>
+                            <?php _e('From:', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <label>
@@ -2260,7 +2260,7 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('Subject:', 'wp-adv-quiz'); ?>
+                            <?php _e('Subject:', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <label>
@@ -2271,19 +2271,19 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('HTML', 'wp-adv-quiz'); ?>
+                            <?php _e('HTML', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <label>
                                 <input type="checkbox" name="userEmail[html]"
                                        value="1" <?php $this->checked($email->isHtml()); ?>> <?php _e('Activate',
-                                    'wp-adv-quiz'); ?>
+                                    'ct-pro-quiz-lite'); ?>
                             </label>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?php _e('Message body:', 'wp-adv-quiz'); ?>
+                            <?php _e('Message body:', 'ct-pro-quiz-lite'); ?>
                         </th>
                         <td>
                             <?php
@@ -2296,10 +2296,10 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                                     <thead>
                                     <tr>
                                         <th style="padding: 0;">
-                                            <?php _e('Allowed variables', 'wp-adv-quiz'); ?>
+                                            <?php _e('Allowed variables', 'ct-pro-quiz-lite'); ?>
                                         </th>
                                         <th style="padding: 0;">
-                                            <?php _e('Custom fields - Variables', 'wp-adv-quiz'); ?>
+                                            <?php _e('Custom fields - Variables', 'ct-pro-quiz-lite'); ?>
                                         </th>
                                     </tr>
                                     </thead>
@@ -2307,19 +2307,19 @@ class WpAdvQuiz_View_QuizEdit extends WpAdvQuiz_View_View
                                     <tr>
                                         <td style="vertical-align: top;">
                                             <ul>
-                                                <li><span>$userId</span> - <?php _e('User-ID', 'wp-adv-quiz'); ?></li>
-                                                <li><span>$username</span> - <?php _e('Username', 'wp-adv-quiz'); ?>
+                                                <li><span>$userId</span> - <?php _e('User-ID', 'ct-pro-quiz-lite'); ?></li>
+                                                <li><span>$username</span> - <?php _e('Username', 'ct-pro-quiz-lite'); ?>
                                                 </li>
-                                                <li><span>$quizname</span> - <?php _e('Quiz-Name', 'wp-adv-quiz'); ?>
+                                                <li><span>$quizname</span> - <?php _e('Quiz-Name', 'ct-pro-quiz-lite'); ?>
                                                 </li>
                                                 <li><span>$result</span> - <?php _e('Result in precent',
-                                                        'wp-adv-quiz'); ?></li>
-                                                <li><span>$points</span> - <?php _e('Reached points', 'wp-adv-quiz'); ?>
+                                                        'ct-pro-quiz-lite'); ?></li>
+                                                <li><span>$points</span> - <?php _e('Reached points', 'ct-pro-quiz-lite'); ?>
                                                 </li>
                                                 <li><span>$ip</span> - <?php _e('IP-address of the user',
-                                                        'wp-adv-quiz'); ?></li>
+                                                        'ct-pro-quiz-lite'); ?></li>
                                                 <li><span>$categories</span> - <?php _e('Category-Overview',
-                                                        'wp-adv-quiz'); ?></li>
+                                                        'ct-pro-quiz-lite'); ?></li>
                                             </ul>
                                         </td>
                                         <td style="vertical-align: top;">

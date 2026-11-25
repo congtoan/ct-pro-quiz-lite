@@ -1,73 +1,108 @@
-function wpAdvQuiz_fetchToplist() {
-    var plugin = this;
+/*!
+ * CT Pro Quiz Lite: frontend leaderboard. Plain JavaScript, no jQuery.
+ * The global wpAdvQuiz_fetchToplist() is called again by the quiz after a score is submitted.
+ */
+(function () {
+    'use strict';
 
-    plugin.toplist = {
-        handleRequest: function (json) {
-            jQuery('.wpAdvQuiz_toplist').each(function () {
-                var $tp = jQuery(this);
-                var data = json[$tp.data('quiz_id')];
-                var $trs = $tp.find('tbody tr');
-                var clone = $trs.eq(2);
+    function param(obj, prefix, out) {
+        out = out || new URLSearchParams();
+        Object.keys(obj).forEach(function (k) {
+            var key = prefix ? prefix + '[' + k + ']' : k;
+            var v = obj[k];
 
-                $trs.slice(3).remove();
+            if (Array.isArray(v)) {
+                v.forEach(function (x) {
+                    out.append(key + '[]', x);
+                });
+            } else if (v !== null && typeof v === 'object') {
+                param(v, key, out);
+            } else {
+                out.append(key, v === null || v === undefined ? '' : v);
+            }
+        });
+        return out;
+    }
 
-                if (data == undefined) {
-                    $trs.eq(0).hide().end().eq(1).show();
-                    return true;
-                }
+    function handleRequest(json) {
+        document.querySelectorAll('.wpAdvQuiz_toplist').forEach(function (tp) {
+            var rows = json ? json[tp.getAttribute('data-quiz_id')] : undefined;
+            var tbody = tp.querySelector('tbody');
+            if (!tbody) return;
 
-                for (var i = 0, c = data.length; i < c; i++) {
-                    var td = clone.clone().children();
+            var trs = Array.prototype.slice.call(tbody.children);
+            var template = trs[2];
 
-                    td.eq(0).text(i + 1);
-                    td.eq(1).text(data[i].name);
-                    td.eq(2).text(data[i].date);
-                    td.eq(3).text(data[i].points);
-                    td.eq(4).text(data[i].result + ' %');
-
-                    if (i & 1) {
-                        td.addClass('wpAdvQuiz_toplistTrOdd');
-                    }
-
-                    td.parent().show().appendTo($tp.find('tbody'));
-                }
-
-                $trs.eq(0).hide();
-                $trs.eq(1).hide();
-            });
-        },
-
-        fetchIds: function () {
-            var ids = new Array();
-
-            jQuery('.wpAdvQuiz_toplist').each(function () {
-                ids.push(jQuery(this).data('quiz_id'));
+            trs.slice(3).forEach(function (tr) {
+                tr.parentNode.removeChild(tr);
             });
 
-            return ids;
-        },
-
-        init: function () {
-            var quizIds = plugin.toplist.fetchIds();
-
-            if (quizIds.length == 0)
+            if (rows === undefined || rows === null) {
+                if (trs[0]) trs[0].style.display = 'none';
+                if (trs[1]) trs[1].style.display = '';
                 return;
+            }
 
-            jQuery.post(WpAdvQuizGlobal.ajaxurl, {
-                //action: 'wp_adv_quiz_show_front_toplist',
-                //quizIds: quizIds
+            for (var i = 0, c = rows.length; i < c && template; i++) {
+                var tr = template.cloneNode(true);
+                var td = tr.children;
+
+                td[0].textContent = i + 1;
+                td[1].textContent = rows[i].name;
+                td[2].textContent = rows[i].date;
+                td[3].textContent = rows[i].points;
+                td[4].textContent = rows[i].result + ' %';
+
+                if (i & 1) {
+                    Array.prototype.forEach.call(td, function (cell) {
+                        cell.classList.add('wpAdvQuiz_toplistTrOdd');
+                    });
+                }
+
+                tr.style.display = '';
+                tbody.appendChild(tr);
+            }
+
+            if (trs[0]) trs[0].style.display = 'none';
+            if (trs[1]) trs[1].style.display = 'none';
+        });
+    }
+
+    function fetchToplist() {
+        var ids = Array.prototype.map.call(document.querySelectorAll('.wpAdvQuiz_toplist'), function (tp) {
+            return tp.getAttribute('data-quiz_id');
+        });
+
+        var g = window.WpAdvQuizGlobal || {};
+
+        if (!ids.length || !g.ajaxurl || !window.fetch)
+            return;
+
+        fetch(g.ajaxurl, {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            body: param({
                 action: 'wp_adv_quiz_admin_ajax',
                 func: 'showFrontToplist',
                 data: {
-                    quizIds: quizIds
+                    quizIds: ids
                 }
-            }, function (json) {
-                plugin.toplist.handleRequest(json);
-            }, 'json');
-        }
-    };
+            }).toString()
+        }).then(function (r) {
+            return r.json();
+        }).then(handleRequest).catch(function () {
+        });
+    }
 
-    plugin.toplist.init();
-}
+    window.wpAdvQuiz_fetchToplist = fetchToplist;
 
-jQuery(document).ready(wpAdvQuiz_fetchToplist);
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', fetchToplist);
+    } else {
+        fetchToplist();
+    }
+})();

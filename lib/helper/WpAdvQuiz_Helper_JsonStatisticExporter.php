@@ -97,7 +97,7 @@ class WpAdvQuiz_Helper_JsonStatisticExporter implements WpAdvQuiz_Helper_Statist
      * @return string
      */
     protected function getUsername($userId) {
-        $userName = __('Anonymous', 'wp-adv-quiz');
+        $userName = __('Anonymous', 'ct-pro-quiz-lite');
 
         if ($userId) {
             $userInfo = get_userdata($userId);
@@ -105,7 +105,7 @@ class WpAdvQuiz_Helper_JsonStatisticExporter implements WpAdvQuiz_Helper_Statist
             if ($userInfo !== false) {
                 $userName = $userInfo->user_login . ' (' . $userInfo->display_name . ')';
             } else {
-                $userName = __('Deleted user', 'wp-adv-quiz');
+                $userName = __('Deleted user', 'ct-pro-quiz-lite');
             }
         }
 
